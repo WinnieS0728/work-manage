@@ -1,0 +1,387 @@
+FORMAT: 1A
+HOST: https://polls.apiblueprint.org/
+
+# 業務系統
+業務系統API規格書
+
+# Group 預算目標
+
+## 目標 [/api/achievement]
+包含年度(分月份)預算目標及業績達成
+
+### 取得業績表[POST /getAchievement{?year}]
+
++ parameters
+    + year: 2022 (string, optional) - 西元年
+
++ response 200 (application/json)
+
+        [{
+            "year": "2022",
+            "data": [{
+                "month":"一月",
+                "goal": 2210962,
+                "achievement": 0
+            },{
+                "month":"二月",
+                "goal": 1940885,
+                "achievement": 0
+            },{
+                "month":"三月",
+                "goal": 2709277,
+                "achievement": 0
+            },{
+                "month":"四月",
+                "goal": 2232507,
+                "achievement": 0
+            },{
+                "month":"五月",
+                "goal": 3151297,
+                "achievement": 0
+            },{
+                "month":"六月",
+                "goal": 3336445,
+                "achievement": 0
+            },{
+                "month":"七月",
+                "goal": 3721586,
+                "achievement": 0
+            },{
+                "month":"八月",
+                "goal": 3349980,
+                "achievement": 0
+            },{
+                "month":"九月",
+                "goal": 3422180,
+                "achievement": 0
+            },{
+                "month":"十月",
+                "goal": 4500298,
+                "achievement": 4879350
+            },{
+                "month": "十一月",
+                "goal": 2625710,
+                "achievement": 4879350
+            },{
+                "month":"十二月",
+                "goal": 3625729,
+                "achievement": 1043910
+            }]
+        }]
+        
+        
+###  修改業績表[POST /editAchievement{?year}]
+
++ parameters
+    + year: 2022 (string, required) - 西元年
+
++ request (application/json)
+
+        {
+            "month":"十二月",
+            "goal": 3625729,
+            "achievement": 1043910
+        }
+
++ response 200 (application/json)
+
+        修改成功
+
+# Group 地區業績
+
+## 業績表 [/api/totalSalesByPlace]
+包含各單位目標、出貨及達成狀況等資訊
+
+### 取得業績表 [POST /getSalesList{?month}]
+
++ parameters
+    + month: 202301 (number , required) - 西元年+兩位數月份
+
++ response 200 (application/json)
+
+        [{
+            "單位":"業一歐洲A(義大利)",
+            "目標": 6253000,
+            "已出貨": 418230,
+            "可努力": "",
+            "本月預估業績": 418230
+        },{
+            "單位":"業一北美",
+            "目標": "",
+            "已出貨": "",
+            "可努力": "",
+            "本月預估業績": ""
+        },{
+            "單位":"業一歐洲B(德國)",
+            "目標": 2379383,
+            "已出貨": 1302927,
+            "可努力": "",
+            "本月預估業績": 1302927
+        },{
+            "單位":"業一台灣",
+            "目標": 2407565,
+            "已出貨": "",
+            "可努力": 1421159,
+            "本月預估業績": ""
+        },{
+            "單位":"業一其他",
+            "目標": 523260,
+            "已出貨": "",
+            "可努力": "",
+            "本月預估業績": ""
+        },{
+            "單位":"業二日本",
+            "目標": 2440423,
+            "已出貨": 2090302,
+            "可努力": 77700,
+            "本月預估業績": 3168002
+        },{
+            "單位":"業二重點客戶",
+            "目標": 16259764,
+            "已出貨": 20089915,
+            "可努力": 2536450,
+            "本月預估業績": 22626365
+        },{
+            "單位":"業三大陸",
+            "目標": 7609777,
+            "已出貨": 6335381,
+            "可努力": "",
+            "本月預估業績": 6335381
+        },{
+            "單位":"業四台灣OEM",
+            "目標": 5157980,
+            "已出貨": 927792,
+            "可努力": 4641315,
+            "本月預估業績": 5569107
+        }]
+        
+        
+# Group 任務案件
+
+## 任務 [/api/missions]
+
+### 取得任務列表 [POST /getMissions]
+
++ response 200 (application/json)
+
+        [{
+            "ID": 1,
+            "title": "OSOM測試",
+            "principal": "David",
+            "mission-from": "Morris",
+            "start-day": "2023-01-01",
+            "end-day": "2023-06-06",
+            "state": "100%",
+            "PS": "",
+            "attached": ""
+        },{
+            "ID": 2,
+            "title": "EV資料統整",
+            "principal": "Rich",
+            "mission-from": "Aliber",
+            "start-day": "2023-01-01",
+            "end-day": "2023-06-06",
+            "state": "50%",
+            "PS": "",
+            "attached": ""
+        }]
+        
+
+# Group 工作重點
+
+## 工作重點 [/api/dailyReport]
+
+### 取得每日工作重點 [POST /api/dailyReport{?day}]
+
++ parameters
+    + day : 20230301 (number , required) - 西元年+兩位數月+兩位數日期
+
++ response 200 (application/json)
+
+        {
+            "sales":"David",
+            "day-point":[
+                            "義大利優惠方案Flyer",
+                            "錄製OG操作教學",
+                            "OSOM測試"
+                        ],
+            "report":[
+                        "義大利優惠方案Flyer (完成)",
+                        "錄製OG操作教學 (待續)",
+                        "OSOM測試 (待續)"
+                    ]
+        }
+
+### 新增工作 [POST /newReport]
+
++ request (application/json)
+
+        {
+            "sales":"David",
+            "day-point":[
+                            "義大利優惠方案Flyer",
+                            "錄製OG操作教學",
+                            "OSOM測試"
+                        ],
+            "report":[
+                        "義大利優惠方案Flyer (完成)",
+                        "錄製OG操作教學 (待續)",
+                        "OSOM測試 (待續)"
+                    ]
+        }
+
++ response 200 (application/json)
+
+        新增成功
+
+### 修改工作 [POST /editReport{?day,sales}]
+
++ parameters
+    + day : 20230301 (number , required) - 西元年+兩位數月+兩位數日期
+    + sales : David (string , required) - 業務姓名
+
++ request (application/json)
+
+        {
+            "sales":"David",
+            "day-point":[
+                            "義大利優惠方案Flyer",
+                            "錄製OG操作教學",
+                            "OSOM測試"
+                        ],
+            "report":[
+                        "義大利優惠方案Flyer (完成)",
+                        "錄製OG操作教學 (待續)",
+                        "OSOM測試 (待續)"
+                    ]
+        }
+
++ response 200 (application/json)
+
+        修改成功
+        
+### 刪除工作 [POST /deleteReport{?day,sales}]
+
++ parameters
+    + day : 20230301 (number , required) - 西元年+兩位數月+兩位數日期
+    + sales : David (string , required) - 業務姓名
+    
++ response 200 (application/json)
+
+        刪除成功
+        
+# Group 每周專案
+
+## 每周專案PPT [/api/weekilyWork]
+
+### 查看上傳狀態 [POST /api/weekilyWork{?week}]
+
++ parameters
+    + week : 202352 (number , required) - 西元年+第幾週(兩位數)
+
++ response 200 (application/json)
+
+        {
+            "fileName":"David_0306-0310_週進度.ppt",
+            "filePath":""
+            "uploadTime":"2023.03.01 12:00"
+        }
+
+
+### 上傳PPT [POST /uploadPPTfile]
+
++ request (application/json)
+
+        {
+            "ID":202301,
+            "fileName":"檔名",
+            "filePath":"",
+            "uploadTime":"2023.03.03 18:00"
+        }
+        
++ response 200 (application/json)
+
+        上傳成功
+        
+### 修改PPT [POST /updatePPTfile{?ID}]
+
++ parameters
+    + ID: '202352' (number, required) - 西元年+第幾週(兩位數)
+    
++ request (application/json)
+
+        {
+            "ID":202301,
+            "fileName":"檔名",
+            "filePath":"",
+            "uploadTime":"2023.03.06 21:00"
+        }
+        
++ response 200 (application/json)
+
+         修改成功
+
+### 刪除PPT [POST /deletePPTfile{?ID}] 
+
++ parameters
+    + ID: '202352' (number, required) - 西元年+第幾週(兩位數)
+
++ response 200 (application/json)
+
+        刪除成功
+        
+## 會議記錄 [/api/meetingRecord]
+
+### 查看上傳狀態 [POST]
+
++ response 200 (application/json)
+
+        {
+            "ID":202301,
+            "fileName":"0306-0310_會議記錄.docx",
+            "filePath":"",
+            "uploadTime":"2023.03.01 12:00"
+        }
+        
+### 上傳會議紀錄 [POST /uploadRecord]
+
++ request (application/json)
+        
+        {
+            "ID":202301,
+            "fileName":"0306-0310_會議記錄.docx",
+            "filePath":"",
+            "uploadTime":"2023.03.01 12:00"
+        }
+
++ response 200 (application/json)
+
+        上傳成功
+        
+
+### 修改會議記錄 [POST /updateRecord{?ID}]
+
++ parameters
+    + ID: '202352' (number, required) - 西元年+第幾週(兩位數)
+    
++ request (application/json)
+
+        {
+            "ID":202301,
+            "fileName":"0306-0310_會議記錄-V2.docx",
+            "filePath":"",
+            "uploadTime":"2023.03.06 21:00"
+        }
+        
++ response 200 (application/json)
+
+         修改成功
+         
+### 刪除會議記錄 [POST /deleteRecord{?ID}] 
+
++ parameters
+    + ID: '202352' (number, required) - 西元年+第幾週(兩位數)
+
++ response 200 (application/json)
+
+        刪除成功
