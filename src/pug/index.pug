@@ -1,9 +1,14 @@
-extends ./template.pug 
+extends ./_template.pug 
+
+block localLinks 
+    link(rel="stylesheet" href="style.css")
+    script(src="../src/js/script.js" defer)
+    script(type="module" src="../src/js/d3.js")
 
 block title
     title 業務系統
 
-block mainContent
+block mainContent 
     article#main-page 
         section.showing-tab
             .exports

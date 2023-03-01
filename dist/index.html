@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.2/d3.min.js" integrity="sha512-oKI0pS1ut+mxQZdqnD3w9fqArLyILRsT3Dx0B+8RVEXzEk3aNK3J3pWlaGJ8MtTs1oiwyXDAH6hG6jy1sY0YqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.0.5/swiper-bundle.min.js" integrity="sha512-cEcJcdNCHLm3YSMAwsI/NeHFqfgNQvO0C27zkPuYZbYjhKlS9+kqO5hZ9YltQ4GaTDpePDQ2SrEk8gHUVaqxig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js" integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="style.css">
     <script src="../src/js/script.js" defer></script>
+    <script type="module" src="../src/js/d3.js"></script>
     <title>業務系統</title>
   </head>
-  <body> 
+  <body>
     <header>
       <div class="header-top"> <img src="../assests/img/eformLogo.png" alt="e-home_image">
         <div id="user"><img src="../assests/img/icon_Avatar.png" alt="user_avatar">
@@ -204,7 +206,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr id="goal">
                 <td>預算目標</td>
                 <td class="table-data">2,210,962</td>
                 <td class="table-data">1,940,885</td>
