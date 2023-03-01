@@ -1,0 +1,551 @@
+extends ./template.pug 
+
+block title
+    title 業務系統
+
+block mainContent
+    article#main-page 
+        section.showing-tab
+            .exports
+                button.exportExcel 匯出Excel 
+                button.exportPDF 匯出PDF
+            article.nowTab
+                <i class="fa-solid fa-location-dot"></i>
+                p.
+                    業務系統 #[span #[span.mainTab / #[span 工作項目管理]] #[span.subTab / #[span 首頁]]] 
+        section.mission-control
+            a(href="") <i class="fa-solid fa-pen"></i>建立任務
+            a(href="") <i class="fa-solid fa-pen"></i>修改任務
+        section.filter
+            form
+                .formContent
+                    h3 選擇查詢條件: #[span (單選或複選)]
+                    span
+                        label(for="") 任務日期
+                        input#day-start(type="text" name="day-start" placeholder="任務週期 (起)" onfocus="(this.type='date')" onblur="(this.type='text')")
+                        span ~
+                        input#day-end(type="text" name="day-start" placeholder="任務週期 (迄)" onfocus="(this.type='date')" onblur="(this.type='text')")
+                        label(for="missionFilter_Year") 任務年度
+                        select#missionFilter_Year(name="mission year")
+                            option(value="" selected disabled) 選擇年度 
+                            option(value="2022") 2022  
+                            option(value="2023") 2023
+                        label(for="missionFilter_month") 任務月份
+                        select#missionFilter_month(name="missionFilter_month") 
+                            option(value="" selected disabled) 選擇月份
+                            option(value="1") 1月
+                            option(value="2") 2月
+                            option(value="3") 3月
+                            option(value="4") 4月
+                            option(value="5") 5月
+                            option(value="6") 6月
+                            option(value="7") 7月
+                            option(value="8") 8月
+                            option(value="9") 9月
+                            option(value="10") 10月
+                            option(value="11") 11月
+                            option(value="12") 12月
+                    span
+                        label(for="") 任務篩選
+                        select#missionFilter_state(name="missionFilter_state") 
+                            option(value="" selected disabled) 任務地區
+                            option(value="all") 不拘
+                            option(value="new") 新案件
+                            option(value="progress") 進行中
+                            option(value="done") 已完成
+                        select#missionFilter_place(name="missionFilter_place") 
+                            option(value="" selected disabled) 任務地區
+                            option(value="all") 不拘
+                            option(value="taiwan") 台灣
+                            option(value="germany") 德國
+                            option(value="italy") 義大利
+                            option(value="USA") 美國
+                        select#missionFilter_executor(name="missionFilter_place") 
+                            option(value="" selected disabled) 任務擔當
+                            option(value="all") 不拘
+                            option(value="David") David 李洪瑋
+                            option(value="Darie") Darie 李德宜
+                            option(value="Denise") Denise 黃慧卿
+                            option(value="Lorna") Lorna 白翠蓮
+                            option(value="Rich") Rich 黃偉鳴
+                            option(value="Imma. Molinini") Imma. Molinini
+                            option(value="Michele. Dellaventrua") Michele. Dellaventrua
+                            option(value="Marcus Rosenzweig") Marcus Rosenzweig
+                            option(value="Ismail.Kemcen") Ismail.Kemcen
+                            option(value="Stefan Ebert") Stefan Ebert
+                            option(value="Mohamed Akabbal") Mohamed Akabbal
+                            option(value="Cemal Altunkaya") Cemal Altunkaya
+                            option(value="Michael Boe") Michael Boe
+                            option(value="Stefan Becko") Stefan Becko
+                        select#missionFilter_missionFrom(name="missionFilter_place") 
+                            option(value="" selected disabled) 任務交辦
+                            option(value="all") 不拘
+                            option(value="others") 其他單位
+                            option(value="Morris") Morris
+                            option(value="Aliber") Aliber
+                    span
+                        label(for="missionFilter_title") 任務標題
+                        input#missionFilter_title(type="text" name="#missionFilter_title" placeholder="請輸入任務主題關鍵字").
+                        label(for="missionFilter_content") 任務內容
+                        input#missionFilter_content(type="text" name="#missionFilter_content" placeholder="請輸入任務內容關鍵字").
+                .formSubmit
+                    button(type="submit").
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        送出查詢
+
+        section.year-achievement
+            h2 《年度成果統計》
+            article.container
+                .block.yearEnd-countdown
+                    p 2023倒數
+                    p #[span 75]天
+                .block.total-sales 
+                    p 本年度累積銷售
+                    p #[span 268,000,500]元
+                .block.unachieved-sales
+                    p 本年度未達銷售
+                    p #[span -14,555,200]元
+                .block.success-rate
+                    p 年度達成率
+                    p #[span 85.3]%
+        section.budget-target
+            h2 《預算目標面板》
+            table(border="1")
+                thead 
+                    th(colspan="13") 2022
+                    tr
+                        th 單位
+                        th 1月
+                        th 2月
+                        th 3月
+                        th 4月
+                        th 5月
+                        th 6月
+                        th 7月
+                        th 8月
+                        th 9月
+                        th 10月
+                        th 11月
+                        th 12月
+                tbody
+                    tr#goal
+                        td 預算目標
+                        td.table-data 2,210,962
+                        td.table-data 1,940,885
+                        td.table-data 2,709,277
+                        td.table-data 2,232,507
+                        td.table-data 3,151,297
+                        td.table-data 3,336,445
+                        td.table-data 3,721,586
+                        td.table-data 3,349,980
+                        td.table-data 3,422,180
+                        td.table-data 4,500,298
+                        td.table-data 2,625,710
+                        td.table-data 35,625,729
+                    tr
+                        td 業績達成
+                        td.table-data -
+                        td.table-data -
+                        td.table-data -
+                        td.table-data -
+                        td.table-data -
+                        td.table-data -
+                        td.table-data -
+                        td.table-data -
+                        td.table-data -
+                        td.table-data 4,879,350
+                        td.table-data 4,879,350
+                        td.table-data 1,043,910
+                tfoot
+                    tr
+                        td 落差
+                        td.table-data -
+                        td.table-data -
+                        td.table-data -
+                        td.table-data -
+                        td.table-data -
+                        td.table-data -
+                        td.table-data -
+                        td.table-data -
+                        td.table-data -
+                        td.table-data -1,457,170
+                        td.table-data -1,379,052
+                        td.table-data 1,581,800
+        section.place-achievement
+            h2 《各地區業績面板》
+            table(border="1")
+                thead 
+                    th(colspan="7") 12月業績表
+                    tr
+                        th 單位
+                        th 目標
+                        th 已出貨
+                        th 可努力
+                        th 本月預估業績(扣除折讓)
+                        th 目標與實際差額
+                        th 月達成率
+                tbody
+                    tr
+                        td 業一歐洲A(義大利)
+                        td.table-data 6,253,000
+                        td.table-data 418,230
+                        td.table-data -
+                        td.table-data 418,230
+                        td.table-data -5,834,770
+                        td.table-data 6.69%
+                    tr
+                        td 業一北美
+                        td.table-data -
+                        td.table-data -
+                        td.table-data -
+                        td.table-data -
+                        td.table-data 0
+                        td.table-data -
+                    tr
+                        td 業一歐洲B(德國)
+                        td.table-data 2,379,383
+                        td.table-data 1,302,927
+                        td.table-data -
+                        td.table-data 1,302,927
+                        td.table-data -1,076,456
+                        td.table-data 54,76%
+                    tr
+                        td 業一台灣
+                        td.table-data 2.407.565
+                        td.table-data -
+                        td.table-data 1,421,159
+                        td.table-data -
+                        td.table-data -986,406
+                        td.table-data 59.03%
+                    tr
+                        td 業一其他
+                        td.table-data 523,260
+                        td.table-data -
+                        td.table-data -
+                        td.table-data -
+                        td.table-data -523,260
+                        td.table-data 0%
+                    tr
+                        td 業二日本
+                        td.table-data 2,440,423
+                        td.table-data 3,090,302
+                        td.table-data 77,700
+                        td.table-data 3,168,002
+                        td.table-data 727,579
+                        td.table-data 129.81%
+                    tr
+                        td 業二重點客戶
+                        td.table-data 16,259,764
+                        td.table-data 20,089,915
+                        td.table-data 2,536,450
+                        td.table-data 22,626,365
+                        td.table-data 6,366,601
+                        td.table-data 139.16%
+                    tr
+                        td 業三大陸
+                        td.table-data 7,609,777
+                        td.table-data 6,335,381
+                        td.table-data -
+                        td.table-data 6,335,381
+                        td.table-data -1,274,396
+                        td.table-data 83.25%
+                    tr
+                        td 業四台灣OEM
+                        td.table-data 5,157,980
+                        td.table-data 927,792
+                        td.table-data 4,641,315
+                        td.table-data 5,569,107
+                        td.table-data 411,127
+                        td.table-data 107,97%
+                tfoot
+                    tr
+                        td 合計
+                        td.table-data 43,031,152
+                        td.table-data 32,164,547
+                        td.table-data 8,676,624
+                        td.table-data 40,841,171
+                        td.table-data -2,189,981
+                        td.table-data 94.91%
+        section.mission-dashboard 
+            h2 《任務案件統計》
+            article.container 
+                .block.new-mission
+                    p 本日新增
+                    p 7
+                .block.mission-on-duty
+                    p 進行中
+                    p 28
+                .block.mission-complete
+                    p 已完成
+                    p 31
+                .block.total-mission
+                    p 總件數
+                    p 77
+                .block.success-rate
+                    p 任務達成率
+                    p 40
+                .block.mission-from-morris
+                    p Morris 交辦
+                    p 70
+                .block.mission-from-aliber
+                    p Aliber 交辦
+                    p 30
+        section.mission-list
+            h2 《任務案件總覽》
+            table.list-by-index(border="1")
+                thead 
+                    th(colspan="8") 任務列表(新到舊排序)
+                    tr
+                        th 編號
+                        th 交辦主管
+                        th 任務標題
+                        th 擔當
+                        th 交辦日期
+                        th 需求日期
+                        th 備註
+                        th 附件
+                tbody
+                    tr
+                        td 1
+                        td.table-data Morris
+                        td.table-data OSOM測試
+                        td.table-data David
+                        td.table-data 
+                        td.table-data 
+                        td.table-data 
+                        td.table-data 
+                    tr
+                        td 2
+                        td.table-data Aliber
+                        td.table-data EV資料統整
+                        td.table-data Rich
+                        td.table-data 
+                        td.table-data 
+                        td.table-data 
+                        td.table-data 
+                    tr
+                        td 3
+                        td.table-data Morris
+                        td.table-data OSOM測試
+                        td.table-data Lorna
+                        td.table-data 
+                        td.table-data 
+                        td.table-data 
+                        td.table-data 
+                    tr
+                        td 4
+                        td.table-data Morris
+                        td.table-data OSOM測試
+                        td.table-data Darie
+                        td.table-data 
+                        td.table-data 
+                        td.table-data 
+                        td.table-data 
+                    tr
+                        td 5
+                        td.table-data Aliber
+                        td.table-data SMP業績分析
+                        td.table-data Darie
+                        td.table-data 
+                        td.table-data 
+                        td.table-data 
+                        td.table-data 
+                    tr
+                        td 6
+                        td.table-data Morris
+                        td.table-data OSOM測試
+                        td.table-data Rich
+                        td.table-data 
+                        td.table-data 
+                        td.table-data 
+                        td.table-data 
+                    tr
+                        td 7
+                        td.table-data Morris
+                        td.table-data OSOM測試
+                        td.table-data Denise
+                        td.table-data 
+                        td.table-data 
+                        td.table-data 
+                        td.table-data 
+                    tr
+                        td 8
+                        td.table-data Morris
+                        td.table-data 德國業績追蹤
+                        td.table-data Denise
+                        td.table-data 
+                        td.table-data 
+                        td.table-data 
+                        td.table-data 
+                    tr
+                        td 9
+                        td.table-data Morris
+                        td.table-data 德國促銷方案
+                        td.table-data Denise
+                        td.table-data 
+                        td.table-data 
+                        td.table-data 
+                        td.table-data 
+                    tr
+                        td 10
+                        td.table-data Aliber
+                        td.table-data 德國PPT
+                        td.table-data Lorna
+                        td.table-data 
+                        td.table-data 
+                        td.table-data 
+                        td.table-data 
+            .controller 
+                button.
+                    <i class="fa-solid fa-chevron-left"></i>
+                    前10筆    
+                button.
+                    後10筆    
+                    <i class="fa-solid fa-chevron-right"></i>
+            table.list-by-member(border="1")
+                thead 
+                    th(colspan="8") 任務統計(當月)
+                    tr
+                        th 擔當
+                        th 本日新增
+                        th 進行中
+                        th 已完成
+                        th 總件數
+                        th 任務進度
+                        th Morris交辦
+                        th Aliber交辦
+                tbody
+                    tr
+                        td David
+                        td.table-data 1
+                        td.table-data 4
+                        td.table-data 2
+                        td.table-data 9
+                        td.table-data 50%
+                        td.table-data 2
+                        td.table-data 1
+                    tr
+                        td Denise
+                        td.table-data 3
+                        td.table-data 5
+                        td.table-data 2
+                        td.table-data 10
+                        td.table-data 20%
+                        td.table-data 5
+                        td.table-data 3
+                    tr
+                        td Darie
+                        td.table-data 1
+                        td.table-data 4
+                        td.table-data 6
+                        td.table-data 11
+                        td.table-data 54.5%
+                        td.table-data 3
+                        td.table-data 2
+                    tr
+                        td Lorna
+                        td.table-data 0
+                        td.table-data 3
+                        td.table-data 3
+                        td.table-data 6
+                        td.table-data 50%
+                        td.table-data 5
+                        td.table-data 1
+                    tr
+                        td Rich
+                        td.table-data 1
+                        td.table-data 6
+                        td.table-data 5
+                        td.table-data 12
+                        td.table-data 41.6%
+                        td.table-data 4
+                        td.table-data 1
+        section.daily-routine
+            h2 《每日工作重點:#[span 2022/10/14]》
+            table(border="1")
+                thead 
+                    th 擔當
+                    th 工作重點
+                    th 工作進度回報
+                tbody
+                    tr 
+                        th David
+                        td.table-data
+                            p.
+                                1.義大利優惠方案Flyer#[br]
+                                2.錄製OG操作教學#[br]
+                                3.OSOM測試
+                        td.table-data
+                            p.
+                                1.義大利優惠方案Flyer (完成)#[br]
+                                2.錄製OG操作教學 (待續)#[br]
+                                3.OSOM測試 (待續)
+                    tr 
+                        th Denise
+                        td.table-data.
+                            尚無資料
+                        td.table-data.
+                            尚無資料
+                    tr 
+                        th Darie
+                        td.table-data.
+                            尚無資料
+                        td.table-data.
+                            尚無資料
+                    tr 
+                        th Lorna
+                        td.table-data.
+                            尚無資料
+                        td.table-data.
+                            尚無資料
+                    tr 
+                        th Rich
+                        td.table-data.
+                            尚無資料
+                        td.table-data.
+                            尚無資料
+            p 備註: 每日LINE給MO哥的內容        
+        section.weekly-data
+            h2 《每週專案PPT & 每週會議紀錄》
+            table(border="1")
+                thead 
+                    th 擔當
+                    th PTT檔 上傳狀態
+                    th 會議記錄 上傳狀態
+                tbody
+                    tr 
+                        th David
+                        td.table-data
+                            p.
+                                最後更新 #[span 2021.12.30 AM 11:20]#[br]
+                                (下載檔案)
+                        td.table-data.
+                            資料未上傳
+                    tr 
+                        th Denise
+                        td.table-data.
+                            資料未上傳
+                        td.table-data.
+                            資料未上傳
+                    tr 
+                        th Darie
+                        td.table-data.
+                            資料未上傳
+                        td.table-data.
+                            資料未上傳
+                    tr 
+                        th Lorna
+                        td.table-data.
+                            資料未上傳
+                        td.table-data.
+                            資料未上傳
+                    tr 
+                        th Rich
+                        td.table-data.
+                            資料未上傳
+                        td.table-data.
+                            資料未上傳
+            ul    
+                li 點選「下載檔案」可查看案件詳細內容。
+                li 重複上傳僅記錄最後一筆PTT的時間。
+                li 「業務主管面板」的資訊來源為「業務人員面板」的自動帶入，所以兩邊資料會連動。              

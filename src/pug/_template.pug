@@ -1,0 +1,62 @@
+include includes/mixins
+
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        include includes/links.pug
+        link(rel="stylesheet" href="style.css")
+        script(src="../src/js/script.js" defer)
+        
+        block title
+            title
+    body
+        header
+            .header-top 
+                img(src="../assests/img/eformLogo.png" alt="e-home_image")
+                #user
+                    img(src="../assests/img/icon_Avatar.png" alt="user_avatar")
+                    p.user-info.
+                        #[span.department 業務部] /
+                        #[span.name David]
+            .header-bottom
+                img(src="../assests/img/btn_home.png" alt="btn_home")
+                p.marquee 系統跑馬燈 : [ #[span ⚠您有兩筆新任務] ]
+        main 
+            aside 
+                nav
+                    ul.nav-list
+                        li.nav-title.open 工作項目管理
+                        .nav-tags
+                            li.nav-tag.active 任務管理
+                            li.nav-tag 海外工作週報管理
+                            li.nav-tag 經營管理會議(PTT)
+                            li.nav-tag 出差報告
+                            li.nav-tag 客戶開發管理
+                            li.nav-tag 逾期帳款
+                            li.nav-tag 所有帳款
+                            li.nav-tag 統計分析
+                            li.nav-tag 跨部門追蹤
+                    ul.nav-list
+                        li.nav-title 銷售儀錶板
+                    ul.nav-list
+                        li.nav-title 情報資訊
+                    ul.nav-list
+                        li.nav-title 產品知識
+                    ul.nav-list
+                        li.nav-title SOP流程
+                    ul.nav-list
+                        li.nav-title 常用表單下載
+                    ul.nav-list
+                        li.nav-title.green 客戶及聯絡人資料建立
+                    ul.nav-list
+                        li.nav-title.green 查詢OSOM密碼
+                    ul.nav-list
+                        li.nav-title.green 建立測試帳號
+                    a#back-to-main(href="#") 返回業務系統首頁 
+
+            block mainContent
+        
+        footer

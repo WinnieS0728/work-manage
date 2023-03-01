@@ -1,0 +1,44 @@
+@font-face {
+    font-family: microsoftBlack;
+    font-weight: 400;
+    src: url('/assests/fonts/微軟正黑體-1.ttf') format("TrueType");
+}
+
+@font-face {
+    font-family: roboto;
+    font-weight: 400;
+    src:
+        url('/assests/fonts/roboto-medium-webfont.woff2') format("woff2"),
+        url('/assests/fonts/roboto-medium-webfont.woff') format("woff");
+}
+
+@font-face {
+    font-family: helvetica;
+    font-weight: 400;
+    src:
+        url('/assests/fonts/helvetica-webfont.woff2') format("woff2"),
+        url('/assests/fonts/helvetica-webfont.woff') format("woff");
+}
+
+@font-face {
+    font-family: noto;
+    font-weight: 400;
+    src:
+        url('/assests/fonts/notosanstc-regular-webfont.woff2') format("woff2"),
+        url('/assests/fonts/notosanstc-regular-webfont.woff') format("woff");
+}
+
+@font-face {
+    font-family: noto;
+    font-weight: 700;
+    src:
+        url('/assests/fonts/notosanstc-bold-webfont.woff2') format("woff2"),
+        url('/assests/fonts/notosanstc-bold-webfont.woff') format("woff");
+}
+
+
+$fontSize_h2: 1.875rem;
+
+
+$fontSize_table-title: 1.625rem;
+$fontSize_table-data: 1.25rem;
