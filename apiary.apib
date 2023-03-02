@@ -162,19 +162,17 @@ HOST: https://polls.apiblueprint.org/
 
 ## mission
 + ID : 1 (number , required)
++ mission_from : `Morris` (string , required) - 任務交辦主管
 + title : `` (string , required) - 任務標題
 + principal : `` (string , required) - 任務擔當
-+ mission_from : 0 (enum) - 任務交辦主管
-    + 0 - 任務交辦 from Morris
-    + 1 - 任務交辦 from Aliber
 + start_day : `` (string , required) - 任務交辦日期
 + end_day : `` (string , required) - 任務截止日期
++ PS : `` (string , optional) - 備註
++ attached : `` (string , optional) - 附件
 + state : 0 (enum) - 任務狀態
     + 0 - 任務未開始
     + 1 - 任務進行中
     + 2 - 任務已完成
-+ PS : `` (string , optional) - 備註
-+ attached : `` (string , optional) - 附件
     
 ## missionList (success)
 + result (array)
@@ -193,9 +191,7 @@ HOST: https://polls.apiblueprint.org/
         + principal : `Rich` (string , required) - 任務擔當
         + start_day : `2023-01-01` (string , required) - 任務交辦日期
         + end_day : `2023-06-06` (string , required) - 任務截止日期
-        + mission_from : 1 (enum) - 任務交辦主管
-            + 0 - 任務交辦 from Morris
-            + 1 - 任務交辦 from Aliber
+        + mission_from : `Aliber` (string , required) - 任務交辦主管
         + state : 2 (enum) - 任務狀態
             + 0 - 任務未開始
             + 1 - 任務進行中
