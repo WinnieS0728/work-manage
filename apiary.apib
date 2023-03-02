@@ -6,235 +6,236 @@ HOST: https://polls.apiblueprint.org/
 
 # Group 預算目標
 
-## 目標 [/api/achievement]
+## 目標 [/api/achievements]
 包含年度(分月份)預算目標及業績達成
 
-### 取得業績表[POST /getAchievement{?year}]
+### 取得業績表[GET /api/achievements{?year}]
 
 + parameters
     + year: 2022 (string, optional) - 西元年
 
 + response 200 (application/json)
+    
+    成功
+    + attributes (getAchievement)
 
-        [{
-            "year": "2022",
-            "data": [{
-                "month":"一月",
-                "goal": 2210962,
-                "achievement": 0
-            },{
-                "month":"二月",
-                "goal": 1940885,
-                "achievement": 0
-            },{
-                "month":"三月",
-                "goal": 2709277,
-                "achievement": 0
-            },{
-                "month":"四月",
-                "goal": 2232507,
-                "achievement": 0
-            },{
-                "month":"五月",
-                "goal": 3151297,
-                "achievement": 0
-            },{
-                "month":"六月",
-                "goal": 3336445,
-                "achievement": 0
-            },{
-                "month":"七月",
-                "goal": 3721586,
-                "achievement": 0
-            },{
-                "month":"八月",
-                "goal": 3349980,
-                "achievement": 0
-            },{
-                "month":"九月",
-                "goal": 3422180,
-                "achievement": 0
-            },{
-                "month":"十月",
-                "goal": 4500298,
-                "achievement": 4879350
-            },{
-                "month": "十一月",
-                "goal": 2625710,
-                "achievement": 4879350
-            },{
-                "month":"十二月",
-                "goal": 3625729,
-                "achievement": 1043910
-            }]
-        }]
-        
-        
-###  修改業績表[POST /editAchievement{?year}]
+
+###  修改業績表[PATCH /api/achievements{?year,month}]
 
 + parameters
-    + year: 2022 (string, required) - 西元年
+    + year: 2022 (number, required) - 西元年
+    + month : Jan (string , required) - 月份英文縮寫
 
 + request (application/json)
 
-        {
-            "month":"十二月",
-            "goal": 3625729,
-            "achievement": 1043910
-        }
+    + attributes (achievementData)
 
 + response 200 (application/json)
 
-        修改成功
+    成功
+    + attributes (editSuccess)
+
+
+# data structures
+
+## achievementData
++ goal : 2210962 (number , required) - 目標業績
++ achievement : 0 (number , required) - 目前累積業績
+
+## getAchievement (success)
++ result
+    + year : 2022 (number , required) - 西元年
+    + Jan (achievementData)
+    + Feb (achievementData)
+        + goal : 1940885 (number , required) - 目標業績
+    + Mar (achievementData)
+        + goal : 2709277 (number , required) - 目標業績
+    + Apr (achievementData)
+        + goal : 2232507 (number , required) - 目標業績
+    + May (achievementData)
+        + goal : 3151297 (number , required) - 目標業績
+    + June (achievementData)
+        + goal : 3336445 (number , required) - 目標業績
+    + Jul(achievementData)
+        + goal : 3721586 (number , required) - 目標業績
+    + Aug (achievementData)
+        + goal : 3349980 (number , required) - 目標業績
+    + Sep (achievementData)
+        + goal : 3422180 (number , required) - 目標業績
+    + Oct (achievementData)
+        + goal : 4500298 (number , required) - 目標業績
+        + achievement : 4879350 (number , required) - 目前累積業績
+    + Nov (achievementData)
+        + goal : 2625710 (number , required) - 目標業績
+        + achievement : 4879350 (number , required) - 目前累積業績
+    + Dec (achievementData)
+        + goal : 3625729 (number , required) - 目標業績
+        + achievement : 1043910 (number , required) - 目前累積業績
+        
+
+
 
 # Group 地區業績
 
-## 業績表 [/api/totalSalesByPlace]
+## 業績表 [/api/salesByPlace]
 包含各單位目標、出貨及達成狀況等資訊
 
-### 取得業績表 [POST /getSalesList{?month}]
+### 取得業績表 [GET /api/salesByPlace{?year}]
 
 + parameters
-    + month: 202301 (number , required) - 西元年+兩位數月份
+    + year: 2022 (number , optional) - 西元年
 
 + response 200 (application/json)
 
-        [{
-            "單位":"業一歐洲A(義大利)",
-            "目標": 6253000,
-            "已出貨": 418230,
-            "可努力": "",
-            "本月預估業績": 418230
-        },{
-            "單位":"業一北美",
-            "目標": "",
-            "已出貨": "",
-            "可努力": "",
-            "本月預估業績": ""
-        },{
-            "單位":"業一歐洲B(德國)",
-            "目標": 2379383,
-            "已出貨": 1302927,
-            "可努力": "",
-            "本月預估業績": 1302927
-        },{
-            "單位":"業一台灣",
-            "目標": 2407565,
-            "已出貨": "",
-            "可努力": 1421159,
-            "本月預估業績": ""
-        },{
-            "單位":"業一其他",
-            "目標": 523260,
-            "已出貨": "",
-            "可努力": "",
-            "本月預估業績": ""
-        },{
-            "單位":"業二日本",
-            "目標": 2440423,
-            "已出貨": 2090302,
-            "可努力": 77700,
-            "本月預估業績": 3168002
-        },{
-            "單位":"業二重點客戶",
-            "目標": 16259764,
-            "已出貨": 20089915,
-            "可努力": 2536450,
-            "本月預估業績": 22626365
-        },{
-            "單位":"業三大陸",
-            "目標": 7609777,
-            "已出貨": 6335381,
-            "可努力": "",
-            "本月預估業績": 6335381
-        },{
-            "單位":"業四台灣OEM",
-            "目標": 5157980,
-            "已出貨": 927792,
-            "可努力": 4641315,
-            "本月預估業績": 5569107
-        }]
-        
-        
+    成功
+    + attributes (salesByPlaceList)
+    
+
+
+# data structures
+
+## salesByPlace
++ goal : 0 (number , optional) - 目標業績
++ done : 0 (number , optional) - 已出貨
++ work_on : 0 (number , optional) - 可努力
++ prediction : 0 (number , optional) - 本月預估業績
+
+## salesByPlaceList (success)
++ result
+    + Europe_A (salesByPlace)
+        + place : `業一歐洲A(義大利)` (string , required) - 業務地區
+        + goal : 625300 (number , optional) - 目標業績
+        + done : 418230 (number , optional) - 已出貨
+        + prediction : 418230 (number , optional) - 本月預估業績
+    + USA (salesByPlace)
+        + place : `業一北美` (string , required) - 業務地區
+    + Europe_B (salesByPlace)
+        + place : `業一歐洲B(德國)` (string , required) - 業務地區
+        + goal : 2379383 (number , optional) - 目標業績
+        + done : 1302927 (number , optional) - 已出貨
+        + prediction : 1302927 (number , optional) - 本月預估業績
+    + Taiwan (salesByPlace)
+        + place : `業一台灣` (string , required) - 業務地區
+        + goal : 24007565 (number , optional) - 目標業績
+        + work_on : 1321159 (number , optional) - 可努力
+    + Other (salesByPlace)
+        + place : `業一其他` (string , required) - 業務地區
+        + goal : 523260 (number , optional) - 目標業績
+    + Japan (salesByPlace)
+        + place : `業二日本` (string , required) - 業務地區
+        + goal : 2440423 (number , optional) - 目標業績
+        + done : 2090302 (number , optional) - 已出貨
+        + work_on : 77700 (number , optional) - 可努力
+        + prediction : 3168002 (number , optional) - 本月預估業績
+    + VIP (salesByPlace)
+        + place : `業二重點客戶` (string , required) - 業務地區
+        + goal : 16259764 (number , optional) - 目標業績
+        + done : 20089915 (number , optional) - 已出貨
+        + work_on : 2536450 (number , optional) - 可努力
+        + prediction : 22626365 (number , optional) - 本月預估業績
+    + China (salesByPlace)
+        + place : `業三大陸` (string , required) - 業務地區
+        + goal : 7609777 (number , optional) - 目標業績
+        + done : 6335381 (number , optional) - 已出貨
+        + prediction : 6335381 (number , optional) - 本月預估業績
+    + Taiwan_OEM (salesByPlace)
+        + place : `業四台灣OEM` (string , required) - 業務地區
+        + goal : 5157980 (number , optional) - 目標業績
+        + done : 927792 (number , optional) - 已出貨
+        + work_on : 4641315 (number , optional) - 可努力
+        + prediction : 5569107 (number , optional) - 本月預估業績
+
+
 # Group 任務案件
 
 ## 任務 [/api/missions]
 
-### 取得任務列表 [POST /getMissions]
+### 取得任務列表 [GET /api/missions]
 
 + response 200 (application/json)
 
-        [{
-            "ID": 1,
-            "title": "OSOM測試",
-            "principal": "David",
-            "mission-from": "Morris",
-            "start-day": "2023-01-01",
-            "end-day": "2023-06-06",
-            "state": "100%",
-            "PS": "",
-            "attached": ""
-        },{
-            "ID": 2,
-            "title": "EV資料統整",
-            "principal": "Rich",
-            "mission-from": "Aliber",
-            "start-day": "2023-01-01",
-            "end-day": "2023-06-06",
-            "state": "50%",
-            "PS": "",
-            "attached": ""
-        }]
+    成功
+    + attributes (missionList)
         
+
+# data structures
+
+## mission
++ ID : 1 (number , required)
++ title : `` (string , required) - 任務標題
++ principal : `` (string , required) - 任務擔當
++ mission_from : 0 (enum) - 任務交辦主管
+    + 0 - 任務交辦 from Morris
+    + 1 - 任務交辦 from Aliber
++ start_day : `` (string , required) - 任務交辦日期
++ end_day : `` (string , required) - 任務截止日期
++ state : 0 (enum) - 任務狀態
+    + 0 - 任務未開始
+    + 1 - 任務進行中
+    + 2 - 任務已完成
++ PS : `` (string , optional) - 備註
++ attached : `` (string , optional) - 附件
+    
+## missionList (success)
++ result (array)
+    + (mission)
+        + title : `OSOM測試` (string , required) - 任務標題
+        + principal : `David` (string , required) - 任務擔當
+        + start_day : `2023-01-01` (string , required) - 任務交辦日期
+        + end_day : `2023-06-06` (string , required) - 任務截止日期
+        + state : 2 (enum) - 任務狀態
+            + 0 - 任務未開始
+            + 1 - 任務進行中
+            + 2 - 任務已完成
+    + (mission)
+        + ID : 2 (number , required)
+        + title : `EV資料統整` (string , required) - 任務標題
+        + principal : `Rich` (string , required) - 任務擔當
+        + start_day : `2023-01-01` (string , required) - 任務交辦日期
+        + end_day : `2023-06-06` (string , required) - 任務截止日期
+        + mission_from : 1 (enum) - 任務交辦主管
+            + 0 - 任務交辦 from Morris
+            + 1 - 任務交辦 from Aliber
+        + state : 2 (enum) - 任務狀態
+            + 0 - 任務未開始
+            + 1 - 任務進行中
+            + 2 - 任務已完成
+
 
 # Group 工作重點
 
 ## 工作重點 [/api/dailyReport]
 
-### 取得每日工作重點 [POST /api/dailyReport{?day}]
+### 取得每日工作重點 [GET /api/dailyReport{?day,sales}]
 
 + parameters
     + day : 20230301 (number , required) - 西元年+兩位數月+兩位數日期
+    + sales : `David` (string , optional) - 業務名字
+
 
 + response 200 (application/json)
 
-        {
-            "sales":"David",
-            "day-point":[
-                            "義大利優惠方案Flyer",
-                            "錄製OG操作教學",
-                            "OSOM測試"
-                        ],
-            "report":[
-                        "義大利優惠方案Flyer (完成)",
-                        "錄製OG操作教學 (待續)",
-                        "OSOM測試 (待續)"
-                    ]
-        }
+    成功
+    + attributes (getDailyReport)
 
-### 新增工作 [POST /newReport]
+### 新增工作 [POST /api/dailyReport{?day,sales}]
+
++ parameters
+    + day : 20230301 (number , required) - 西元年+兩位數月+兩位數日期
+    + sales : `David` (string , required) - 業務名字
 
 + request (application/json)
 
-        {
-            "sales":"David",
-            "day-point":[
-                            "義大利優惠方案Flyer",
-                            "錄製OG操作教學",
-                            "OSOM測試"
-                        ],
-            "report":[
-                        "義大利優惠方案Flyer (完成)",
-                        "錄製OG操作教學 (待續)",
-                        "OSOM測試 (待續)"
-                    ]
-        }
+    + attributes (report)
+        + day_point (array)
+            + `新增工作` (string , required)
 
 + response 200 (application/json)
 
-        新增成功
+     成功
+     + attributes (uploadSuccess)
 
-### 修改工作 [POST /editReport{?day,sales}]
+### 修改工作 [PATCH /api/dailyReport{?day,sales}]
 
 + parameters
     + day : 20230301 (number , required) - 西元年+兩位數月+兩位數日期
@@ -242,25 +243,17 @@ HOST: https://polls.apiblueprint.org/
 
 + request (application/json)
 
-        {
-            "sales":"David",
-            "day-point":[
-                            "義大利優惠方案Flyer",
-                            "錄製OG操作教學",
-                            "OSOM測試"
-                        ],
-            "report":[
-                        "義大利優惠方案Flyer (完成)",
-                        "錄製OG操作教學 (待續)",
-                        "OSOM測試 (待續)"
-                    ]
-        }
+    + attributes (report)
+        + report (array)
+            + `修改工作` (string , required)
 
 + response 200 (application/json)
 
-        修改成功
-        
-### 刪除工作 [POST /deleteReport{?day,sales}]
+    成功
+    + attributes (editSuccess)
+
+
+### 刪除工作 [DELETE /api/dailyReport{?day,sales}]
 
 + parameters
     + day : 20230301 (number , required) - 西元年+兩位數月+兩位數日期
@@ -268,120 +261,195 @@ HOST: https://polls.apiblueprint.org/
     
 + response 200 (application/json)
 
-        刪除成功
-        
+    成功
+    + attributes (deleteSuccess)
+
+
+# data structures
+
+## report
++ day_point (array)
++ report (array)
+
+## getDailyReport (success)
++ result
+    + David (report)
+        + day_point (array)
+            + `義大利優惠方案Flyer` (string , optional)
+            + `錄製OG操作教學` (string , optional)
+            + `OSOM測試` (string , optional)
+        + report (array)
+            + `義大利優惠方案Flyer(完成)` (string , optional)
+            + `錄製OG操作教學(待續)` (string , optional)
+            + `OSOM測試(待續)` (string , optional)
+    + Danise (report)
+    + Darie (report)
+    + Lorna (report)
+    + Rich (report)
+
+
 # Group 每周專案
 
 ## 每周專案PPT [/api/weekilyWork]
 
-### 查看上傳狀態 [POST /api/weekilyWork{?week}]
+### 查看上傳狀態 [GET /api/weekilyWork{?week}]
 
 + parameters
-    + week : 202352 (number , required) - 西元年+第幾週(兩位數)
+    + week : 202352 (number , optional) - 西元年+第幾週(兩位數)
 
 + response 200 (application/json)
 
-        {
-            "fileName":"David_0306-0310_週進度.ppt",
-            "filePath":""
-            "uploadTime":"2023.03.01 12:00"
-        }
+    成功
+    + attributes (PPTlist)
 
 
-### 上傳PPT [POST /uploadPPTfile]
+### 上傳PPT [POST /api/weekilyWork]
 
 + request (application/json)
 
-        {
-            "ID":202301,
-            "fileName":"檔名",
-            "filePath":"",
-            "uploadTime":"2023.03.03 18:00"
-        }
+    + attributes (PPT)
+        + file_name : `新增檔案.ppt` (string , required) - 檔名
+        + uploadTime : `2023.05.01 24:00` (string , required) - 上傳時間
         
 + response 200 (application/json)
 
-        上傳成功
-        
-### 修改PPT [POST /updatePPTfile{?ID}]
+    成功
+    + attributes (uploadSuccess)
+
+
+### 修改PPT [PATCH /api/weekilyWork{?ID,sales}]
 
 + parameters
     + ID: '202352' (number, required) - 西元年+第幾週(兩位數)
+    + sales : David (string , required) - 業務姓名
     
 + request (application/json)
 
-        {
-            "ID":202301,
-            "fileName":"檔名",
-            "filePath":"",
-            "uploadTime":"2023.03.06 21:00"
-        }
+    + attributes (PPT)
+        + file_name : `修改檔案.ppt` (string , required) - 檔名
+        + uploadTime : `2023.05.01 24:00` (string , required) - 上傳時間
         
 + response 200 (application/json)
 
-         修改成功
+    成功
+    + attributes (editSuccess)
 
-### 刪除PPT [POST /deletePPTfile{?ID}] 
+### 刪除PPT [DELETE /api/weekilyWork{?ID,sales}] 
 
 + parameters
     + ID: '202352' (number, required) - 西元年+第幾週(兩位數)
+    + sales : David (string , required) - 業務姓名
 
 + response 200 (application/json)
 
-        刪除成功
-        
+    成功
+    + attributes (deleteSuccess)
+
+# data structures
+
+## PPT
++ ID :202301 (number , required) - 西元年+第幾週(兩位數)
++ file_name : `` (string , required) - 檔名
++ file_path : `` (string , required) - 檔案路徑
++ uploadTime : `2023.03.06 21:00` (string , required) - 上傳時間
+
+## PPTlist (success)
++ result
+    + David (PPT)
+        + file_name : `David 0306-0310 周進度.ppt`
+    + Danise (PPT)
+    + Darie (PPT)
+    + Lorna (PPT)
+    + Rich (PPT)
+
 ## 會議記錄 [/api/meetingRecord]
 
-### 查看上傳狀態 [POST]
+### 查看上傳狀態 [GET]
 
 + response 200 (application/json)
 
-        {
-            "ID":202301,
-            "fileName":"0306-0310_會議記錄.docx",
-            "filePath":"",
-            "uploadTime":"2023.03.01 12:00"
-        }
-        
-### 上傳會議紀錄 [POST /uploadRecord]
+    成功
+    + attributes (MeetingRecordList)
+
+
+### 上傳會議紀錄 [POST /api/meetingRecord]
 
 + request (application/json)
         
-        {
-            "ID":202301,
-            "fileName":"0306-0310_會議記錄.docx",
-            "filePath":"",
-            "uploadTime":"2023.03.01 12:00"
-        }
+    + attributes (MeetingRecord)
+        + file_name : `0301 會議記錄.docx` (string , required) - 檔名
 
 + response 200 (application/json)
 
-        上傳成功
+    成功
+    + attributes (uploadSuccess)
         
 
-### 修改會議記錄 [POST /updateRecord{?ID}]
+### 修改會議記錄 [PATCH /api/meetingRecord{?ID,sales}]
 
 + parameters
     + ID: '202352' (number, required) - 西元年+第幾週(兩位數)
+    + sales : David (string , required) - 業務姓名
     
 + request (application/json)
 
-        {
-            "ID":202301,
-            "fileName":"0306-0310_會議記錄-V2.docx",
-            "filePath":"",
-            "uploadTime":"2023.03.06 21:00"
-        }
+    + attributes (MeetingRecord)
+        + file_name : `0301 會議記錄-V2.docx` (string , required) - 檔名
         
 + response 200 (application/json)
 
-         修改成功
-         
-### 刪除會議記錄 [POST /deleteRecord{?ID}] 
+    成功
+    + attributes (editSuccess)
+
+
+### 刪除會議記錄 [DELETE /api/meetingRecord{?ID,sales}] 
 
 + parameters
     + ID: '202352' (number, required) - 西元年+第幾週(兩位數)
+    + sales : David (string , required) - 業務姓名
 
 + response 200 (application/json)
+    
+    成功
+    + attributes (deleteSuccess)
 
-        刪除成功
+# data structures
+
+## MeetingRecord
++ ID :202301 (number , required) - 西元年+第幾週(兩位數)
++ file_name : `` (string , required) - 檔名
++ file_path : `` (string , required) - 檔案路徑
++ uploadTime : `2023.03.06 21:00` (string , required) - 上傳時間
+
+## MeetingRecordList (success)
++ result
+    + David (MeetingRecord)
+        + file_name : `David 0306-0310 周進度.ppt` (string , required) - 檔名
+    + Danise (MeetingRecord)
+    + Darie (MeetingRecord)
+    + Lorna (MeetingRecord)
+    + Rich (MeetingRecord)
+
+
+
+# data structures
+
+## success
++ stateDiscription : seccess (string , required)  - response 狀態
++ result
+
+## fail
++ stateDiscription : fail (string , required) - response 狀態
++ result
+
+## editSuccess (success)
++ result
+    + message : 修改成功 (string , required)
+
+## uploadSuccess (success)
++ result
+    + message : 上傳成功 (string , required)
+
+## deleteSuccess (success)
++ result
+    + message : 刪除成功 (string , required)
