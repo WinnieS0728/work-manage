@@ -466,9 +466,22 @@ main aside nav #back-to-main {
 #main-page section.daily-routine table .table-data {
   font-size: 1.5rem;
 }
+#main-page section.daily-routine table .table-data .no-show {
+  display: none;
+}
 #main-page section.daily-routine table .table-data ol {
   text-align: start;
   padding-left: 2rem;
+}
+#main-page section.weekly-data table tr[class^=weeklyData_] {
+  line-height: 1.5em;
+}
+#main-page section.weekly-data table a {
+  text-decoration: none;
+  color: #000;
+  background-color: #70c2e3;
+  padding: 0.2em 0.5em;
+  border-radius: 0.5rem;
 }
 #main-page section.weekly-data ul {
   padding-left: 1em;

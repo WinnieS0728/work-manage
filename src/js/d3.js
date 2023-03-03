@@ -42,7 +42,7 @@ async function setTable_sales() {
             return (d.achievement - d.goal).toLocaleString()
         })
 }
-setTable_sales()
+// setTable_sales()
 
 
 
@@ -107,14 +107,14 @@ async function setTable_salesByPlace() {
             return d.toLocaleString()
         })
 }
-setTable_salesByPlace()
+// setTable_salesByPlace()
 
 
 
 async function setTable_mission() {
     const datas = await getMissionsAPI()
 
-    // console.log(datas);
+    console.log(datas);
 
     const dayFormat = d3.timeFormat('%Y-%m-%d')
     const today = dayFormat(new Date())
@@ -157,30 +157,56 @@ async function setTable_mission() {
         .text(mission_from_Aliber.length)
 
 
+    let index = 10
+    let missionData = datas.slice(index, index + 10)
+    console.log(missionData);
 
-    datas.forEach((data, i) => {
-        // console.log(Object.values(data));
-        let ary = Object.values(data).slice(0, -1)
-        ary[6] = '``' ? ary[6] = '' : ary[6]
-        ary[7] = '``' ? ary[7] = '' : ary[7]
-        d3.select(`.list-by-index tbody tr:nth-of-type(${i + 1})`)
-            .selectAll('td')
-            .data(ary)
+    function setMissionList() {
+        console.log(index);
+        d3.select('.mission-list .list-by-index tbody')
+            .selectAll('tr')
+            .data(missionData)
             .join(
-                enter => enter.text(d => {
-                    if (d == ``) {
-                        return '-'
-                    }
-                    return d
-                }),
-                update => update.text(d => {
-                    if (d == ``) {
-                        return '-'
-                    }
-                    return d
-                })
+                enter => enter.append("tr"),
+                exit => exit.remove()
             )
-    });
+
+        missionData.forEach((data, i) => {
+            // console.log(Object.values(data));
+            let ary = Object.values(data).slice(0, -1)
+            ary[6] = '``' ? ary[6] = '' : ary[6]
+            ary[7] = '``' ? ary[7] = '' : ary[7]
+
+            d3.select(`.mission-list .list-by-index tbody tr:nth-of-type(${i + 1})`)
+                .selectAll('td')
+                .data(ary)
+                .join(
+                    enter => enter.append("td")
+                        .attr("class", 'table-data')
+                        .text(d => d),
+                    update => update.text(d => d),
+                    exit => exit.remove()
+                )
+        });
+    }
+    setMissionList()
+
+    const index_backward = document.querySelector('button.index_backward')
+    const index_forward = document.querySelector('button.index_forward')
+
+    console.log(index_backward);
+    // index_backward.addEventListener('click', () => {
+    //     index = index - 10;
+    //     setMissionList()
+    // })
+    // index_forward.addEventListener('click', () => {
+    //     index = index + 10;
+    //     setMissionList()
+    // })
+
+
+
+
 
 
     const mission_for_David = []
@@ -215,7 +241,8 @@ async function setTable_mission() {
     setMemberTable(mission_for_Lorna, 'Lorna')
     setMemberTable(mission_for_Rich, 'Rich')
 }
-setTable_mission()
+// setTable_mission()
+
 
 
 
@@ -223,8 +250,15 @@ async function setTable_dailyReport() {
     const datas = await getDailyReportAPI()
     // console.log(datas);
 
-    function setReportTable(ary,member) {
-        d3.select(`.daily-routine .report_${member} .daily-point ol`)
+    function setReportTable(ary, member) {
+        if (ary.day_point.length == 0) {
+            d3.select(`.daily-routine .report_${member} .daily-point`)
+                .append("p")
+                .text('資料未上傳')
+        }
+
+        d3.select(`.daily-routine .report_${member} .daily-point`)
+            .append('ol')
             .selectAll('li')
             .data(ary.day_point)
             .enter()
@@ -246,8 +280,14 @@ async function setTable_dailyReport() {
         }
 
         // console.log(report_title);
+        if (ary.report.length == 0) {
+            d3.select(`.daily-routine .report_${member} .daily-report`)
+                .append("p")
+                .text('資料未上傳')
+        }
 
-        d3.select(`.daily-routine .report_${member} .daily-report ol`)
+        d3.select(`.daily-routine .report_${member} .daily-report`)
+            .append("ol")
             .selectAll('li')
             .data(report_title)
             .enter()
@@ -255,48 +295,74 @@ async function setTable_dailyReport() {
             .text(d => d)
     }
     const report_David = datas.David
-    setReportTable(report_David,'David')
+    setReportTable(report_David, 'David')
     const report_Danise = datas.Danise
-    setReportTable(report_Danise,'Danise')
+    setReportTable(report_Danise, 'Danise')
     const report_Darie = datas.Darie
-    setReportTable(report_Darie,'Darie')
+    setReportTable(report_Darie, 'Darie')
     const report_Lorna = datas.Lorna
-    setReportTable(report_Lorna,'Lorna')
+    setReportTable(report_Lorna, 'Lorna')
     const report_Rich = datas.Rich
-    setReportTable(report_Rich,'Rich')
+    setReportTable(report_Rich, 'Rich')
 
 }
-setTable_dailyReport()
+// setTable_dailyReport()
 
 
-async function setTable_PPTandReport(){
+async function setTable_PPTandReport() {
     const PPTdatas = await getPPTAPI()
-    console.log(PPTdatas);
+    // console.log(PPTdatas);
+
+    const meetingRecordData = await getMeetingRecordAPI()
+    // console.log(meetingRecordData);
+
+
+    function fill(PPTary, meetingAry, member) {
+
+        d3.select(`.weekly-data .weeklyData_${member} .PPT .fileName`)
+            .text(PPTary.file_name)
+        d3.select(`.weekly-data .weeklyData_${member} .PPT .updateTime`)
+            .text(PPTary.uploadTime)
+
+        if (PPTary.file_name == '``') {
+            d3.select(`.weekly-data .weeklyData_${member} .PPT`)
+                .html("<p>資料未上傳</p>")
+        }
+        d3.select(`.weekly-data .weeklyData_${member} .PPT a`)
+            .attr("href", `${PPTary.file_path}`)
+        d3.select(`.weekly-data .weeklyData_${member} .PPT a`)
+            .attr("download", `${PPTary.file_name}`)
+
+
+        d3.select(`.weekly-data .weeklyData_${member} .MeetingRecord .fileName`)
+            .text(meetingAry.file_name)
+        d3.select(`.weekly-data .weeklyData_${member} .MeetingRecord .updateTime`)
+            .text(meetingAry.uploadTime)
+        if (meetingAry.file_name == '``') {
+            d3.select(`.weekly-data .weeklyData_${member} .MeetingRecord`)
+                .html("<p>資料未上傳</p>")
+        }
+        d3.select(`.weekly-data .weeklyData_${member} .MeetingRecord a`)
+            .attr("href", `${meetingAry.file_path}`)
+        d3.select(`.weekly-data .weeklyData_${member} .MeetingRecord a`)
+            .attr("download", `${meetingAry.file_name}`)
+
+    }
+
+    const PPTData_David = PPTdatas.David
+    const meetingData_David = meetingRecordData.David
+    fill(PPTData_David, meetingData_David, 'David')
+    const PPTData_Danise = PPTdatas.Danise
+    const meetingData_Danise = meetingRecordData.Danise
+    fill(PPTData_Danise, meetingData_Danise, 'Danise')
+    const PPTData_Darie = PPTdatas.Darie
+    const meetingData_Darie = meetingRecordData.Darie
+    fill(PPTData_Darie, meetingData_Darie, 'Darie')
+    const PPTData_Lorna = PPTdatas.Lorna
+    const meetingData_Lorna = meetingRecordData.Lorna
+    fill(PPTData_Lorna, meetingData_Lorna, 'Lorna')
+    const PPTData_Rich = PPTdatas.Rich
+    const meetingData_Rich = meetingRecordData.Rich
+    fill(PPTData_Rich, meetingData_Rich, 'Rich')
 }
-setTable_PPTandReport()
-
-
-function download() {
-    axios({
-          url: 'https://source.unsplash.com/random/500x500',
-          method: 'GET',
-          responseType: 'blob'
-    })
-          .then((response) => {
-                const url = window.URL
-                      .createObjectURL(new Blob([response.data]));
-                const link = document.createElement('a');
-                link.href = url;
-                link.setAttribute('download', 'image.jpg');
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-          })
-}
-// download()
-
-
-const file = document.querySelector('#file')
-file.addEventListener('change',()=>{
-    console.dir(file);
-})
+// setTable_PPTandReport()
