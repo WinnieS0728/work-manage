@@ -129,43 +129,44 @@ main aside nav #back-to-main {
   color: #fff;
   font-family: microsoftBlack;
 }
-main #main-page {
+
+#main-page {
   width: 100%;
   padding-inline: 1rem;
   font-family: roboto, serif;
 }
-main #main-page section {
+#main-page section {
   margin-bottom: 2rem;
 }
-main #main-page section > h2 {
+#main-page section > h2 {
   font-size: 1.875rem;
   color: #fff;
   text-align: center;
   background-color: #2e486f;
   padding-block: 0.5em;
 }
-main #main-page section table {
+#main-page section table {
   width: 100%;
   text-align: center;
   font-size: 1.625rem;
   border-collapse: collapse;
   font-family: microsoftBlack;
 }
-main #main-page section table thead tr {
+#main-page section table thead tr {
   background-color: #afafc7;
 }
-main #main-page section table thead tr:first-child {
+#main-page section table thead tr:first-child {
   background-color: #101010;
   color: #fff;
 }
-main #main-page section table .table-data {
+#main-page section table .table-data {
   font-size: 1.25rem;
   font-family: roboto;
 }
-main #main-page section table :is(th, td) {
+#main-page section table :is(th, td) {
   padding: 8px;
 }
-main #main-page section button {
+#main-page section button {
   background-color: #70c2e3;
   color: #fff;
   border: 0;
@@ -173,19 +174,19 @@ main #main-page section button {
   padding: 0.2em 2em;
   border-radius: 0.5rem;
 }
-main #main-page section.showing-tab {
+#main-page section.showing-tab {
   display: flex;
   flex-flow: column;
   height: 100px;
   padding-block: 1rem;
   margin-bottom: 0;
 }
-main #main-page section.showing-tab .nowTab {
+#main-page section.showing-tab .nowTab {
   display: flex;
   align-items: center;
   position: relative;
 }
-main #main-page section.showing-tab .nowTab::after {
+#main-page section.showing-tab .nowTab::after {
   content: "";
   width: 100%;
   height: 3px;
@@ -193,28 +194,28 @@ main #main-page section.showing-tab .nowTab::after {
   position: absolute;
   z-index: -1;
 }
-main #main-page section.showing-tab .nowTab > * {
+#main-page section.showing-tab .nowTab > * {
   background-color: #fff;
 }
-main #main-page section.showing-tab .nowTab i {
+#main-page section.showing-tab .nowTab i {
   font-size: 2em;
 }
-main #main-page section.showing-tab .nowTab p {
+#main-page section.showing-tab .nowTab p {
   font-size: 1.5rem;
   padding-inline: 0.5em;
 }
-main #main-page section.showing-tab .nowTab p span :last-child span {
+#main-page section.showing-tab .nowTab p span :last-child span {
   color: #70c2e3;
 }
-main #main-page section.showing-tab .exports {
+#main-page section.showing-tab .exports {
   align-self: flex-end;
 }
-main #main-page section.mission-control {
+#main-page section.mission-control {
   display: flex;
   gap: 1rem;
   margin-bottom: 0.5rem;
 }
-main #main-page section.mission-control a {
+#main-page section.mission-control a {
   font-size: 1.5rem;
   text-decoration: none;
   color: #fff;
@@ -222,90 +223,90 @@ main #main-page section.mission-control a {
   border-radius: 0.5rem;
   font-weight: 600;
 }
-main #main-page section.mission-control a i {
+#main-page section.mission-control a i {
   padding-right: 0.5em;
 }
-main #main-page section.mission-control a:first-child {
+#main-page section.mission-control a:first-child {
   background-color: #58939f;
 }
-main #main-page section.mission-control a:last-child {
+#main-page section.mission-control a:last-child {
   background-color: #99cc64;
 }
-main #main-page section.filter h3 {
+#main-page section.filter h3 {
   font-size: 1.75rem;
 }
-main #main-page section.filter h3 span {
+#main-page section.filter h3 span {
   color: #99cc64;
   padding-left: 1em;
 }
-main #main-page section.filter form {
+#main-page section.filter form {
   display: flex;
   gap: 5px;
   background-color: #70c2e3;
   padding: 1rem 2rem;
   border-radius: 0.5rem;
 }
-main #main-page section.filter form .formContent {
+#main-page section.filter form .formContent {
   display: flex;
   flex-flow: column;
   justify-content: center;
   font-size: 1.5rem;
   gap: 10px;
 }
-main #main-page section.filter form .formContent > span {
+#main-page section.filter form .formContent > span {
   flex: 1;
 }
-main #main-page section.filter form .formContent label {
+#main-page section.filter form .formContent label {
   margin-right: 0.5em;
 }
-main #main-page section.filter form .formContent input {
+#main-page section.filter form .formContent input {
   font-size: 1.25rem;
   padding-block: 0.2rem;
   border-radius: 0.5rem;
 }
-main #main-page section.filter form .formContent input#day-start + span {
+#main-page section.filter form .formContent input#day-start + span {
   padding-inline: 1em;
 }
-main #main-page section.filter form .formContent input::placeholder {
+#main-page section.filter form .formContent input::placeholder {
   padding-left: 0.5em;
 }
-main #main-page section.filter form .formContent select {
+#main-page section.filter form .formContent select {
   font-size: 1.25rem;
   padding-block: 0.2rem;
   border-radius: 0.5rem;
 }
-main #main-page section.filter form .formContent select option {
+#main-page section.filter form .formContent select option {
   padding-left: 0.5em;
 }
-main #main-page section.filter form .formContent > span:nth-of-type(1) input {
+#main-page section.filter form .formContent > span:nth-of-type(1) input {
   width: 180px;
 }
-main #main-page section.filter form .formContent > span:nth-of-type(1) select {
+#main-page section.filter form .formContent > span:nth-of-type(1) select {
   width: 120px;
 }
-main #main-page section.filter form .formContent > span:nth-of-type(2) select {
+#main-page section.filter form .formContent > span:nth-of-type(2) select {
   width: calc(80% /4);
 }
-main #main-page section.filter form .formContent > span:nth-of-type(3) > input:first-of-type {
+#main-page section.filter form .formContent > span:nth-of-type(3) > input:first-of-type {
   margin-right: 3rem;
 }
-main #main-page section.filter form .formSubmit {
+#main-page section.filter form .formSubmit {
   flex: 1;
   display: flex;
   justify-content: end;
   align-items: center;
 }
-main #main-page section.filter form .formSubmit button {
+#main-page section.filter form .formSubmit button {
   font-size: 1.5rem;
   background-color: #2e486f;
   padding: 0.6em 1em;
 }
-main #main-page section.year-achievement .container {
+#main-page section.year-achievement .container {
   display: flex;
   gap: 1.5rem;
   padding: 1em;
 }
-main #main-page section.year-achievement .container .block {
+#main-page section.year-achievement .container .block {
   flex: 1;
   display: flex;
   flex-flow: column;
@@ -314,68 +315,68 @@ main #main-page section.year-achievement .container .block {
   padding: 0.5em 1em;
   gap: 0.5em;
 }
-main #main-page section.year-achievement .container .block p:first-child {
+#main-page section.year-achievement .container .block p:first-child {
   font-size: 1.5rem;
   font-family: noto;
 }
-main #main-page section.year-achievement .container .block p:last-child {
+#main-page section.year-achievement .container .block p:last-child {
   align-self: flex-end;
 }
-main #main-page section.year-achievement .container .block p:last-child span {
+#main-page section.year-achievement .container .block p:last-child span {
   font-size: 3.75rem;
 }
-main #main-page section.year-achievement .container .block.yearEnd-countdown {
+#main-page section.year-achievement .container .block.yearEnd-countdown {
   max-width: 150px;
 }
-main #main-page section.year-achievement .container .block.yearEnd-countdown span {
+#main-page section.year-achievement .container .block.yearEnd-countdown span {
   color: #99cc64;
 }
-main #main-page section.year-achievement .container .block.total-sales span {
+#main-page section.year-achievement .container .block.total-sales span {
   color: #70c2e3;
 }
-main #main-page section.year-achievement .container .block.unachieved-sales span {
+#main-page section.year-achievement .container .block.unachieved-sales span {
   color: #f298a6;
 }
-main #main-page section.year-achievement .container .block.success-rate {
+#main-page section.year-achievement .container .block.success-rate {
   max-width: 200px;
 }
-main #main-page section.year-achievement .container .block.success-rate span {
+#main-page section.year-achievement .container .block.success-rate span {
   color: #afafc7;
 }
-main #main-page section.budget-target table {
+#main-page section.budget-target table {
   font-size: 20px;
 }
-main #main-page section.budget-target table .table-data {
+#main-page section.budget-target table .table-data {
   font-size: 16px;
 }
-main #main-page section.place-achievement table {
+#main-page section.place-achievement table {
   font-size: 24px;
 }
-main #main-page section.place-achievement table .table-data {
+#main-page section.place-achievement table .table-data {
   font-size: 20px;
 }
-main #main-page section.mission-dashboard .container {
+#main-page section.mission-dashboard .container {
   display: flex;
   gap: 1rem;
   padding: 1rem;
 }
-main #main-page section.mission-dashboard .container .block {
+#main-page section.mission-dashboard .container .block {
   flex: 1;
   text-align: center;
   display: flex;
   flex-flow: column;
   border-radius: 8px;
 }
-main #main-page section.mission-dashboard .container .block p:first-child {
+#main-page section.mission-dashboard .container .block p:first-child {
   padding: 0.5em;
   background-color: rgba(255, 255, 255, 0.5);
   font-weight: 900;
 }
-main #main-page section.mission-dashboard .container .block p:last-child {
+#main-page section.mission-dashboard .container .block p:last-child {
   font-size: 5.625rem;
   color: #f6f6f6;
 }
-main #main-page section.mission-dashboard .container .block p:last-child::after {
+#main-page section.mission-dashboard .container .block p:last-child::after {
   content: "件";
   font-size: 1rem;
   position: absolute;
@@ -383,91 +384,91 @@ main #main-page section.mission-dashboard .container .block p:last-child::after 
   bottom: 1rem;
   color: currentColor;
 }
-main #main-page section.mission-dashboard .container .block:nth-child(1) {
+#main-page section.mission-dashboard .container .block:nth-child(1) {
   background-color: #afafc7;
   position: relative;
 }
-main #main-page section.mission-dashboard .container .block:nth-child(1) p:first-child {
+#main-page section.mission-dashboard .container .block:nth-child(1) p:first-child {
   color: #afafc7;
 }
-main #main-page section.mission-dashboard .container .block:nth-child(2) {
+#main-page section.mission-dashboard .container .block:nth-child(2) {
   background-color: #58939f;
   position: relative;
 }
-main #main-page section.mission-dashboard .container .block:nth-child(2) p:first-child {
+#main-page section.mission-dashboard .container .block:nth-child(2) p:first-child {
   color: #58939f;
 }
-main #main-page section.mission-dashboard .container .block:nth-child(3) {
+#main-page section.mission-dashboard .container .block:nth-child(3) {
   background-color: #99cc64;
   position: relative;
 }
-main #main-page section.mission-dashboard .container .block:nth-child(3) p:first-child {
+#main-page section.mission-dashboard .container .block:nth-child(3) p:first-child {
   color: #99cc64;
 }
-main #main-page section.mission-dashboard .container .block:nth-child(4) {
+#main-page section.mission-dashboard .container .block:nth-child(4) {
   background-color: #c49159;
   position: relative;
 }
-main #main-page section.mission-dashboard .container .block:nth-child(4) p:first-child {
+#main-page section.mission-dashboard .container .block:nth-child(4) p:first-child {
   color: #c49159;
 }
-main #main-page section.mission-dashboard .container .block:nth-child(5) {
+#main-page section.mission-dashboard .container .block:nth-child(5) {
   background-color: #70c2e3;
   position: relative;
 }
-main #main-page section.mission-dashboard .container .block:nth-child(5) p:first-child {
+#main-page section.mission-dashboard .container .block:nth-child(5) p:first-child {
   color: #70c2e3;
 }
-main #main-page section.mission-dashboard .container .block:nth-child(5) p:last-child::after {
+#main-page section.mission-dashboard .container .block:nth-child(5) p:last-child::after {
   content: "%";
 }
-main #main-page section.mission-dashboard .container .block:nth-child(6) {
+#main-page section.mission-dashboard .container .block:nth-child(6) {
   background-color: #f298a6;
   position: relative;
 }
-main #main-page section.mission-dashboard .container .block:nth-child(6) p:first-child {
+#main-page section.mission-dashboard .container .block:nth-child(6) p:first-child {
   color: #f298a6;
 }
-main #main-page section.mission-dashboard .container .block:nth-child(6) p:last-child::after {
+#main-page section.mission-dashboard .container .block:nth-child(6) p:last-child::after {
   content: "%";
 }
-main #main-page section.mission-dashboard .container .block:nth-child(7) {
+#main-page section.mission-dashboard .container .block:nth-child(7) {
   background-color: #fd9a54;
   position: relative;
 }
-main #main-page section.mission-dashboard .container .block:nth-child(7) p:first-child {
+#main-page section.mission-dashboard .container .block:nth-child(7) p:first-child {
   color: #fd9a54;
 }
-main #main-page section.mission-dashboard .container .block:nth-child(7) p:last-child::after {
+#main-page section.mission-dashboard .container .block:nth-child(7) p:last-child::after {
   content: "%";
 }
-main #main-page section.mission-list table.list-by-index {
+#main-page section.mission-list table.list-by-index {
   font-size: 26px;
 }
-main #main-page section.mission-list table.list-by-index .table-data {
+#main-page section.mission-list table.list-by-index .table-data {
   font-size: 24px;
 }
-main #main-page section.mission-list table.list-by-member {
+#main-page section.mission-list table.list-by-member {
   font-size: 24px;
 }
-main #main-page section.mission-list table.list-by-member .table-data {
+#main-page section.mission-list table.list-by-member .table-data {
   font-size: 26px;
 }
-main #main-page section.mission-list .controller {
+#main-page section.mission-list .controller {
   display: flex;
   justify-content: center;
   gap: 1rem;
   padding: 1rem;
 }
-main #main-page section.daily-routine table {
+#main-page section.daily-routine table {
   font-size: 26px;
 }
-main #main-page section.daily-routine table .table-data {
+#main-page section.daily-routine table .table-data {
   font-size: 24px;
 }
-main #main-page section.daily-routine table .table-data p {
+#main-page section.daily-routine table .table-data p {
   text-align: start;
 }
-main #main-page section.weekly-data ul {
+#main-page section.weekly-data ul {
   padding-left: 1em;
 }

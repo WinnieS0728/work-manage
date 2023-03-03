@@ -1,515 +1,484 @@
-@use 'variables/forward' as *;
-@import 'components/mixins';
+@import '_template.scss';
+
+#main-page {
+    width: 100%;
+    padding-inline: 1rem;
+    font-family: roboto, serif;
 
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+    section {
+        margin-bottom: 2rem;
 
-header{
-    @include header;
-}
-
-main {
-    display: flex;
-
-    button {
-        cursor: pointer;
-    }
-
-    aside {
-        width: 240px;
-        background-color: $dark-green;
-
-        nav{
-            @include nav;
-        }
-    }
-
-
-    #main-page {
-        width: 100%;
-        padding-inline: 1rem;
-        font-family: roboto, serif;
-
-
-        section {
-            margin-bottom: 2rem;
-
-            &>h2 {
-                font-size: $fontSize_h2;
-                color: $white;
-                text-align: center;
-                background-color: $dark-blue;
-                padding-block: .5em;
-            }
-
-            table {
-                width: 100%;
-                text-align: center;
-                font-size: $fontSize_table-title;
-                // background-color: antiquewhite;
-                border-collapse: collapse;
-                font-family: microsoftBlack;
-
-                thead {
-                    tr {
-                        background-color: $gray;
-
-                        &:first-child {
-                            background-color: $dark-black;
-                            color: $white;
-                        }
-                    }
-                }
-
-                .table-data {
-                    font-size: $fontSize_table-data;
-                    font-family: roboto;
-                }
-
-                & :is(th, td) {
-                    padding: 8px;
-
-                }
-            }
-
-            button {
-                background-color: $light-blue;
-                color: $white;
-                border: 0;
-                font-size: 1rem;
-                padding: .2em 2em;
-                border-radius: .5rem;
-            }
+        &>h2 {
+            font-size: $fontSize_h2;
+            color: $white;
+            text-align: center;
+            background-color: $dark-blue;
+            padding-block: .5em;
         }
 
-        section.showing-tab {
-            display: flex;
-            flex-flow: column;
-            height: 100px;
-            padding-block: 1rem;
-            margin-bottom: 0;
+        table {
+            width: 100%;
+            text-align: center;
+            font-size: $fontSize_table-title;
+            // background-color: antiquewhite;
+            border-collapse: collapse;
+            font-family: microsoftBlack;
 
-            .nowTab {
-                display: flex;
-                align-items: center;
-                position: relative;
-
-                &::after {
-                    content: '';
-                    width: 100%;
-                    height: 3px;
+            thead {
+                tr {
                     background-color: $gray;
-                    position: absolute;
-                    z-index: -1;
-                }
 
-                &>* {
-                    background-color: $white;
-                }
-
-                i {
-                    font-size: 2em;
-                }
-
-                p {
-                    font-size: 1.5rem;
-                    padding-inline: .5em;
-
-                    span :last-child span {
-                        color: $light-blue;
+                    &:first-child {
+                        background-color: $dark-black;
+                        color: $white;
                     }
                 }
             }
 
-            .exports {
-                align-self: flex-end;
+            .table-data {
+                font-size: $fontSize_table-data;
+                font-family: roboto;
+            }
+
+            & :is(th, td) {
+                padding: 8px;
+
             }
         }
 
-        section.mission-control {
+        button {
+            background-color: $light-blue;
+            color: $white;
+            border: 0;
+            font-size: 1rem;
+            padding: .2em 2em;
+            border-radius: .5rem;
+        }
+    }
+
+    section.showing-tab {
+        display: flex;
+        flex-flow: column;
+        height: 100px;
+        padding-block: 1rem;
+        margin-bottom: 0;
+
+        .nowTab {
             display: flex;
-            gap: 1rem;
-            margin-bottom: .5rem;
+            align-items: center;
+            position: relative;
 
-            a {
+            &::after {
+                content: '';
+                width: 100%;
+                height: 3px;
+                background-color: $gray;
+                position: absolute;
+                z-index: -1;
+            }
+
+            &>* {
+                background-color: $white;
+            }
+
+            i {
+                font-size: 2em;
+            }
+
+            p {
                 font-size: 1.5rem;
-                text-decoration: none;
-                color: $white;
-                padding: .3em 1.5em;
-                border-radius: .5rem;
-                font-weight: 600;
+                padding-inline: .5em;
 
-                i {
-                    padding-right: .5em;
-                }
-
-                &:first-child {
-                    background-color: $dark-green;
-                }
-
-                &:last-child {
-                    background-color: $green;
+                span :last-child span {
+                    color: $light-blue;
                 }
             }
         }
 
-        section.filter {
-            h3 {
-                font-size: 1.75rem;
+        .exports {
+            align-self: flex-end;
+        }
+    }
 
-                span {
-                    color: $green;
-                    padding-left: 1em;
-                }
+    section.mission-control {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: .5rem;
+
+        a {
+            font-size: 1.5rem;
+            text-decoration: none;
+            color: $white;
+            padding: .3em 1.5em;
+            border-radius: .5rem;
+            font-weight: 600;
+
+            i {
+                padding-right: .5em;
             }
 
-            form {
-                $input-padding: .2rem;
-                $input-border-radius: 0.5rem;
+            &:first-child {
+                background-color: $dark-green;
+            }
 
+            &:last-child {
+                background-color: $green;
+            }
+        }
+    }
+
+    section.filter {
+        h3 {
+            font-size: 1.75rem;
+
+            span {
+                color: $green;
+                padding-left: 1em;
+            }
+        }
+
+        form {
+            $input-padding: .2rem;
+            $input-border-radius: 0.5rem;
+
+            display: flex;
+            gap: 5px;
+            background-color: $light-blue;
+            padding: 1rem 2rem;
+            border-radius: $input-border-radius;
+
+            .formContent {
                 display: flex;
-                gap: 5px;
-                background-color: $light-blue;
-                padding: 1rem 2rem;
-                border-radius: $input-border-radius;
+                flex-flow: column;
+                justify-content: center;
+                font-size: 1.5rem;
+                gap: 10px;
 
-                .formContent {
-                    display: flex;
-                    flex-flow: column;
-                    justify-content: center;
-                    font-size: 1.5rem;
-                    gap: 10px;
+                &>span {
+                    flex: 1;
+                }
 
-                    &>span {
-                        flex: 1;
+                label {
+                    margin-right: .5em;
+                }
+
+                input {
+                    font-size: 1.25rem;
+                    padding-block: $input-padding ;
+                    border-radius: $input-border-radius;
+
+
+                    &#day-start+span {
+                        padding-inline: 1em;
                     }
 
-                    label {
-                        margin-right: .5em;
+                    &::placeholder {
+                        padding-left: .5em;
                     }
+                }
 
+                select {
+                    font-size: 1.25rem;
+                    padding-block: $input-padding;
+                    border-radius: $input-border-radius;
+
+                    option {
+                        padding-left: .5em;
+                    }
+                }
+
+                &>span:nth-of-type(1) {
                     input {
-                        font-size: 1.25rem;
-                        padding-block: $input-padding ;
-                        border-radius: $input-border-radius;
-
-
-                        &#day-start+span {
-                            padding-inline: 1em;
-                        }
-
-                        &::placeholder {
-                            padding-left: .5em;
-                        }
+                        width: 180px;
                     }
 
                     select {
-                        font-size: 1.25rem;
-                        padding-block: $input-padding;
-                        border-radius: $input-border-radius;
-
-                        option {
-                            padding-left: .5em;
-                        }
-                    }
-
-                    &>span:nth-of-type(1) {
-                        input {
-                            width: 180px;
-                        }
-
-                        select {
-                            width: 120px;
-                        }
-                    }
-
-                    &>span:nth-of-type(2) {
-                        select {
-                            width: calc(80% /4);
-                        }
-                    }
-
-                    &>span:nth-of-type(3) {
-
-                        &>input:first-of-type {
-                            margin-right: 3rem;
-                        }
+                        width: 120px;
                     }
                 }
 
-                .formSubmit {
-                    flex: 1;
-                    display: flex;
-                    justify-content: end;
-                    align-items: center;
+                &>span:nth-of-type(2) {
+                    select {
+                        width: calc(80% /4);
+                    }
+                }
 
-                    button {
-                        font-size: 1.5rem;
-                        background-color: $dark-blue;
-                        padding: .6em 1em;
+                &>span:nth-of-type(3) {
+
+                    &>input:first-of-type {
+                        margin-right: 3rem;
                     }
                 }
             }
+
+            .formSubmit {
+                flex: 1;
+                display: flex;
+                justify-content: end;
+                align-items: center;
+
+                button {
+                    font-size: 1.5rem;
+                    background-color: $dark-blue;
+                    padding: .6em 1em;
+                }
+            }
         }
+    }
 
-        section.year-achievement .container {
+    section.year-achievement .container {
+        display: flex;
+        gap: 1.5rem;
+        padding: 1em;
+
+
+        .block {
+            flex: 1;
             display: flex;
-            gap: 1.5rem;
-            padding: 1em;
+            flex-flow: column;
+            box-shadow: 0 0 8px $black;
+            border-radius: .5rem;
+            padding: .5em 1em;
+            gap: .5em;
 
+
+            p:first-child {
+                font-size: 1.5rem;
+                font-family: noto;
+            }
+
+            p:last-child {
+                align-self: flex-end;
+
+                span {
+                    font-size: 3.75rem;
+                }
+            }
+
+            &.yearEnd-countdown {
+                max-width: 150px;
+
+                span {
+                    color: $green;
+                }
+            }
+
+            &.total-sales span {
+                color: $light-blue;
+            }
+
+            &.unachieved-sales span {
+                color: $pink;
+            }
+
+            &.success-rate {
+                max-width: 200px;
+
+                span {
+                    color: $gray;
+                }
+            }
+        }
+    }
+
+
+
+
+
+    section.budget-target {
+        table {
+            $fontSize_table-title: 20px;
+            $fontSize_table-data: 16px;
+            font-size: $fontSize_table-title;
+
+            .table-data {
+                font-size: $fontSize_table-data;
+            }
+        }
+    }
+
+    section.place-achievement {
+        table {
+            $fontSize_table-title: 24px;
+            $fontSize_table-data: 20px;
+            font-size: $fontSize_table-title;
+
+            .table-data {
+                font-size: $fontSize_table-data;
+            }
+        }
+    }
+
+    section.mission-dashboard {
+        .container {
+            $padding: 1rem;
+            display: flex;
+            gap: 1rem;
+            padding: $padding;
 
             .block {
                 flex: 1;
+                text-align: center;
                 display: flex;
                 flex-flow: column;
-                box-shadow: 0 0 8px $black;
-                border-radius: .5rem;
-                padding: .5em 1em;
-                gap: .5em;
+                border-radius: 8px;
 
+                p {
+                    &:first-child {
+                        padding: .5em;
+                        background-color: rgb(255, 255, 255, 0.5);
+                        font-weight: 900;
+                    }
 
-                p:first-child {
-                    font-size: 1.5rem;
-                    font-family: noto;
-                }
+                    &:last-child {
+                        font-size: 5.625rem;
+                        color: $dark-white;
 
-                p:last-child {
-                    align-self: flex-end;
-
-                    span {
-                        font-size: 3.75rem;
+                        &::after {
+                            content: '件';
+                            font-size: 1rem;
+                            position: absolute;
+                            right: $padding;
+                            bottom: $padding;
+                            color: currentColor;
+                        }
                     }
                 }
 
-                &.yearEnd-countdown {
-                    max-width: 150px;
+                &:nth-child(1) {
+                    background-color: $gray;
+                    position: relative;
 
-                    span {
+                    p:first-child {
+                        color: $gray;
+                    }
+                }
+
+                &:nth-child(2) {
+                    background-color: $dark-green;
+                    position: relative;
+
+                    p:first-child {
+                        color: $dark-green;
+                    }
+
+                }
+
+                &:nth-child(3) {
+                    background-color: $green;
+                    position: relative;
+
+                    p:first-child {
                         color: $green;
                     }
                 }
 
-                &.total-sales span {
-                    color: $light-blue;
-                }
+                &:nth-child(4) {
+                    background-color: $light-brown;
+                    position: relative;
 
-                &.unachieved-sales span {
-                    color: $pink;
-                }
-
-                &.success-rate {
-                    max-width: 200px;
-
-                    span {
-                        color: $gray;
+                    p:first-child {
+                        color: $light-brown;
                     }
                 }
-            }
-        }
 
+                &:nth-child(5) {
+                    background-color: $light-blue;
+                    position: relative;
 
-
-
-
-        section.budget-target {
-            table {
-                $fontSize_table-title: 20px;
-                $fontSize_table-data: 16px;
-                font-size: $fontSize_table-title;
-
-                .table-data {
-                    font-size: $fontSize_table-data;
-                }
-            }
-        }
-
-        section.place-achievement {
-            table {
-                $fontSize_table-title: 24px;
-                $fontSize_table-data: 20px;
-                font-size: $fontSize_table-title;
-
-                .table-data {
-                    font-size: $fontSize_table-data;
-                }
-            }
-        }
-
-        section.mission-dashboard {
-            .container {
-                $padding: 1rem;
-                display: flex;
-                gap: 1rem;
-                padding: $padding;
-
-                .block {
-                    flex: 1;
-                    text-align: center;
-                    display: flex;
-                    flex-flow: column;
-                    border-radius: 8px;
-
-                    p {
-                        &:first-child {
-                            padding: .5em;
-                            background-color: rgb(255, 255, 255, 0.5);
-                            font-weight: 900;
-                        }
-
-                        &:last-child {
-                            font-size: 5.625rem;
-                            color: $dark-white;
-
-                            &::after {
-                                content: '件';
-                                font-size: 1rem;
-                                position: absolute;
-                                right: $padding;
-                                bottom: $padding;
-                                color: currentColor;
-                            }
-                        }
+                    p:first-child {
+                        color: $light-blue;
                     }
 
-                    &:nth-child(1) {
-                        background-color: $gray;
-                        position: relative;
-
-                        p:first-child {
-                            color: $gray;
-                        }
-                    }
-
-                    &:nth-child(2) {
-                        background-color: $dark-green;
-                        position: relative;
-
-                        p:first-child {
-                            color: $dark-green;
-                        }
-
-                    }
-
-                    &:nth-child(3) {
-                        background-color: $green;
-                        position: relative;
-
-                        p:first-child {
-                            color: $green;
-                        }
-                    }
-
-                    &:nth-child(4) {
-                        background-color: $light-brown;
-                        position: relative;
-
-                        p:first-child {
-                            color: $light-brown;
-                        }
-                    }
-
-                    &:nth-child(5) {
-                        background-color: $light-blue;
-                        position: relative;
-
-                        p:first-child {
-                            color: $light-blue;
-                        }
-
-                        p:last-child::after {
-                            content: '%';
-                        }
-                    }
-
-                    &:nth-child(6) {
-                        background-color: $pink;
-                        position: relative;
-
-                        p:first-child {
-                            color: $pink;
-                        }
-
-                        p:last-child::after {
-                            content: '%';
-                        }
-                    }
-
-                    &:nth-child(7) {
-                        background-color: $orange;
-                        position: relative;
-
-                        p:first-child {
-                            color: $orange;
-                        }
-
-                        p:last-child::after {
-                            content: '%';
-                        }
-                    }
-
-
-
-
-
-                }
-            }
-        }
-
-        section.mission-list {
-            table.list-by-index {
-                $fontSize_table-title: 26px;
-                $fontSize_table-data: 24px;
-                font-size: $fontSize_table-title;
-
-                .table-data {
-                    font-size: $fontSize_table-data;
-                }
-            }
-
-            table.list-by-member {
-                $fontSize_table-title: 24px;
-                $fontSize_table-data: 26px;
-                font-size: $fontSize_table-title;
-
-                .table-data {
-                    font-size: $fontSize_table-data;
-                }
-            }
-
-
-            .controller {
-                display: flex;
-                justify-content: center;
-                gap: 1rem;
-                padding: 1rem;
-            }
-        }
-
-        section.daily-routine {
-            table {
-                $fontSize_table-title: 26px;
-                $fontSize_table-data: 24px;
-                font-size: $fontSize_table-title;
-
-                .table-data {
-                    font-size: $fontSize_table-data;
-
-                    p {
-                        text-align: start;
+                    p:last-child::after {
+                        content: '%';
                     }
                 }
-            }
-        }
 
-        section.weekly-data {
-            ul {
-                padding-left: 1em;
+                &:nth-child(6) {
+                    background-color: $pink;
+                    position: relative;
+
+                    p:first-child {
+                        color: $pink;
+                    }
+
+                    p:last-child::after {
+                        content: '%';
+                    }
+                }
+
+                &:nth-child(7) {
+                    background-color: $orange;
+                    position: relative;
+
+                    p:first-child {
+                        color: $orange;
+                    }
+
+                    p:last-child::after {
+                        content: '%';
+                    }
+                }
+
+
+
+
+
             }
         }
     }
 
+    section.mission-list {
+        table.list-by-index {
+            $fontSize_table-title: 26px;
+            $fontSize_table-data: 24px;
+            font-size: $fontSize_table-title;
+
+            .table-data {
+                font-size: $fontSize_table-data;
+            }
+        }
+
+        table.list-by-member {
+            $fontSize_table-title: 24px;
+            $fontSize_table-data: 26px;
+            font-size: $fontSize_table-title;
+
+            .table-data {
+                font-size: $fontSize_table-data;
+            }
+        }
+
+
+        .controller {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem;
+        }
+    }
+
+    section.daily-routine {
+        table {
+            $fontSize_table-title: 26px;
+            $fontSize_table-data: 24px;
+            font-size: $fontSize_table-title;
+
+            .table-data {
+                font-size: $fontSize_table-data;
+
+                p {
+                    text-align: start;
+                }
+            }
+        }
+    }
+
+    section.weekly-data {
+        ul {
+            padding-left: 1em;
+        }
+    }
 }
