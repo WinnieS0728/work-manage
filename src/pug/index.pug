@@ -1,4 +1,4 @@
-extends ./_template.pug 
+extends _template.pug
 
 block localLinks 
     link(rel="stylesheet" href="style.css")
@@ -97,7 +97,6 @@ block mainContent
                     button(type="submit").
                         <i class="fa-solid fa-magnifying-glass"></i>
                         送出查詢
-
         section.year-achievement
             h2 《年度成果統計》
             article.container
@@ -135,14 +134,11 @@ block mainContent
                 tbody
                     tr.table_goal
                         td 預算目標
-
                     tr.table_achieve
                         td 業績達成
-
                 tfoot
                     tr.table_gap
                         td 落差
-
         section.place-achievement
             h2 《各地區業績面板》
             table(border="1")
@@ -159,59 +155,49 @@ block mainContent
                 tbody
                     tr.table_Europe_A
                         td 業一歐洲A(義大利)
-
                     tr.table_USA
                         td 業一北美
-
                     tr.table_Europe_B
                         td 業一歐洲B(德國)
-
                     tr.table_Taiwan
                         td 業一台灣
-
                     tr.table_Other
                         td 業一其他
-
                     tr.table_Japan
                         td 業二日本
-
                     tr.table_VIP
                         td 業二重點客戶
-
                     tr.table_China
                         td 業三大陸
-
                     tr.table_TaiwanOEM
                         td 業四台灣OEM
-
                 tfoot
                     tr.table_Total
                         td 合計
-
         section.mission-dashboard 
             h2 《任務案件統計》
             article.container 
                 .block.new-mission
                     p 本日新增
-                    p 7
+                    p 
                 .block.mission-on-duty
                     p 進行中
-                    p 28
+                    p 
                 .block.mission-complete
                     p 已完成
-                    p 31
+                    p 
                 .block.total-mission
                     p 總件數
-                    p 77
+                    p 
                 .block.success-rate
                     p 任務達成率
-                    p 40
+                    p 
                 .block.mission-from-morris
                     p Morris 交辦
-                    p 70
+                    p 
                 .block.mission-from-aliber
                     p Aliber 交辦
-                    p 30
+                    p 
         section.mission-list
             h2 《任務案件總覽》
             table.list-by-index(border="1")
@@ -227,102 +213,13 @@ block mainContent
                         th 備註
                         th 附件
                 tbody
-                    tr
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                    tr
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                    tr
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                    tr
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                    tr
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                    tr
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                    tr
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                    tr
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                    tr
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                    tr
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
-                        td.table-data 
+                    
             .controller 
-                button.
+                button.index_backward
                     <i class="fa-solid fa-chevron-left"></i>
-                    前10筆    
-                button.
-                    後10筆    
+                    |前10筆
+                button.index_forward
+                    |後10筆
                     <i class="fa-solid fa-chevron-right"></i>
             table.list-by-member(border="1")
                 thead 
@@ -339,19 +236,14 @@ block mainContent
                 tbody
                     tr.mission_to_David
                         td David
-
                     tr.mission_to_Danise
                         td Denise
-                        
                     tr.mission_to_Darie
-                        td Darie
-                        
+                        td Darie                        
                     tr.mission_to_Lorna
-                        td Lorna
-                        
+                        td Lorna                    
                     tr.mission_to_Rich
-                        td Rich
-                        
+                        td Rich                        
         section.daily-routine
             h2 《每日工作重點:#[span 2022/10/14]》
             table(border="1")
@@ -363,33 +255,23 @@ block mainContent
                     tr.report_David
                         th David
                         td.table-data.daily-point
-                            ol
                         td.table-data.daily-report
-                            ol
                     tr.report_Danise
                         th Denise
                         td.table-data.daily-point
-                            ol
                         td.table-data.daily-report
-                            ol
                     tr.report_Darie
                         th Darie
                         td.table-data.daily-point
-                            ol
                         td.table-data.daily-report
-                            ol
                     tr.report_Lorna
                         th Lorna
                         td.table-data.daily-point
-                            ol
                         td.table-data.daily-report
-                            ol
                     tr.report_Rich
                         th Rich
                         td.table-data.daily-point
-                            ol
                         td.table-data.daily-report
-                            ol
             p 備註: 每日LINE給MO哥的內容        
         section.weekly-data
             h2 《每週專案PPT & 每週會議紀錄》
@@ -402,38 +284,24 @@ block mainContent
                     tr 
                         th David
                         td.table-data
-                            p.
-                                最後更新 #[span 2021.12.30 AM 11:20]#[br]
-                                (下載檔案)
-                        td.table-data.
-                            資料未上傳
+                        td.table-data
                     tr 
                         th Denise
-                        td.table-data.
-                            資料未上傳
-                        td.table-data.
-                            資料未上傳
+                        td.table-data
+                        td.table-data
                     tr 
                         th Darie
-                        td.table-data.
-                            資料未上傳
-                        td.table-data.
-                            資料未上傳
+                        td.table-data
+                        td.table-data
                     tr 
                         th Lorna
-                        td.table-data.
-                            資料未上傳
-                        td.table-data.
-                            資料未上傳
+                        td.table-data
+                        td.table-data
                     tr 
                         th Rich
-                        td.table-data.
-                            資料未上傳
-                        td.table-data.
-                            資料未上傳
+                        td.table-data
+                        td.table-data
             ul    
                 li 點選「下載檔案」可查看案件詳細內容。
                 li 重複上傳僅記錄最後一筆PTT的時間。
                 li 「業務主管面板」的資訊來源為「業務人員面板」的自動帶入，所以兩邊資料會連動。      
-
-                        input#file(type="file", name="file")

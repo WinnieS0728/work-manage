@@ -1,5 +1,8 @@
 import { getSalesAPI, getSalesByPlaceAPI, getMissionsAPI, getDailyReportAPI, getPPTAPI, getMeetingRecordAPI } from './api.js'
 
+
+
+
 async function setTable_sales() {
     const data = await getSalesAPI()
 
@@ -157,18 +160,17 @@ async function setTable_mission() {
         .text(mission_from_Aliber.length)
 
 
-    let index = 10
-    let missionData = datas.slice(index, index + 10)
-    console.log(missionData);
-
+    let index = 0
+    
     function setMissionList() {
+        let missionData = datas.slice(index, index + 10)
+        console.log(missionData);
         console.log(index);
         d3.select('.mission-list .list-by-index tbody')
             .selectAll('tr')
             .data(missionData)
             .join(
-                enter => enter.append("tr"),
-                exit => exit.remove()
+                enter => enter.append("tr")
             )
 
         missionData.forEach((data, i) => {
@@ -184,8 +186,7 @@ async function setTable_mission() {
                     enter => enter.append("td")
                         .attr("class", 'table-data')
                         .text(d => d),
-                    update => update.text(d => d),
-                    exit => exit.remove()
+                    update => update.text(d => d)
                 )
         });
     }
@@ -194,20 +195,20 @@ async function setTable_mission() {
     const index_backward = document.querySelector('button.index_backward')
     const index_forward = document.querySelector('button.index_forward')
 
-    console.log(index_backward);
-    // index_backward.addEventListener('click', () => {
-    //     index = index - 10;
-    //     setMissionList()
-    // })
-    // index_forward.addEventListener('click', () => {
-    //     index = index + 10;
-    //     setMissionList()
-    // })
-
-
-
-
-
+    index_backward.addEventListener('click', () => {
+        if (index <= 0) {
+            return
+        }
+        index = index - 10;
+        setMissionList()
+    })
+    index_forward.addEventListener('click', () => {
+        if (index + 10 >= datas.length) {
+            return
+        }
+        index = index + 10;
+        setMissionList()
+    })
 
     const mission_for_David = []
     const mission_for_Danise = []
