@@ -45,7 +45,7 @@ async function setTable_sales() {
             return (d.achievement - d.goal).toLocaleString()
         })
 }
-// setTable_sales()
+setTable_sales()
 
 
 
@@ -110,7 +110,7 @@ async function setTable_salesByPlace() {
             return d.toLocaleString()
         })
 }
-// setTable_salesByPlace()
+setTable_salesByPlace()
 
 
 
@@ -161,9 +161,10 @@ async function setTable_mission() {
 
 
     let index = 0
-    
+    let missionData_reverse = datas.reverse()
+
     function setMissionList() {
-        let missionData = datas.slice(index, index + 10)
+        let missionData = missionData_reverse.slice(index, index + 10)
         console.log(missionData);
         console.log(index);
         d3.select('.mission-list .list-by-index tbody')
@@ -242,7 +243,7 @@ async function setTable_mission() {
     setMemberTable(mission_for_Lorna, 'Lorna')
     setMemberTable(mission_for_Rich, 'Rich')
 }
-// setTable_mission()
+setTable_mission()
 
 
 
@@ -307,7 +308,7 @@ async function setTable_dailyReport() {
     setReportTable(report_Rich, 'Rich')
 
 }
-// setTable_dailyReport()
+setTable_dailyReport()
 
 
 async function setTable_PPTandReport() {
@@ -366,4 +367,4 @@ async function setTable_PPTandReport() {
     const meetingData_Rich = meetingRecordData.Rich
     fill(PPTData_Rich, meetingData_Rich, 'Rich')
 }
-// setTable_PPTandReport()
+setTable_PPTandReport()
