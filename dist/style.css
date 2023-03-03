@@ -430,7 +430,7 @@ main aside nav #back-to-main {
   color: #f298a6;
 }
 #main-page section.mission-dashboard .container .block:nth-child(6) p:last-child::after {
-  content: "%";
+  content: "件";
 }
 #main-page section.mission-dashboard .container .block:nth-child(7) {
   background-color: #fd9a54;
@@ -440,19 +440,19 @@ main aside nav #back-to-main {
   color: #fd9a54;
 }
 #main-page section.mission-dashboard .container .block:nth-child(7) p:last-child::after {
-  content: "%";
+  content: "件";
 }
 #main-page section.mission-list table.list-by-index {
-  font-size: 26px;
+  font-size: 1.625rem;
 }
 #main-page section.mission-list table.list-by-index .table-data {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 #main-page section.mission-list table.list-by-member {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 #main-page section.mission-list table.list-by-member .table-data {
-  font-size: 26px;
+  font-size: 1.625rem;
 }
 #main-page section.mission-list .controller {
   display: flex;
@@ -461,13 +461,14 @@ main aside nav #back-to-main {
   padding: 1rem;
 }
 #main-page section.daily-routine table {
-  font-size: 26px;
+  font-size: 1.625rem;
 }
 #main-page section.daily-routine table .table-data {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
-#main-page section.daily-routine table .table-data p {
+#main-page section.daily-routine table .table-data ol {
   text-align: start;
+  padding-left: 2rem;
 }
 #main-page section.weekly-data ul {
   padding-left: 1em;

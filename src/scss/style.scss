@@ -140,7 +140,7 @@
 
         form {
             $input-padding: .2rem;
-            $input-border-radius: 0.5rem;
+            $input-border-radius: .5rem;
 
             display: flex;
             gap: 5px;
@@ -405,7 +405,7 @@
                     }
 
                     p:last-child::after {
-                        content: '%';
+                        content: '件';
                     }
                 }
 
@@ -418,7 +418,7 @@
                     }
 
                     p:last-child::after {
-                        content: '%';
+                        content: '件';
                     }
                 }
 
@@ -432,8 +432,8 @@
 
     section.mission-list {
         table.list-by-index {
-            $fontSize_table-title: 26px;
-            $fontSize_table-data: 24px;
+            $fontSize_table-title: 1.625rem;
+            $fontSize_table-data: 1.5rem;
             font-size: $fontSize_table-title;
 
             .table-data {
@@ -442,8 +442,8 @@
         }
 
         table.list-by-member {
-            $fontSize_table-title: 24px;
-            $fontSize_table-data: 26px;
+            $fontSize_table-title: 1.5rem;
+            $fontSize_table-data: 1.625rem;
             font-size: $fontSize_table-title;
 
             .table-data {
@@ -462,15 +462,16 @@
 
     section.daily-routine {
         table {
-            $fontSize_table-title: 26px;
-            $fontSize_table-data: 24px;
+            $fontSize_table-title: 1.625rem;
+            $fontSize_table-data: 1.5rem;
             font-size: $fontSize_table-title;
 
             .table-data {
                 font-size: $fontSize_table-data;
 
-                p {
+                ol {
                     text-align: start;
+                    padding-left: 2rem;
                 }
             }
         }

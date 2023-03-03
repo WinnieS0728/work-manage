@@ -114,14 +114,58 @@ setTable_salesByPlace()
 async function setTable_mission() {
     const datas = await getMissionsAPI()
 
-    console.log(datas);
+    // console.log(datas);
 
-    datas.forEach((data,i) => {
-        console.log(Object.values(data));
-        let a = Object.values(data).slice(0,-1)
-        d3.select(`.list-by-index tbody tr`)
+    const dayFormat = d3.timeFormat('%Y-%m-%d')
+    const today = dayFormat(new Date())
+
+
+    const mission_New = datas.filter(i => i.start_day == today)
+    // console.log(mission_New);
+    d3.select('.mission-dashboard .new-mission p:last-child')
+        .text(mission_New.length)
+
+    const mission_onDuty = datas.filter(i => i.state == 0 || i.state == 1)
+    // console.log(mission_onDuty);
+    d3.select('.mission-dashboard .mission-on-duty p:last-child')
+        .text(mission_onDuty.length)
+
+    const mission_complete = datas.filter(i => i.state == 2)
+    // console.log(mission_complete);
+    d3.select('.mission-dashboard .mission-complete p:last-child')
+        .text(mission_complete.length)
+
+
+    d3.select('.mission-dashboard .total-mission p:last-child')
+        .text(datas.length)
+
+
+    const mission_successRate = (mission_complete.length / datas.length * 100).toFixed(0)
+    // console.log(mission_successRate);
+    d3.select('.mission-dashboard .success-rate p:last-child')
+        .text(mission_successRate)
+
+
+    const mission_from_Morris = datas.filter(i => i.mission_from == 'Morris')
+    // console.log(mission_from_Morris);
+    d3.select('.mission-dashboard .mission-from-morris p:last-child')
+        .text(mission_from_Morris.length)
+
+    const mission_from_Aliber = datas.filter(i => i.mission_from == 'Aliber')
+    // console.log(mission_from_Aliber);
+    d3.select('.mission-dashboard .mission-from-aliber p:last-child')
+        .text(mission_from_Aliber.length)
+
+
+
+    datas.forEach((data, i) => {
+        // console.log(Object.values(data));
+        let ary = Object.values(data).slice(0, -1)
+        ary[6] = '``' ? ary[6] = '' : ary[6]
+        ary[7] = '``' ? ary[7] = '' : ary[7]
+        d3.select(`.list-by-index tbody tr:nth-of-type(${i + 1})`)
             .selectAll('td')
-            .data(a)
+            .data(ary)
             .join(
                 enter => enter.text(d => {
                     if (d == ``) {
@@ -138,5 +182,121 @@ async function setTable_mission() {
             )
     });
 
+
+    const mission_for_David = []
+    const mission_for_Danise = []
+    const mission_for_Darie = []
+    const mission_for_Lorna = []
+    const mission_for_Rich = []
+
+    function setMemberTable(ary, member) {
+        ary.push(mission_New.filter(i => i.principal == member).length)
+        ary.push(mission_onDuty.filter(i => i.principal == member).length)
+        ary.push(mission_complete.filter(i => i.principal == member).length)
+        ary.push(datas.filter(i => i.principal == member).length)
+        let percent = ary[2] / ary[3] * 100
+        percent ? percent : percent = 0
+        ary.push(percent + '%')
+        ary.push(mission_from_Morris.filter(i => i.principal == member).length)
+        ary.push(mission_from_Aliber.filter(i => i.principal == member).length)
+
+        d3.select(`.mission-list .list-by-member .mission_to_${member}`)
+            .selectAll('.table-data')
+            .data(ary)
+            .enter()
+            .append("td")
+            .attr("class", 'table-data')
+            .text(d => d)
+    }
+
+    setMemberTable(mission_for_David, 'David')
+    setMemberTable(mission_for_Danise, 'Danise')
+    setMemberTable(mission_for_Darie, 'Darie')
+    setMemberTable(mission_for_Lorna, 'Lorna')
+    setMemberTable(mission_for_Rich, 'Rich')
 }
 setTable_mission()
+
+
+
+async function setTable_dailyReport() {
+    const datas = await getDailyReportAPI()
+    // console.log(datas);
+
+    function setReportTable(ary,member) {
+        d3.select(`.daily-routine .report_${member} .daily-point ol`)
+            .selectAll('li')
+            .data(ary.day_point)
+            .enter()
+            .append("li")
+            .text(d => d)
+
+        console.log();
+
+        const report_title = ary.report.map(i => i.title)
+        const report_state = ary.report.map(i => {
+            if (i.state == 0) {
+                return '(待續)'
+            }
+            return '(完成)'
+        })
+
+        for (let i = 0; i < report_title.length; i++) {
+            report_title[i] = report_title[i] + report_state[i]
+        }
+
+        // console.log(report_title);
+
+        d3.select(`.daily-routine .report_${member} .daily-report ol`)
+            .selectAll('li')
+            .data(report_title)
+            .enter()
+            .append("li")
+            .text(d => d)
+    }
+    const report_David = datas.David
+    setReportTable(report_David,'David')
+    const report_Danise = datas.Danise
+    setReportTable(report_Danise,'Danise')
+    const report_Darie = datas.Darie
+    setReportTable(report_Darie,'Darie')
+    const report_Lorna = datas.Lorna
+    setReportTable(report_Lorna,'Lorna')
+    const report_Rich = datas.Rich
+    setReportTable(report_Rich,'Rich')
+
+}
+setTable_dailyReport()
+
+
+async function setTable_PPTandReport(){
+    const PPTdatas = await getPPTAPI()
+    console.log(PPTdatas);
+}
+setTable_PPTandReport()
+
+
+function download() {
+    axios({
+          url: 'https://source.unsplash.com/random/500x500',
+          method: 'GET',
+          responseType: 'blob'
+    })
+          .then((response) => {
+                const url = window.URL
+                      .createObjectURL(new Blob([response.data]));
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', 'image.jpg');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+          })
+}
+// download()
+
+
+const file = document.querySelector('#file')
+file.addEventListener('change',()=>{
+    console.dir(file);
+})
