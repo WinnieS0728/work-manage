@@ -192,7 +192,7 @@ HOST: https://polls.apiblueprint.org/
         + start_day : `2023-01-01` (string , required) - 任務交辦日期
         + end_day : `2023-06-06` (string , required) - 任務截止日期
         + mission_from : `Aliber` (string , required) - 任務交辦主管
-        + state : 2 (enum) - 任務狀態
+        + state : 1 (enum) - 任務狀態
             + 0 - 任務未開始
             + 1 - 任務進行中
             + 2 - 任務已完成
@@ -275,9 +275,21 @@ HOST: https://polls.apiblueprint.org/
             + `錄製OG操作教學` (string , optional)
             + `OSOM測試` (string , optional)
         + report (array)
-            + `義大利優惠方案Flyer(完成)` (string , optional)
-            + `錄製OG操作教學(待續)` (string , optional)
-            + `OSOM測試(待續)` (string , optional)
+            + (object)
+                + title: `義大利優惠方案Flyer` (string , optional)
+                + state: 0 (enum)
+                    + 0 - 待續
+                    + 1 - 完成
+            + (object)
+                + title: `錄製OG操作教學` (string , optional)
+                + state: 1 (enum)
+                    + 0 - 待續
+                    + 1 - 完成
+            + (object)
+                + title: `OSOM測試` (string , optional)
+                + state: 1 (enum)
+                    + 0 - 待續
+                    + 1 - 完成
     + Danise (report)
     + Darie (report)
     + Lorna (report)
