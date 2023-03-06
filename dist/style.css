@@ -177,6 +177,15 @@ main aside nav #back-to-main {
 #main-page section table :is(th, td) {
   padding: 8px;
 }
+#main-page section table .color-number.bad {
+  color: #DC143C;
+}
+#main-page section table .color-percent.bad {
+  color: #DC143C;
+}
+#main-page section table .color-percent.good {
+  color: #6495ED;
+}
 #main-page section button {
   background-color: #70c2e3;
   color: #f6f6f6;
@@ -481,15 +490,23 @@ main aside nav #back-to-main {
   text-align: start;
   padding-left: 2rem;
 }
+#main-page section.weekly-data table {
+  font-size: 1.625rem;
+}
+#main-page section.weekly-data table .table-data {
+  font-size: 1.5rem;
+}
 #main-page section.weekly-data table tr[class^=weeklyData_] {
   line-height: 1.5em;
 }
 #main-page section.weekly-data table a {
+  display: inline-block;
   text-decoration: none;
   color: #101010;
   background-color: #70c2e3;
   padding: 0.2em 0.5em;
   border-radius: 0.5rem;
+  margin-block: 0.2em;
 }
 #main-page section.weekly-data ul {
   padding-left: 1em;

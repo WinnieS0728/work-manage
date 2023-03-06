@@ -1,28 +1,28 @@
 import { getSalesAPI, getSalesByPlaceAPI, getMissionsAPI, getDailyReportAPI, getPPTAPI, getMeetingRecordAPI } from './api.js'
 
 
-async function setTable_total(){
+async function setTable_total() {
     const today = new Date()
     let EndOfYear = new Date(`${today.getFullYear()},12,31`)
     // console.log(Math.ceil((EndOfYear-today)/(1000*60*60*24)));
 
     d3.select('.year-achievement .yearEnd-countdown span')
-        .text(Math.ceil((EndOfYear-today)/(1000*60*60*24)));
-    
+        .text(Math.ceil((EndOfYear - today) / (1000 * 60 * 60 * 24)));
+
 
     const data = await getSalesAPI()
-    console.log(Object.values(data).slice(1).map(i=>i.achievement).reduce((a,b)=>a+b,0));
-    console.log(Object.values(data).slice(1).map(i=>i.goal).reduce((a,b)=>a+b,0));
-    const yearTotalSale = Object.values(data).slice(1).map(i=>i.achievement).reduce((a,b)=>a+b,0)
-    const yearTotalGoal = Object.values(data).slice(1).map(i=>i.goal).reduce((a,b)=>a+b,0)
+    // console.log(Object.values(data).slice(1).map(i=>i.achievement).reduce((a,b)=>a+b,0));
+    // console.log(Object.values(data).slice(1).map(i=>i.goal).reduce((a,b)=>a+b,0));
+    const yearTotalSale = Object.values(data).slice(1).map(i => i.achievement).reduce((a, b) => a + b, 0)
+    const yearTotalGoal = Object.values(data).slice(1).map(i => i.goal).reduce((a, b) => a + b, 0)
 
     d3.select('.year-achievement .total-sales span')
         .text(yearTotalSale.toLocaleString());
     d3.select('.year-achievement .unachieved-sales span')
-        .text((yearTotalSale-yearTotalGoal).toLocaleString());
+        .text((yearTotalSale - yearTotalGoal).toLocaleString());
     d3.select('.year-achievement .success-rate span')
-        .text(((yearTotalSale/yearTotalGoal*100).toFixed(1)).toLocaleString());
-    
+        .text(((yearTotalSale / yearTotalGoal * 100).toFixed(1)).toLocaleString());
+
 
 }
 setTable_total()
@@ -62,46 +62,65 @@ async function setTable_sales() {
         .data(salesData)
         .enter()
         .append("td")
-        .attr("class", 'table-data')
+        .attr("class", 'table-data color-number')
         .text(d => {
             if (d.achievement == 0) {
                 return '-'
             }
             return (d.achievement - d.goal).toLocaleString()
         })
+    
+    function changeColor(){
+        const colorNumber = document.querySelectorAll('.budget-target .table_gap .color-number')
+        colorNumber.forEach(i=>{
+            console.dir(i);
+            if ((i.__data__.achievement - i.__data__.goal) <= 0) {
+                i.classList.add('bad')
+            }
+        })
+    }
+    changeColor()
 }
 setTable_sales()
 
 
-
-
 async function setTable_salesByPlace() {
     const data = await getSalesByPlaceAPI()
-
     // console.log(data);
-    function finalData(i) {
-        let salesByPlaceData = Object.values(Object.values(data)[i]).slice(0, -1)
-        salesByPlaceData.push(salesByPlaceData[0] - salesByPlaceData[1])
-        salesByPlaceData.push((salesByPlaceData[1] / salesByPlaceData[0] * 100).toFixed(1) + '%')
-        return salesByPlaceData
-    }
+
 
     function fill(place, i) {
-        const data = finalData(i)
-        // console.log(data);
+        let salesByPlaceData = Object.values(Object.values(data)[i])
+        salesByPlaceData.push(salesByPlaceData[1] + salesByPlaceData[2])
+        if (salesByPlaceData[0]) {
+            salesByPlaceData.push(salesByPlaceData[3] - salesByPlaceData[0])
+        } else {
+            salesByPlaceData.push('-')
+        }
+        let rate = salesByPlaceData[3] / salesByPlaceData[0] * 100
+        if (salesByPlaceData[3] && salesByPlaceData[0]) {
+            salesByPlaceData.push(rate.toFixed(2) + '%')
+        } else {
+            rate = 0
+            salesByPlaceData.push('-')
+        }
+
         d3.select(`.place-achievement .table_${place}`)
             .selectAll('.table-data')
-            .data(data)
+            .data(salesByPlaceData)
             .enter()
             .append("td")
             .attr("class", 'table-data')
             .text(d => {
-                if (d == 0 || d == 'NaN%') {
+                if (d == 0) {
                     return '-'
                 }
                 return d.toLocaleString()
             })
     }
+
+
+
     fill(`Europe_A`, 0)
     fill(`USA`, 1)
     fill(`Europe_B`, 2)
@@ -111,6 +130,7 @@ async function setTable_salesByPlace() {
     fill(`VIP`, 6)
     fill(`China`, 7)
     fill(`TaiwanOEM`, 8)
+
 
 
     let totalData = []
@@ -134,9 +154,30 @@ async function setTable_salesByPlace() {
             }
             return d.toLocaleString()
         })
+
+
+    function changeColor() {
+        const colorNumbers = document.querySelectorAll('.place-achievement :is(tbody,tfoot) tr td:nth-of-type(6)')
+        colorNumbers.forEach(i => {
+            i.classList.add('color-number')
+            if (i.__data__ <= 0) {
+                i.classList.add('bad')
+            }
+        })
+        const colorPercents = document.querySelectorAll('.place-achievement :is(tbody,tfoot) tr td:nth-of-type(7)')
+        colorPercents.forEach(i => {
+            i.classList.add('color-percent')
+            if (Number(i.__data__.replace("%", '')) < 90) {
+                i.classList.add('bad')
+            }
+            if (Number(i.__data__.replace("%", '')) > 100) {
+                i.classList.add('good')
+            }
+        })
+    }
+    changeColor()
 }
 setTable_salesByPlace()
-
 
 
 async function setTable_mission() {
@@ -269,8 +310,6 @@ async function setTable_mission() {
     setMemberTable(mission_for_Rich, 'Rich')
 }
 setTable_mission()
-
-
 
 
 async function setTable_dailyReport() {

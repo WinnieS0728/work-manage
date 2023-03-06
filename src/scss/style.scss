@@ -41,6 +41,20 @@
             & :is(th, td) {
                 padding: 8px;
             }
+
+            .color-number{
+                &.bad{
+                    color: $clr_bad-value;
+                }
+            }
+            .color-percent{
+                &.bad{
+                    color: $clr_bad-value;
+                }
+                &.good{
+                    color: $clr_good-value;
+                }
+            }
         }
 
         button {
@@ -278,10 +292,6 @@
         }
     }
 
-
-
-
-
     section.budget-target {
         table {
             $fontSize_table-title: 1.25rem;
@@ -471,18 +481,27 @@
 
     section.weekly-data {
         table {
+            $fontSize_table-title: 1.625rem;
+            $fontSize_table-data: 1.5rem;
+            font-size: $fontSize_table-title;
+
+            .table-data{
+                font-size: $fontSize_table-data;
+            }
             tr[class^='weeklyData_'] {
                 line-height: 1.5em;
             }
 
             a {
+                display: inline-block;
                 text-decoration: none;
                 color: $clr_dark-black;
                 background-color: $clr_main-decorate-blue;
                 padding: .2em .5em;
                 border-radius: .5rem;
+                margin-block: .2em;
             }
-        }
+        }   
 
 
         ul {
