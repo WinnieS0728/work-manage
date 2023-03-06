@@ -300,7 +300,7 @@
             $fontSize_table-data: 1.25rem;
             font-size: $fontSize_table-title;
 
-            tbody tr>td {
+            tbody tr td:first-child {
                 text-align: start;
             }
 

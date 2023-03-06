@@ -363,7 +363,7 @@ main aside nav #back-to-main {
 #main-page section.place-achievement table {
   font-size: 1.5rem;
 }
-#main-page section.place-achievement table tbody tr > td {
+#main-page section.place-achievement table tbody tr td:first-child {
   text-align: start;
 }
 #main-page section.place-achievement table .table-data {
