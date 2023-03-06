@@ -300,6 +300,10 @@
             $fontSize_table-data: 1.25rem;
             font-size: $fontSize_table-title;
 
+            tbody tr>td {
+                text-align: start;
+            }
+
             .table-data {
                 font-size: $fontSize_table-data;
             }

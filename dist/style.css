@@ -159,7 +159,7 @@ main aside nav #back-to-main {
 #main-page section table {
   width: 100%;
   text-align: center;
-  font-size: 1.625rem;
+  font-size: 1.5rem;
   border-collapse: collapse;
   font-family: microsoftBlack;
 }
@@ -362,6 +362,9 @@ main aside nav #back-to-main {
 }
 #main-page section.place-achievement table {
   font-size: 1.5rem;
+}
+#main-page section.place-achievement table tbody tr > td {
+  text-align: start;
 }
 #main-page section.place-achievement table .table-data {
   font-size: 1.25rem;
