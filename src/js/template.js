@@ -28,9 +28,9 @@ const nowTab_main = nowTab.querySelector('.mainTab span');
 const nowTab_sub = nowTab.querySelector('.subTab span');
 
 
-function changeTab_main(){
+function changeTab_main() {
     nowTab_main.innerText = this.innerText
 }
-function changeTab_sub(){
+function changeTab_sub() {
     nowTab_sub.innerText = this.innerText
 }

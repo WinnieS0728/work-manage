@@ -73,7 +73,7 @@ async function setTable_sales() {
     function changeColor(){
         const colorNumber = document.querySelectorAll('.budget-target .table_gap .color-number')
         colorNumber.forEach(i=>{
-            console.dir(i);
+            // console.dir(i);
             if ((i.__data__.achievement - i.__data__.goal) <= 0) {
                 i.classList.add('bad')
             }

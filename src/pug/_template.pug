@@ -7,9 +7,9 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible" content="IE=edge")
         meta(name="viewport" content="width=device-width, initial-scale=1.0") 
         include includes/_links.pug
-        
+
         block localLinks
-        
+
         block title
             title
         link(rel="icon" type="image/x-icon" href="../assests/img/OrangeLogo.png")
@@ -57,7 +57,15 @@ html(lang="en")
                     ul.nav-list
                         li.nav-title.green 建立測試帳號
                     a#back-to-main(href="#") 返回業務系統首頁 
+            article#main-page 
+                section.showing-tab
+                    .exports 
+                        button.exportExcel 匯出Excel 
+                        button.exportPDF 匯出PDF
+                    article.nowTab
+                        <i class="fa-solid fa-location-dot"></i>
+                        p.
+                            業務系統 #[span #[span.mainTab / #[span 工作項目管理]] #[span.subTab / #[span 任務管理]]] 
+                block mainContent
 
-            block mainContent
-        
         footer

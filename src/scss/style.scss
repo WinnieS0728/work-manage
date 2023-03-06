@@ -1,116 +1,6 @@
 @import '_template.scss';
 
 #main-page {
-    width: 100%;
-    padding-inline: 1rem;
-
-    section {
-        margin-bottom: 2rem;
-
-        &>h2 {
-            font-size: $fontSize_h2;
-            color: $clr_dark-white;
-            text-align: center;
-            background-color: $clr_section-header;
-            padding-block: .5em;
-        }
-
-        table {
-            width: 100%;
-            text-align: center;
-            font-size: $fontSize_table-title;
-            border-collapse: collapse;
-            font-family: microsoftBlack;
-
-            thead {
-                tr {
-                    background-color: $clr_decorate-gray;
-
-                    &:first-child {
-                        background-color: $clr_dark-black;
-                        color: $clr_dark-white;
-                    }
-                }
-            }
-
-            .table-data {
-                font-size: $fontSize_table-data;
-                font-family: roboto;
-            }
-
-            & :is(th, td) {
-                padding: 8px;
-            }
-
-            .color-number{
-                &.bad{
-                    color: $clr_bad-value;
-                }
-            }
-            .color-percent{
-                &.bad{
-                    color: $clr_bad-value;
-                }
-                &.good{
-                    color: $clr_good-value;
-                }
-            }
-        }
-
-        button {
-            background-color: $clr_main-decorate-blue;
-            color: $clr_dark-white;
-            border: 0;
-            font-size: 1rem;
-            padding: .2em 2em;
-            border-radius: .5rem;
-        }
-    }
-
-    section.showing-tab {
-        display: flex;
-        flex-flow: column;
-        height: 100px;
-        padding-block: 1rem;
-        margin-bottom: 0;
-
-        .nowTab {
-            display: flex;
-            align-items: center;
-            position: relative;
-
-            &::after {
-                content: '';
-                width: 100%;
-                height: 3px;
-                background-color: $clr_decorate-gray;
-                position: absolute;
-                z-index: -1;
-            }
-
-            &>* {
-                background-color: $clr_dark-white;
-            }
-
-            i {
-                font-size: 2em;
-            }
-
-            p {
-                font-size: 1.5rem;
-                padding-inline: .5em;
-
-                span :last-child span {
-                    color: $clr_main-decorate-blue;
-                }
-            }
-        }
-
-        .exports {
-            align-self: flex-end;
-        }
-    }
-
     section.mission-control {
         display: flex;
         gap: 1rem;
@@ -485,9 +375,10 @@
             $fontSize_table-data: 1.5rem;
             font-size: $fontSize_table-title;
 
-            .table-data{
+            .table-data {
                 font-size: $fontSize_table-data;
             }
+
             tr[class^='weeklyData_'] {
                 line-height: 1.5em;
             }
@@ -501,7 +392,7 @@
                 border-radius: .5rem;
                 margin-block: .2em;
             }
-        }   
+        }
 
 
         ul {

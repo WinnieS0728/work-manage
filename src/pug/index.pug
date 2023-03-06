@@ -1,25 +1,15 @@
 extends _template.pug
 
 block localLinks 
-    link(rel="stylesheet" href="style.css")
-    script(src="../src/js/script.js" defer)
+    link(rel="stylesheet" href="css/style.min.css")
     script(type="module" src="../src/js/d3.js")
 
 block title
     title 業務系統
 
 block mainContent 
-    article#main-page 
-        section.showing-tab
-            .exports
-                button.exportExcel 匯出Excel 
-                button.exportPDF 匯出PDF
-            article.nowTab
-                <i class="fa-solid fa-location-dot"></i>
-                p.
-                    業務系統 #[span #[span.mainTab / #[span 工作項目管理]] #[span.subTab / #[span 任務管理]]] 
         section.mission-control
-            a(href="") <i class="fa-solid fa-pen"></i>建立任務
+            a(href="working-report.html") <i class="fa-solid fa-pen"></i>建立任務
             a(href="") <i class="fa-solid fa-pen"></i>修改任務
         section.filter
             form

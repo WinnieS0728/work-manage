@@ -1,5 +1,22 @@
+//- main page
 mixin fileFormat
     .
         #[span.fileName 檔名.ppt]#[br]
         最後更新: #[span.updateTime 2021.12.30 AM 11:20]#[br]
         #[a(href="" download="") 下載檔案]
+
+
+//- working-report page
+
+mixin report_inputRow(id)
+    .row
+        span
+            if block 
+                block 
+            else 
+                |#{id}
+        input#daily-point(type="text", name="daily-point" placeholder='...')
+        input#report(type="text", name="report" placeholder='...')
+
+
+    
