@@ -1,6 +1,31 @@
 import { getSalesAPI, getSalesByPlaceAPI, getMissionsAPI, getDailyReportAPI, getPPTAPI, getMeetingRecordAPI } from './api.js'
 
 
+async function setTable_total(){
+    const today = new Date()
+    let EndOfYear = new Date(`${today.getFullYear()},12,31`)
+    // console.log(Math.ceil((EndOfYear-today)/(1000*60*60*24)));
+
+    d3.select('.year-achievement .yearEnd-countdown span')
+        .text(Math.ceil((EndOfYear-today)/(1000*60*60*24)));
+    
+
+    const data = await getSalesAPI()
+    console.log(Object.values(data).slice(1).map(i=>i.achievement).reduce((a,b)=>a+b,0));
+    console.log(Object.values(data).slice(1).map(i=>i.goal).reduce((a,b)=>a+b,0));
+    const yearTotalSale = Object.values(data).slice(1).map(i=>i.achievement).reduce((a,b)=>a+b,0)
+    const yearTotalGoal = Object.values(data).slice(1).map(i=>i.goal).reduce((a,b)=>a+b,0)
+
+    d3.select('.year-achievement .total-sales span')
+        .text(yearTotalSale.toLocaleString());
+    d3.select('.year-achievement .unachieved-sales span')
+        .text((yearTotalSale-yearTotalGoal).toLocaleString());
+    d3.select('.year-achievement .success-rate span')
+        .text(((yearTotalSale/yearTotalGoal*100).toFixed(1)).toLocaleString());
+    
+
+}
+setTable_total()
 
 
 async function setTable_sales() {
@@ -117,7 +142,7 @@ setTable_salesByPlace()
 async function setTable_mission() {
     const datas = await getMissionsAPI()
 
-    console.log(datas);
+    // console.log(datas);
 
     const dayFormat = d3.timeFormat('%Y-%m-%d')
     const today = dayFormat(new Date())
@@ -165,8 +190,8 @@ async function setTable_mission() {
 
     function setMissionList() {
         let missionData = missionData_reverse.slice(index, index + 10)
-        console.log(missionData);
-        console.log(index);
+        // console.log(missionData);
+        // console.log(index);
         d3.select('.mission-list .list-by-index tbody')
             .selectAll('tr')
             .data(missionData)

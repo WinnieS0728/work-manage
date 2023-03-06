@@ -17,7 +17,7 @@ block mainContent
             article.nowTab
                 <i class="fa-solid fa-location-dot"></i>
                 p.
-                    業務系統 #[span #[span.mainTab / #[span 工作項目管理]] #[span.subTab / #[span 首頁]]] 
+                    業務系統 #[span #[span.mainTab / #[span 工作項目管理]] #[span.subTab / #[span 任務管理]]] 
         section.mission-control
             a(href="") <i class="fa-solid fa-pen"></i>建立任務
             a(href="") <i class="fa-solid fa-pen"></i>修改任務
@@ -102,7 +102,7 @@ block mainContent
             article.container
                 .block.yearEnd-countdown
                     p 2023倒數
-                    p #[span 75]天
+                    p #[span]天
                 .block.total-sales 
                     p 本年度累積銷售
                     p #[span 268,000,500]元
@@ -213,7 +213,7 @@ block mainContent
                         th 備註
                         th 附件
                 tbody
-                    
+
             .controller 
                 button.index_backward
                     <i class="fa-solid fa-chevron-left"></i>
@@ -281,26 +281,36 @@ block mainContent
                     th PTT檔 上傳狀態
                     th 會議記錄 上傳狀態
                 tbody
-                    tr 
+                    tr.weeklyData_David
                         th David
-                        td.table-data
-                        td.table-data
-                    tr 
+                        td.table-data.PPT
+                            +fileFormat
+                        td.table-data.MeetingRecord
+                            +fileFormat
+                    tr.weeklyData_Danise
                         th Denise
-                        td.table-data
-                        td.table-data
-                    tr 
+                        td.table-data.PPT
+                            +fileFormat
+                        td.table-data.MeetingRecord
+                            +fileFormat
+                    tr.weeklyData_Darie
                         th Darie
-                        td.table-data
-                        td.table-data
-                    tr 
+                        td.table-data.PPT
+                            +fileFormat
+                        td.table-data.MeetingRecord
+                            +fileFormat
+                    tr.weeklyData_Lorna
                         th Lorna
-                        td.table-data
-                        td.table-data
-                    tr 
+                        td.table-data.PPT
+                            +fileFormat
+                        td.table-data.MeetingRecord
+                            +fileFormat
+                    tr.weeklyData_Rich
                         th Rich
-                        td.table-data
-                        td.table-data
+                        td.table-data.PPT
+                            +fileFormat
+                        td.table-data.MeetingRecord
+                            +fileFormat
             ul    
                 li 點選「下載檔案」可查看案件詳細內容。
                 li 重複上傳僅記錄最後一筆PTT的時間。

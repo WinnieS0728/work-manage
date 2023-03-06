@@ -6,6 +6,20 @@
     padding: 0;
 }
 
+body {
+    font-family: roboto, serif;
+    background-color: $clr_dark-white;
+
+    &::-webkit-scrollbar {
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: transparentize($clr_dark-black, .5);
+        border-radius: .5rem;
+    }
+}
+
 header {
     display: flex;
     flex-flow: column;
@@ -15,7 +29,6 @@ header {
         display: flex;
         justify-content: space-between;
         padding-inline: 2rem;
-
 
         img[alt="e-home_image"] {
             height: 100%;
@@ -32,7 +45,7 @@ header {
     }
 
     .header-bottom {
-        background-color: $header-green;
+        background-color: $clr_main-green;
         font-size: 1.5rem;
         padding: 0 2rem;
         display: flex;
@@ -59,10 +72,10 @@ main {
 
     aside {
         width: 240px;
-        background-color: $dark-green;
+        background-color: $clr_main-green;
 
         nav {
-            $nav-border-left: inset 10px 0 0 lighten($light-blue, 10%);
+            $nav-border-left: inset 10px 0 0 lighten($clr_section-header, 20%);
 
             display: flex;
             flex-flow: column;
@@ -72,18 +85,18 @@ main {
 
             li {
                 padding: .3em .5em;
-                color: $white;
+                color: $clr_dark-white;
             }
 
             .nav-title {
-                background-color: $dark-blue;
-                color: $white;
+                background-color: $clr_section-header;
+                color: $clr_dark-white;
                 padding-left: 1rem;
                 box-shadow: $nav-border-left;
 
                 &.green {
-                    background-color: $green;
-                    box-shadow: inset 10px 0 0 lighten($green, 20%);
+                    background-color: $clr_light-green;
+                    box-shadow: inset 10px 0 0 lighten($clr_light-green, 20%);
                 }
 
                 &.open+.nav-tags {
@@ -106,23 +119,23 @@ main {
                     }
 
                     &.active {
-                        background-color: $dark-white;
+                        background-color: $clr_dark-white;
                         box-shadow: $nav-border-left;
-                        color: $black;
+                        color: $clr_dark-black;
                     }
                 }
             }
 
             #back-to-main {
                 width: 80%;
-                background-color: $green;
+                background-color: $clr_light-green;
                 padding: .5em .5em;
                 border-radius: .5rem;
                 text-align: center;
                 margin-inline: auto;
                 margin-top: 3rem;
                 text-decoration: none;
-                color: $white;
+                color: $clr_dark-white;
                 font-family: microsoftBlack;
             }
         }

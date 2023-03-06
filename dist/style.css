@@ -30,6 +30,18 @@
   padding: 0;
 }
 
+body {
+  font-family: roboto, serif;
+  background-color: #f6f6f6;
+}
+body::-webkit-scrollbar {
+  background-color: transparent;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(16, 16, 16, 0.5);
+  border-radius: 0.5rem;
+}
+
 header {
   display: flex;
   flex-flow: column;
@@ -51,7 +63,7 @@ header .header-top img[alt=user_avatar] {
   height: 100%;
 }
 header .header-bottom {
-  background-color: #7ac3d2;
+  background-color: #58939f;
   font-size: 1.5rem;
   padding: 0 2rem;
   display: flex;
@@ -85,13 +97,13 @@ main aside nav {
 }
 main aside nav li {
   padding: 0.3em 0.5em;
-  color: #fff;
+  color: #f6f6f6;
 }
 main aside nav .nav-title {
   background-color: #2e486f;
-  color: #fff;
+  color: #f6f6f6;
   padding-left: 1rem;
-  box-shadow: inset 10px 0 0 #9bd4eb;
+  box-shadow: inset 10px 0 0 #4e77b5;
 }
 main aside nav .nav-title.green {
   background-color: #99cc64;
@@ -114,8 +126,8 @@ main aside nav .nav-tags .nav-tag::before {
 }
 main aside nav .nav-tags .nav-tag.active {
   background-color: #f6f6f6;
-  box-shadow: inset 10px 0 0 #9bd4eb;
-  color: #000;
+  box-shadow: inset 10px 0 0 #4e77b5;
+  color: #101010;
 }
 main aside nav #back-to-main {
   width: 80%;
@@ -126,21 +138,20 @@ main aside nav #back-to-main {
   margin-inline: auto;
   margin-top: 3rem;
   text-decoration: none;
-  color: #fff;
+  color: #f6f6f6;
   font-family: microsoftBlack;
 }
 
 #main-page {
   width: 100%;
   padding-inline: 1rem;
-  font-family: roboto, serif;
 }
 #main-page section {
   margin-bottom: 2rem;
 }
 #main-page section > h2 {
   font-size: 1.875rem;
-  color: #fff;
+  color: #f6f6f6;
   text-align: center;
   background-color: #2e486f;
   padding-block: 0.5em;
@@ -157,7 +168,7 @@ main aside nav #back-to-main {
 }
 #main-page section table thead tr:first-child {
   background-color: #101010;
-  color: #fff;
+  color: #f6f6f6;
 }
 #main-page section table .table-data {
   font-size: 1.25rem;
@@ -168,7 +179,7 @@ main aside nav #back-to-main {
 }
 #main-page section button {
   background-color: #70c2e3;
-  color: #fff;
+  color: #f6f6f6;
   border: 0;
   font-size: 1rem;
   padding: 0.2em 2em;
@@ -195,7 +206,7 @@ main aside nav #back-to-main {
   z-index: -1;
 }
 #main-page section.showing-tab .nowTab > * {
-  background-color: #fff;
+  background-color: #f6f6f6;
 }
 #main-page section.showing-tab .nowTab i {
   font-size: 2em;
@@ -218,7 +229,7 @@ main aside nav #back-to-main {
 #main-page section.mission-control a {
   font-size: 1.5rem;
   text-decoration: none;
-  color: #fff;
+  color: #f6f6f6;
   padding: 0.3em 1.5em;
   border-radius: 0.5rem;
   font-weight: 600;
@@ -310,7 +321,7 @@ main aside nav #back-to-main {
   flex: 1;
   display: flex;
   flex-flow: column;
-  box-shadow: 0 0 8px #000;
+  box-shadow: 0 0 8px #101010;
   border-radius: 0.5rem;
   padding: 0.5em 1em;
   gap: 0.5em;
@@ -326,7 +337,7 @@ main aside nav #back-to-main {
   font-size: 3.75rem;
 }
 #main-page section.year-achievement .container .block.yearEnd-countdown {
-  max-width: 150px;
+  max-width: 12rem;
 }
 #main-page section.year-achievement .container .block.yearEnd-countdown span {
   color: #99cc64;
@@ -338,22 +349,22 @@ main aside nav #back-to-main {
   color: #f298a6;
 }
 #main-page section.year-achievement .container .block.success-rate {
-  max-width: 200px;
+  max-width: 12rem;
 }
 #main-page section.year-achievement .container .block.success-rate span {
   color: #afafc7;
 }
 #main-page section.budget-target table {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 #main-page section.budget-target table .table-data {
-  font-size: 16px;
+  font-size: 1rem;
 }
 #main-page section.place-achievement table {
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 #main-page section.place-achievement table .table-data {
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 #main-page section.mission-dashboard .container {
   display: flex;
@@ -365,7 +376,7 @@ main aside nav #back-to-main {
   text-align: center;
   display: flex;
   flex-flow: column;
-  border-radius: 8px;
+  border-radius: 0.5rem;
 }
 #main-page section.mission-dashboard .container .block p:first-child {
   padding: 0.5em;
@@ -429,18 +440,12 @@ main aside nav #back-to-main {
 #main-page section.mission-dashboard .container .block:nth-child(6) p:first-child {
   color: #f298a6;
 }
-#main-page section.mission-dashboard .container .block:nth-child(6) p:last-child::after {
-  content: "件";
-}
 #main-page section.mission-dashboard .container .block:nth-child(7) {
   background-color: #fd9a54;
   position: relative;
 }
 #main-page section.mission-dashboard .container .block:nth-child(7) p:first-child {
   color: #fd9a54;
-}
-#main-page section.mission-dashboard .container .block:nth-child(7) p:last-child::after {
-  content: "件";
 }
 #main-page section.mission-list table.list-by-index {
   font-size: 1.625rem;
@@ -478,7 +483,7 @@ main aside nav #back-to-main {
 }
 #main-page section.weekly-data table a {
   text-decoration: none;
-  color: #000;
+  color: #101010;
   background-color: #70c2e3;
   padding: 0.2em 0.5em;
   border-radius: 0.5rem;
