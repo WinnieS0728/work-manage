@@ -1,0 +1,35 @@
+extends _template.pug
+
+block localLinks 
+    link(rel="stylesheet" href="css/working-report.min.css")
+
+block title
+    title 業務系統-建立任務
+
+block mainContent 
+    section.daily-report-day
+        h2 建立《每日工作重點》
+        form
+            p 工作重點日期：
+            input#chose-day(type="text" name="chose-day")
+            btn(type="button")
+                <i class="fa-solid fa-pen"></i>
+                |修改其他日期
+    section.show-aria
+        form
+            .row
+                span 
+                p 工作重點
+                p 工作重點進度回報
+            +report_inputRow(1)
+            +report_inputRow(2)
+            +report_inputRow(3)
+            +report_inputRow(4)
+            +report_inputRow(5)
+            +report_inputRow(6)
+            +report_inputRow(7)
+            +report_inputRow(8)
+            +report_inputRow(9)
+            +report_inputRow(10)
+
+            +cancel-confirm_btns
