@@ -1,0 +1,29 @@
+@mixin btn_confirm_style{
+    button:is(.cancel, .confirm){
+        font-family: microsoftBlack;
+        font-size: 1.75rem;
+        padding: .8em 1.5em;
+        border-radius: 1rem;
+        color: $clr_dark-white;
+
+        &.cancel{
+            background-color: $clr_cancel-btn;
+        }
+        &.confirm{
+            background-color: $clr_confirm-btn;
+        }
+    }
+}
+
+@mixin btns_confirm{
+    .confirm_btns{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 3rem;
+        gap: 3rem;
+        @include btn_confirm_style;
+    }
+}
+
+

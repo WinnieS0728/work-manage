@@ -1,92 +1,93 @@
-extends _template.pug
+extends ../templates/pug/_template.pug
 
 block localLinks 
-    link(rel="stylesheet" href="css/style.min.css")
+    link(rel="stylesheet" href="style.min.css")
     script(type="module" src="../src/js/d3.js")
 
 block title
     title 業務系統
 
-block mainContent 
+block mainContent   
         section.mission-control
             a(href="") <i class="fa-solid fa-pen"></i>建立任務
             a(href="") <i class="fa-solid fa-pen"></i>修改任務
         section.filter
             form
+                h3 選擇查詢條件: #[span (單選或複選)]
                 .formContent
-                    h3 選擇查詢條件: #[span (單選或複選)]
-                    span
-                        label(for="") 任務日期
-                        input#day-start(type="text" name="day-start" placeholder="任務週期 (起)" onfocus="(this.type='date')" onblur="(this.type='text')")
-                        span ~
-                        input#day-end(type="text" name="day-start" placeholder="任務週期 (迄)" onfocus="(this.type='date')" onblur="(this.type='text')")
-                        label(for="missionFilter_Year") 任務年度
-                        select#missionFilter_Year(name="mission year")
-                            option(value="" selected disabled) 選擇年度 
-                            option(value="2022") 2022  
-                            option(value="2023") 2023
-                        label(for="missionFilter_month") 任務月份
-                        select#missionFilter_month(name="missionFilter_month") 
-                            option(value="" selected disabled) 選擇月份
-                            option(value="1") 1月
-                            option(value="2") 2月
-                            option(value="3") 3月
-                            option(value="4") 4月
-                            option(value="5") 5月
-                            option(value="6") 6月
-                            option(value="7") 7月
-                            option(value="8") 8月
-                            option(value="9") 9月
-                            option(value="10") 10月
-                            option(value="11") 11月
-                            option(value="12") 12月
-                    span
-                        label(for="") 任務篩選
-                        select#missionFilter_state(name="missionFilter_state") 
-                            option(value="" selected disabled) 任務地區
-                            option(value="all") 不拘
-                            option(value="new") 新案件
-                            option(value="progress") 進行中
-                            option(value="done") 已完成
-                        select#missionFilter_place(name="missionFilter_place") 
-                            option(value="" selected disabled) 任務地區
-                            option(value="all") 不拘
-                            option(value="taiwan") 台灣
-                            option(value="germany") 德國
-                            option(value="italy") 義大利
-                            option(value="USA") 美國
-                        select#missionFilter_executor(name="missionFilter_place") 
-                            option(value="" selected disabled) 任務擔當
-                            option(value="all") 不拘
-                            option(value="David") David 李洪瑋
-                            option(value="Darie") Darie 李德宜
-                            option(value="Denise") Denise 黃慧卿
-                            option(value="Lorna") Lorna 白翠蓮
-                            option(value="Rich") Rich 黃偉鳴
-                            option(value="Imma. Molinini") Imma. Molinini
-                            option(value="Michele. Dellaventrua") Michele. Dellaventrua
-                            option(value="Marcus Rosenzweig") Marcus Rosenzweig
-                            option(value="Ismail.Kemcen") Ismail.Kemcen
-                            option(value="Stefan Ebert") Stefan Ebert
-                            option(value="Mohamed Akabbal") Mohamed Akabbal
-                            option(value="Cemal Altunkaya") Cemal Altunkaya
-                            option(value="Michael Boe") Michael Boe
-                            option(value="Stefan Becko") Stefan Becko
-                        select#missionFilter_missionFrom(name="missionFilter_place") 
-                            option(value="" selected disabled) 任務交辦
-                            option(value="all") 不拘
-                            option(value="others") 其他單位
-                            option(value="Morris") Morris
-                            option(value="Aliber") Aliber
-                    span
-                        label(for="missionFilter_title") 任務標題
-                        input#missionFilter_title(type="text" name="#missionFilter_title" placeholder="請輸入任務主題關鍵字").
-                        label(for="missionFilter_content") 任務內容
-                        input#missionFilter_content(type="text" name="#missionFilter_content" placeholder="請輸入任務內容關鍵字").
-                .formSubmit
-                    button(type="submit").
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        送出查詢
+                    .formBody
+                        span
+                            label(for="") 任務日期
+                            input#day-start(type="text" name="day-start" placeholder="任務週期 (起)" onfocus="(this.type='date')" onblur="(this.type='text')")
+                            span ~
+                            input#day-end(type="text" name="day-start" placeholder="任務週期 (迄)" onfocus="(this.type='date')" onblur="(this.type='text')")
+                            label(for="missionFilter_Year") 任務年度
+                            select#missionFilter_Year(name="mission year")
+                                option(value="" selected disabled) 選擇年度 
+                                option(value="2022") 2022  
+                                option(value="2023") 2023
+                            label(for="missionFilter_month") 任務月份
+                            select#missionFilter_month(name="missionFilter_month") 
+                                option(value="" selected disabled) 選擇月份
+                                option(value="1") 1月
+                                option(value="2") 2月
+                                option(value="3") 3月
+                                option(value="4") 4月
+                                option(value="5") 5月
+                                option(value="6") 6月
+                                option(value="7") 7月
+                                option(value="8") 8月
+                                option(value="9") 9月
+                                option(value="10") 10月
+                                option(value="11") 11月
+                                option(value="12") 12月
+                        span
+                            label(for="") 任務篩選
+                            select#missionFilter_state(name="missionFilter_state") 
+                                option(value="" selected disabled) 任務地區
+                                option(value="all") 不拘
+                                option(value="new") 新案件
+                                option(value="progress") 進行中
+                                option(value="done") 已完成
+                            select#missionFilter_place(name="missionFilter_place") 
+                                option(value="" selected disabled) 任務地區
+                                option(value="all") 不拘
+                                option(value="taiwan") 台灣
+                                option(value="germany") 德國
+                                option(value="italy") 義大利
+                                option(value="USA") 美國
+                            select#missionFilter_executor(name="missionFilter_place") 
+                                option(value="" selected disabled) 任務擔當
+                                option(value="all") 不拘
+                                option(value="David") David 李洪瑋
+                                option(value="Darie") Darie 李德宜
+                                option(value="Denise") Denise 黃慧卿
+                                option(value="Lorna") Lorna 白翠蓮
+                                option(value="Rich") Rich 黃偉鳴
+                                option(value="Imma. Molinini") Imma. Molinini
+                                option(value="Michele. Dellaventrua") Michele. Dellaventrua
+                                option(value="Marcus Rosenzweig") Marcus Rosenzweig
+                                option(value="Ismail.Kemcen") Ismail.Kemcen
+                                option(value="Stefan Ebert") Stefan Ebert
+                                option(value="Mohamed Akabbal") Mohamed Akabbal
+                                option(value="Cemal Altunkaya") Cemal Altunkaya
+                                option(value="Michael Boe") Michael Boe
+                                option(value="Stefan Becko") Stefan Becko
+                            select#missionFilter_missionFrom(name="missionFilter_place") 
+                                option(value="" selected disabled) 任務交辦
+                                option(value="all") 不拘
+                                option(value="others") 其他單位
+                                option(value="Morris") Morris
+                                option(value="Aliber") Aliber
+                        span
+                            label(for="missionFilter_title") 任務標題
+                            input#missionFilter_title(type="text" name="#missionFilter_title" placeholder="請輸入任務主題關鍵字").
+                            label(for="missionFilter_content") 任務內容
+                            input#missionFilter_content(type="text" name="#missionFilter_content" placeholder="請輸入任務內容關鍵字")
+                    .formSubmit
+                        button(type="submit").
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            送出查詢
         section.year-achievement
             h2 《年度成果統計》
             article.container
@@ -189,28 +190,8 @@ block mainContent
                     p Aliber 交辦
                     p 
         section.mission-list
-            h2 《任務案件總覽》
-            table.list-by-index(border="1")
-                thead 
-                    th(colspan="8") 任務列表(新到舊排序)
-                    tr
-                        th 編號
-                        th 交辦主管
-                        th 任務標題
-                        th 擔當
-                        th 交辦日期
-                        th 需求日期
-                        th 備註
-                        th 附件
-                tbody
+            +missionList 
 
-            .controller 
-                button.index_backward
-                    <i class="fa-solid fa-chevron-left"></i>
-                    |前10筆
-                button.index_forward
-                    |後10筆
-                    <i class="fa-solid fa-chevron-right"></i>
             table.list-by-member(border="1")
                 thead 
                     th(colspan="8") 任務統計(當月)

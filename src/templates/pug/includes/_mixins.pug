@@ -1,0 +1,62 @@
+//- main page
+mixin fileFormat
+    .
+        #[span.fileName 檔名.ppt]#[br]
+        最後更新: #[span.updateTime 2021.12.30 AM 11:20]#[br]
+        #[a(href="" download="") 下載檔案]
+
+
+mixin missionList
+    h2 《任務案件總覽》
+    table.list-by-index(border="1")
+        thead 
+            th(colspan="8") 任務列表(新到舊排序)
+            tr
+                th 編號
+                th 交辦主管
+                th 任務標題
+                th 擔當
+                th 交辦日期
+                th 需求日期
+                th 備註
+                th 附件
+        tbody
+            tr
+                td(colspan="8").table-data No matching records found
+
+    .controller 
+        button.index_backward
+            <i class="fa-solid fa-chevron-left"></i>
+            |前10筆
+        button.index_forward
+            |後10筆
+            <i class="fa-solid fa-chevron-right"></i>
+
+//- working-report page
+
+mixin report_inputRow(id)
+    .row
+        span= id
+        input#daily-point(type="text" name="daily-point" placeholder='...')
+        input#report(type="text" name="report" placeholder='...')
+
+
+mixin cancel-confirm_btns
+    .confirm_btns
+        button(type="button").cancel 放棄修改
+        button(type="button").confirm 立即儲存
+
+
+//-  mission page
+
+mixin fileUpload
+    .upload-list
+        input#mission_attach(type="file" name="mission_attach" style="display:none;")
+        label#mission_upload-attach(for="mission_attach") 請選取檔案路徑...
+        .btns
+            button#file-confirm(type="button")
+                <i class="fa-solid fa-cloud-arrow-up"></i>
+                |上傳
+            button#file-preview(type="button")
+                <i class="fa-solid fa-eye"></i>
+                |查看

@@ -1,4 +1,4 @@
-import { getSalesAPI, getSalesByPlaceAPI, getMissionsAPI, getDailyReportAPI, getPPTAPI, getMeetingRecordAPI } from './api.js'
+import { getSalesAPI, getSalesByPlaceAPI, getMissionsAPI, getDailyReportAPI, getPPTAPI, getMeetingRecordAPI } from '../templates/js/_api.js'
 
 
 async function setTable_total() {
@@ -237,7 +237,7 @@ async function setTable_mission() {
             .selectAll('tr')
             .data(missionData)
             .join(
-                enter => enter.append("tr")
+                enter => enter.append("tr"),
             )
 
         missionData.forEach((data, i) => {
@@ -253,9 +253,22 @@ async function setTable_mission() {
                     enter => enter.append("td")
                         .attr("class", 'table-data')
                         .text(d => d),
-                    update => update.text(d => d)
+                    update => update.attr("colspan",'0')
+                    .text(d => d)
                 )
         });
+        function showAttachedIcon(){
+            const attached = document.querySelectorAll('.mission-list .list-by-index tbody tr .table-data:last-child')
+            attached.forEach(i => {
+                if (i.textContent !== '') {
+                    i.innerHTML = `
+                    <a href="#" download="fileName">
+                        <i class="fa-solid fa-floppy-disk"></i>
+                    </a>`
+                }
+            })
+        }
+        showAttachedIcon()
     }
     setMissionList()
 

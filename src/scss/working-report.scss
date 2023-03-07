@@ -1,4 +1,4 @@
-@import '_template.scss';
+@import '../templates/scss/template';
 
 #main-page {
     section.daily-report-day {
@@ -17,10 +17,11 @@
                 padding: $input-padding;
             }
 
-            btn {
+            button {
                 background-color: $clr_light-green;
-                padding: .5em;
                 color: $clr_dark-white;
+                font-size: 1.5rem;
+                padding: .5em 1em;
                 border-radius: .5rem;
 
                 i {
@@ -31,7 +32,7 @@
         }
     }
 
-    section.show-aria {
+    section.show-area {
         padding: 3em;
 
         form {

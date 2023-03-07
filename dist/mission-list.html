@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.2/d3.min.js" integrity="sha512-oKI0pS1ut+mxQZdqnD3w9fqArLyILRsT3Dx0B+8RVEXzEk3aNK3J3pWlaGJ8MtTs1oiwyXDAH6hG6jy1sY0YqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.0.5/swiper-bundle.min.js" integrity="sha512-cEcJcdNCHLm3YSMAwsI/NeHFqfgNQvO0C27zkPuYZbYjhKlS9+kqO5hZ9YltQ4GaTDpePDQ2SrEk8gHUVaqxig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js" integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="template.prod.js" defer></script>
+    <link rel="stylesheet" href="mission-list.min.css">
+    <script type="module" src="../src/js/d3.js" defer></script>
+    <title>業務系統-任務案件總覽</title>
+    <link rel="icon" type="image/x-icon" href="../../../assests/imgs/favicon.ico">
+  </head>
+  <body>
+    <header>
+      <div class="header-top"> <img src="../../../assests/imgs/eformLogo.png" alt="e-home_image">
+        <div id="user"><img src="../../../assests/imgs/icon_Avatar.png" alt="user_avatar">
+          <p class="user-info"><span class="department">業務部</span> /
+            <span class="name">David</span>
+          </p>
+        </div>
+      </div>
+      <div class="header-bottom"><img src="../../../assests/imgs/btn_home.png" alt="btn_home">
+        <p class="marquee">系統跑馬燈 : [ <span>⚠您有兩筆新任務</span> ]</p>
+      </div>
+    </header>
+    <main> 
+      <aside> 
+        <nav>
+          <ul class="nav-list">
+            <li class="nav-title open">工作項目管理</li>
+            <div class="nav-tags">
+              <li class="nav-tag active">任務管理</li>
+              <li class="nav-tag">海外工作週報管理</li>
+              <li class="nav-tag">經營管理會議(PTT)</li>
+              <li class="nav-tag">出差報告</li>
+              <li class="nav-tag">客戶開發管理</li>
+              <li class="nav-tag">逾期帳款</li>
+              <li class="nav-tag">所有帳款</li>
+              <li class="nav-tag">統計分析</li>
+              <li class="nav-tag">跨部門追蹤</li>
+            </div>
+          </ul>
+          <ul class="nav-list">
+            <li class="nav-title">銷售儀錶板</li>
+          </ul>
+          <ul class="nav-list">
+            <li class="nav-title">情報資訊</li>
+          </ul>
+          <ul class="nav-list">
+            <li class="nav-title">產品知識</li>
+          </ul>
+          <ul class="nav-list">
+            <li class="nav-title">SOP流程</li>
+          </ul>
+          <ul class="nav-list">
+            <li class="nav-title">常用表單下載</li>
+          </ul>
+          <ul class="nav-list">
+            <li class="nav-title green">客戶及聯絡人資料建立</li>
+          </ul>
+          <ul class="nav-list">
+            <li class="nav-title green">查詢OSOM密碼</li>
+          </ul>
+          <ul class="nav-list">
+            <li class="nav-title green">建立測試帳號</li>
+          </ul><a id="back-to-main" href="index.html">返回業務系統首頁 </a>
+        </nav>
+      </aside>
+      <article id="main-page"> 
+        <section class="showing-tab">
+          <div class="exports"> 
+            <button class="exportExcel">匯出Excel </button>
+            <button class="exportPDF">匯出PDF</button>
+          </div>
+          <article class="nowTab"><i class="fa-solid fa-location-dot"></i>
+            <p>業務系統 <span><span class="mainTab">/ <span>工作項目管理</span></span> <span class="subTab">/ <span>任務管理</span></span></span> </p>
+          </article>
+        </section>
+        <section class="back_btn">
+          <button type="button">返回列表</button>
+        </section>
+        <section class="mission-list">
+          <h2>《任務案件總覽》</h2>
+          <table class="list-by-index" border="1">
+            <thead> 
+              <th colspan="8">任務列表(新到舊排序)</th>
+              <tr>
+                <th>編號</th>
+                <th>交辦主管</th>
+                <th>任務標題</th>
+                <th>擔當</th>
+                <th>交辦日期</th>
+                <th>需求日期</th>
+                <th>備註</th>
+                <th>附件</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="table-data" colspan="8">No matching records found</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="controller"> 
+            <button class="index_backward">
+              <i class="fa-solid fa-chevron-left"></i>前10筆</button>
+            <button class="index_forward">
+              後10筆<i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </section>
+      </article>
+    </main>
+    <footer></footer>
+  </body>
+</html>

@@ -1,21 +1,22 @@
-extends _template.pug
+extends ../templates/pug/_template.pug
 
 block localLinks 
-    link(rel="stylesheet" href="css/working-report.min.css")
+    link(rel="stylesheet" href="working-report.min.css")
+    script(type="module" src="working-report.prod.js" defer) 
 
 block title
-    title 業務系統-工作重點
+    title 業務系統-修改任務
 
 block mainContent 
     section.daily-report-day
-        h2 建立《每日工作重點》
+        h2 修改《每日工作重點》
         form
             p 工作重點日期：
-            input#chose-day(type="text" name="chose-day")
-            btn(type="button")
+            input#chose-day(type="date" name="chose-day")
+            button(type="button")
                 <i class="fa-solid fa-pen"></i>
                 |修改其他日期
-    section.show-aria
+    section.show-area
         form
             .row
                 span 
@@ -31,3 +32,6 @@ block mainContent
             +report_inputRow(8)
             +report_inputRow(9)
             +report_inputRow(10)
+            
+            +cancel-confirm_btns
+            

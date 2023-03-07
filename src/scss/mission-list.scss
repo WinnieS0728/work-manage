@@ -1,0 +1,38 @@
+@import '../templates/scss/template';
+
+#main-page {
+    section.back_btn{
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: end;
+        button{
+            background-color: $clr_decorate-orange;
+            font-size: 1.5rem;
+            padding: .5em 2em;
+        }
+    }
+
+    section.mission-list {
+        table.list-by-index {
+            $fontSize_table-title: 1.625rem;
+            $fontSize_table-data: 1.5rem;
+            font-size: $fontSize_table-title;
+
+            .table-data {
+                font-size: $fontSize_table-data;
+
+                &:last-child a{
+                    color: $clr_dark-black;
+                }
+            }
+        }
+
+        .controller {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem;
+        }
+    }
+
+}

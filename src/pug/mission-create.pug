@@ -1,0 +1,50 @@
+extends ../templates/pug/_template.pug
+
+block localLinks 
+    link(rel="stylesheet" href="mission-create.min.css")
+    script(type="module" src="../src/js/mission-create.js" defer) 
+
+
+block title
+    title 業務系統-建立任務
+
+block mainContent 
+    section.back_btn
+        button(type="button") 返回列表
+    section.formTitle 
+        h2 《 建立任務 》
+        .info
+            .mission_id
+                p 任務編號：#[span]
+            .mission_creator
+                p 建立人員：#[span]
+            .mission_createDate
+                p 建立日期：#[span]
+            .mission_history
+                p 修改歷程：#[span]
+
+    section.missionCreate
+        form
+            .mission_date
+                label(for="mission_date") 需求日期
+                input#mission_date(type="date" name="mission_date") 
+                label(for="mission_for") 交辦單位
+                select#mission_for(name="mission_for")
+                    option(value="" disabled selected) 請選擇交辦人員
+            .mission_title
+                label(for="mission_title") 任務標題
+                input#mission_title(type="text" name="mission_title" placeholder="請填入標題...") 
+            .mission_content
+                label(for="mission_content") 任務內容
+                textarea#mission_content(name="mission_content" cols="30" rows="5" placeholder="請填入內容...")
+            .mission_PS
+                label(for="mission_PS") 任務備註
+                textarea#mission_PS(name="mission_PS" cols="30" rows="5" placeholder="可填入備註內容...")
+            .mission_attach
+                label 上傳附件
+                .upload-area
+                    +fileUpload 
+                
+
+
+    +cancel-confirm_btns

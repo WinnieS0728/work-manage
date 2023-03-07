@@ -1,3 +1,7 @@
+const user = 'David'
+d3.select('#user .user-info .name')
+    .text(user)
+
 const navTitle = document.querySelectorAll('.nav-title')
 
 navTitle.forEach((title) => {

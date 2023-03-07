@@ -1,0 +1,15 @@
+extends ../templates/pug/_template.pug
+
+block localLinks 
+    link(rel="stylesheet" href="mission-list.min.css")
+    script(type="module" src="../src/js/d3.js" defer)
+
+
+block title
+    title 業務系統-任務案件總覽
+
+block mainContent 
+    section.back_btn
+        button(type="button") 返回列表
+    section.mission-list
+        +missionList

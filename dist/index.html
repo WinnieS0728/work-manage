@@ -7,22 +7,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.2/d3.min.js" integrity="sha512-oKI0pS1ut+mxQZdqnD3w9fqArLyILRsT3Dx0B+8RVEXzEk3aNK3J3pWlaGJ8MtTs1oiwyXDAH6hG6jy1sY0YqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.0.5/swiper-bundle.min.js" integrity="sha512-cEcJcdNCHLm3YSMAwsI/NeHFqfgNQvO0C27zkPuYZbYjhKlS9+kqO5hZ9YltQ4GaTDpePDQ2SrEk8gHUVaqxig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js" integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="../src/js/template.js" defer></script>
-    <link rel="stylesheet" href="css/style.min.css">
+    <script src="template.prod.js" defer></script>
+    <link rel="stylesheet" href="style.min.css">
     <script type="module" src="../src/js/d3.js"></script>
     <title>業務系統</title>
-    <link rel="icon" type="image/x-icon" href="../assests/img/OrangeLogo.png">
+    <link rel="icon" type="image/x-icon" href="../../../assests/imgs/favicon.ico">
   </head>
   <body>
     <header>
-      <div class="header-top"> <img src="../assests/img/eformLogo.png" alt="e-home_image">
-        <div id="user"><img src="../assests/img/icon_Avatar.png" alt="user_avatar">
+      <div class="header-top"> <img src="../../../assests/imgs/eformLogo.png" alt="e-home_image">
+        <div id="user"><img src="../../../assests/imgs/icon_Avatar.png" alt="user_avatar">
           <p class="user-info"><span class="department">業務部</span> /
-            <span class="name">David</span>
+            <span class="name"></span>
           </p>
         </div>
       </div>
-      <div class="header-bottom"><img src="../assests/img/btn_home.png" alt="btn_home">
+      <div class="header-bottom"><img src="../../../assests/imgs/btn_home.png" alt="btn_home">
         <p class="marquee">系統跑馬燈 : [ <span>⚠您有兩筆新任務</span> ]</p>
       </div>
     </header>
@@ -66,7 +66,7 @@
           </ul>
           <ul class="nav-list">
             <li class="nav-title green">建立測試帳號</li>
-          </ul><a id="back-to-main" href="#">返回業務系統首頁 </a>
+          </ul><a id="back-to-main" href="index.html">返回業務系統首頁 </a>
         </nav>
       </aside>
       <article id="main-page"> 
@@ -79,87 +79,88 @@
             <p>業務系統 <span><span class="mainTab">/ <span>工作項目管理</span></span> <span class="subTab">/ <span>任務管理</span></span></span> </p>
           </article>
         </section>
-        <section class="mission-control"><a href="working-report.html"><i class="fa-solid fa-pen"></i>建立任務</a><a href=""><i class="fa-solid fa-pen"></i>修改任務</a></section>
+        <section class="mission-control"><a href=""><i class="fa-solid fa-pen"></i>建立任務</a><a href=""><i class="fa-solid fa-pen"></i>修改任務</a></section>
         <section class="filter">
           <form>
+            <h3>選擇查詢條件: <span>(單選或複選)</span></h3>
             <div class="formContent">
-              <h3>選擇查詢條件: <span>(單選或複選)</span></h3><span>
-                <label for="">任務日期</label>
-                <input id="day-start" type="text" name="day-start" placeholder="任務週期 (起)" onfocus="(this.type='date')" onblur="(this.type='text')"><span>~</span>
-                <input id="day-end" type="text" name="day-start" placeholder="任務週期 (迄)" onfocus="(this.type='date')" onblur="(this.type='text')">
-                <label for="missionFilter_Year">任務年度</label>
-                <select id="missionFilter_Year" name="mission year">
-                  <option value="" selected disabled>選擇年度 </option>
-                  <option value="2022">2022  </option>
-                  <option value="2023">2023</option>
-                </select>
-                <label for="missionFilter_month">任務月份</label>
-                <select id="missionFilter_month" name="missionFilter_month"> 
-                  <option value="" selected disabled>選擇月份</option>
-                  <option value="1">1月</option>
-                  <option value="2">2月</option>
-                  <option value="3">3月</option>
-                  <option value="4">4月</option>
-                  <option value="5">5月</option>
-                  <option value="6">6月</option>
-                  <option value="7">7月</option>
-                  <option value="8">8月</option>
-                  <option value="9">9月</option>
-                  <option value="10">10月</option>
-                  <option value="11">11月</option>
-                  <option value="12">12月</option>
-                </select></span><span>
-                <label for="">任務篩選</label>
-                <select id="missionFilter_state" name="missionFilter_state"> 
-                  <option value="" selected disabled>任務地區</option>
-                  <option value="all">不拘</option>
-                  <option value="new">新案件</option>
-                  <option value="progress">進行中</option>
-                  <option value="done">已完成</option>
-                </select>
-                <select id="missionFilter_place" name="missionFilter_place"> 
-                  <option value="" selected disabled>任務地區</option>
-                  <option value="all">不拘</option>
-                  <option value="taiwan">台灣</option>
-                  <option value="germany">德國</option>
-                  <option value="italy">義大利</option>
-                  <option value="USA">美國</option>
-                </select>
-                <select id="missionFilter_executor" name="missionFilter_place"> 
-                  <option value="" selected disabled>任務擔當</option>
-                  <option value="all">不拘</option>
-                  <option value="David">David 李洪瑋</option>
-                  <option value="Darie">Darie 李德宜</option>
-                  <option value="Denise">Denise 黃慧卿</option>
-                  <option value="Lorna">Lorna 白翠蓮</option>
-                  <option value="Rich">Rich 黃偉鳴</option>
-                  <option value="Imma. Molinini">Imma. Molinini</option>
-                  <option value="Michele. Dellaventrua">Michele. Dellaventrua</option>
-                  <option value="Marcus Rosenzweig">Marcus Rosenzweig</option>
-                  <option value="Ismail.Kemcen">Ismail.Kemcen</option>
-                  <option value="Stefan Ebert">Stefan Ebert</option>
-                  <option value="Mohamed Akabbal">Mohamed Akabbal</option>
-                  <option value="Cemal Altunkaya">Cemal Altunkaya</option>
-                  <option value="Michael Boe">Michael Boe</option>
-                  <option value="Stefan Becko">Stefan Becko</option>
-                </select>
-                <select id="missionFilter_missionFrom" name="missionFilter_place"> 
-                  <option value="" selected disabled>任務交辦</option>
-                  <option value="all">不拘</option>
-                  <option value="others">其他單位</option>
-                  <option value="Morris">Morris</option>
-                  <option value="Aliber">Aliber</option>
-                </select></span><span>
-                <label for="missionFilter_title">任務標題</label>
-                <input id="missionFilter_title" type="text" name="#missionFilter_title" placeholder="請輸入任務主題關鍵字">
-                <label for="missionFilter_content">任務內容</label>
-                <input id="missionFilter_content" type="text" name="#missionFilter_content" placeholder="請輸入任務內容關鍵字"></span>
-            </div>
-            <div class="formSubmit">
-              <button type="submit">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                送出查詢
-              </button>
+              <div class="formBody"><span>
+                  <label for="">任務日期</label>
+                  <input id="day-start" type="text" name="day-start" placeholder="任務週期 (起)" onfocus="(this.type='date')" onblur="(this.type='text')"><span>~</span>
+                  <input id="day-end" type="text" name="day-start" placeholder="任務週期 (迄)" onfocus="(this.type='date')" onblur="(this.type='text')">
+                  <label for="missionFilter_Year">任務年度</label>
+                  <select id="missionFilter_Year" name="mission year">
+                    <option value="" selected disabled>選擇年度 </option>
+                    <option value="2022">2022  </option>
+                    <option value="2023">2023</option>
+                  </select>
+                  <label for="missionFilter_month">任務月份</label>
+                  <select id="missionFilter_month" name="missionFilter_month"> 
+                    <option value="" selected disabled>選擇月份</option>
+                    <option value="1">1月</option>
+                    <option value="2">2月</option>
+                    <option value="3">3月</option>
+                    <option value="4">4月</option>
+                    <option value="5">5月</option>
+                    <option value="6">6月</option>
+                    <option value="7">7月</option>
+                    <option value="8">8月</option>
+                    <option value="9">9月</option>
+                    <option value="10">10月</option>
+                    <option value="11">11月</option>
+                    <option value="12">12月</option>
+                  </select></span><span>
+                  <label for="">任務篩選</label>
+                  <select id="missionFilter_state" name="missionFilter_state"> 
+                    <option value="" selected disabled>任務地區</option>
+                    <option value="all">不拘</option>
+                    <option value="new">新案件</option>
+                    <option value="progress">進行中</option>
+                    <option value="done">已完成</option>
+                  </select>
+                  <select id="missionFilter_place" name="missionFilter_place"> 
+                    <option value="" selected disabled>任務地區</option>
+                    <option value="all">不拘</option>
+                    <option value="taiwan">台灣</option>
+                    <option value="germany">德國</option>
+                    <option value="italy">義大利</option>
+                    <option value="USA">美國</option>
+                  </select>
+                  <select id="missionFilter_executor" name="missionFilter_place"> 
+                    <option value="" selected disabled>任務擔當</option>
+                    <option value="all">不拘</option>
+                    <option value="David">David 李洪瑋</option>
+                    <option value="Darie">Darie 李德宜</option>
+                    <option value="Denise">Denise 黃慧卿</option>
+                    <option value="Lorna">Lorna 白翠蓮</option>
+                    <option value="Rich">Rich 黃偉鳴</option>
+                    <option value="Imma. Molinini">Imma. Molinini</option>
+                    <option value="Michele. Dellaventrua">Michele. Dellaventrua</option>
+                    <option value="Marcus Rosenzweig">Marcus Rosenzweig</option>
+                    <option value="Ismail.Kemcen">Ismail.Kemcen</option>
+                    <option value="Stefan Ebert">Stefan Ebert</option>
+                    <option value="Mohamed Akabbal">Mohamed Akabbal</option>
+                    <option value="Cemal Altunkaya">Cemal Altunkaya</option>
+                    <option value="Michael Boe">Michael Boe</option>
+                    <option value="Stefan Becko">Stefan Becko</option>
+                  </select>
+                  <select id="missionFilter_missionFrom" name="missionFilter_place"> 
+                    <option value="" selected disabled>任務交辦</option>
+                    <option value="all">不拘</option>
+                    <option value="others">其他單位</option>
+                    <option value="Morris">Morris</option>
+                    <option value="Aliber">Aliber</option>
+                  </select></span><span>
+                  <label for="missionFilter_title">任務標題</label>
+                  <input id="missionFilter_title" type="text" name="#missionFilter_title" placeholder="請輸入任務主題關鍵字">
+                  <label for="missionFilter_content">任務內容</label>
+                  <input id="missionFilter_content" type="text" name="#missionFilter_content" placeholder="請輸入任務內容關鍵字"></span></div>
+              <div class="formSubmit">
+                <button type="submit">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  送出查詢
+                </button>
+              </div>
             </div>
           </form>
         </section>
@@ -320,7 +321,11 @@
                 <th>附件</th>
               </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+              <tr>
+                <td class="table-data" colspan="8">No matching records found</td>
+              </tr>
+            </tbody>
           </table>
           <div class="controller"> 
             <button class="index_backward">
