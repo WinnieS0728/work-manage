@@ -1,0 +1,37 @@
+extends ../templates/pug/_template.pug
+
+block localLinks 
+    link(rel="stylesheet" href="css/mission-update.min.css")
+    //- script(type="module" src="../src/js/mission-update.js" defer) 
+
+
+block title
+    title 業務系統-建立任務
+
+block mainContent 
+    +backToListBtn
+    section.mission-update
+        h2 修改《 任務案件 》
+        .main-content
+            table
+                tr.mission-list.title
+                    th 編號
+                    th 任務標題
+                    th 任務內容
+                    th 備註
+                    th 需求日期
+                    th 任務狀態
+                    th 附件
+                    th 排序
+                tbody
+                    +missionUpdate(1)
+                    +missionUpdate(2)
+                    +missionUpdate(3)
+                    +missionUpdate(4)
+                    +missionUpdate(5)
+                    +missionUpdate(6)
+                    +missionUpdate(7)
+                    +missionUpdate(8)
+                    +missionUpdate(9)
+                    +missionUpdate(10)
+        +cancel-confirm_btns

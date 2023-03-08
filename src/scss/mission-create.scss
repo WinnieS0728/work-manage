@@ -1,17 +1,7 @@
 @import '../templates/scss/template';
 
 #main-page {
-    section.back_btn {
-        margin-bottom: 1rem;
-        display: flex;
-        justify-content: end;
-
-        button {
-            background-color: $clr_decorate-orange;
-            font-size: 1.5rem;
-            padding: .5em 2em;
-        }
-    }
+    @include backBtn;
 
     section.formTitle {
         .info {
@@ -21,16 +11,18 @@
             font-weight: 400;
             font-size: 1.5rem;
             padding: 2em;
+            @include section_border;
         }
     }
 
     section.missionCreate {
         form {
-            padding: 1em 2em;
+            padding: $article-padding;
             display: flex;
             flex-flow: column;
             gap: 2rem;
             font-size: 1.5rem;
+            @include section_border;
 
             &>* {
                 display: flex;
@@ -60,6 +52,23 @@
 
                     .upload-list {
                         display: flex;
+                        align-items: center;
+                        .done {
+                            flex: 0;
+                            height: 80%;
+                            aspect-ratio: 1;
+                            font-size: 1.5rem;
+                            padding: 1em;
+                            border-radius: 50%;
+                            background-color: $clr_light-green;
+                            position: relative;
+                            i{
+                                position: absolute;
+                                transform: translate(-50% , -50%);
+                                color: $clr_dark-white;
+                            }
+                        }
+
                     }
                 }
 

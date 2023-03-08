@@ -8,6 +8,10 @@ mixin fileFormat
 
 mixin missionList
     h2 《任務案件總覽》
+        a(href="mission-list.html") 
+            button(type="button")
+                <i class="fa-solid fa-pen"></i>
+                |編輯
     table.list-by-index(border="1")
         thead 
             th(colspan="8") 任務列表(新到舊排序)
@@ -49,10 +53,17 @@ mixin cancel-confirm_btns
 
 //-  mission page
 
+mixin backToListBtn
+    section.back_btn
+        button(type="button") 返回列表
+
+
 mixin fileUpload
     .upload-list
+        label#mission_upload-attach(for="") 請選取檔案路徑...
         input#mission_attach(type="file" name="mission_attach" style="display:none;")
-        label#mission_upload-attach(for="mission_attach") 請選取檔案路徑...
+        .done 
+            <i class="fa-solid fa-check"></i>
         .btns
             button#file-confirm(type="button")
                 <i class="fa-solid fa-cloud-arrow-up"></i>
@@ -60,3 +71,42 @@ mixin fileUpload
             button#file-preview(type="button")
                 <i class="fa-solid fa-eye"></i>
                 |查看
+
+
+mixin missionUpdate(id)
+    tr.mission-list
+        td.id= id
+        td.title 
+            input#a(type="text" name="a" placeholder='...')
+        td.content
+            input#s(type="text" name="s" placeholder='...')
+        td.PS
+            textarea#d(name="d" cols="30" rows="1" placeholder='...')
+        td.date 
+            input#f(type="text" name="f" onfocus="(this.type='date')" onblur="(this.type='text')")
+        td.state
+            span 未完成
+            .stateIcon
+                .dot
+        td.attach
+            button 查看
+        td.order
+            <i class="fa-solid fa-bars"></i>
+
+mixin attachItem(id)
+    .file 
+        .id= id
+        .preview
+            <i class="fa-regular fa-file-image"></i>
+            .cancel
+                <i class="fa-solid fa-xmark"></i>
+            .upload
+                <i class="fa-solid fa-chevron-up"></i>
+        .name 自動帶入.jpg
+
+mixin fileHistory 
+    li 
+        p
+            |版本
+            span 2022.10.17 AM 10:00
+        a(href="#" download='cat.png') 下載

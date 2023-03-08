@@ -1,7 +1,7 @@
 extends ../templates/pug/_template.pug
 
 block localLinks 
-    link(rel="stylesheet" href="mission-create.min.css")
+    link(rel="stylesheet" href="css/mission-create.min.css")
     script(type="module" src="../src/js/mission-create.js" defer) 
 
 
@@ -9,8 +9,7 @@ block title
     title 業務系統-建立任務
 
 block mainContent 
-    section.back_btn
-        button(type="button") 返回列表
+    +backToListBtn
     section.formTitle 
         h2 《 建立任務 》
         .info
@@ -31,6 +30,7 @@ block mainContent
                 label(for="mission_for") 交辦單位
                 select#mission_for(name="mission_for")
                     option(value="" disabled selected) 請選擇交辦人員
+                    option David
             .mission_title
                 label(for="mission_title") 任務標題
                 input#mission_title(type="text" name="mission_title" placeholder="請填入標題...") 
@@ -43,6 +43,7 @@ block mainContent
             .mission_attach
                 label 上傳附件
                 .upload-area
+                    +fileUpload 
                     +fileUpload 
                 
 
