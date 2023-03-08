@@ -137,9 +137,9 @@ async function setTable_salesByPlace() {
     totalData.push(Object.values(data).map(i => i.goal).reduce((a, b) => a + b, 0))
     totalData.push(Object.values(data).map(i => i.done).reduce((a, b) => a + b, 0))
     totalData.push(Object.values(data).map(i => i.work_on).reduce((a, b) => a + b, 0))
-    totalData.push(Object.values(data).map(i => i.prediction).reduce((a, b) => a + b, 0))
-    totalData.push(totalData[0] - totalData[1])
-    totalData.push((totalData[1] / totalData[0] * 100).toFixed(1) + '%')
+    totalData.push(totalData[1]+totalData[2])
+    totalData.push(totalData[0] - totalData[3])
+    totalData.push((totalData[3] / totalData[0] * 100).toFixed(1) + '%')
 
     // console.log(totalData);
     d3.select(`.place-achievement .table_Total`)

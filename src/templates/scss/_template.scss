@@ -47,7 +47,7 @@ header {
 
     .header-bottom {
         background-color: $clr_main-green;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         padding: 0 2rem;
         display: flex;
         align-items: center;
@@ -148,80 +148,87 @@ main {
     }
 }
 
+
+// ----------------------------------------------------
+
+// 通用樣式
+
 section {
     margin-bottom: 2rem;
+}
 
-    &>h2 {
-        font-size: $fontSize_h2;
-        color: $clr_dark-white;
-        text-align: center;
-        background-color: $clr_section-header;
-        padding-block: .5em;
-        position: relative;
-
-        button {
-            font-size: 1.5rem;
-            position: absolute;
-            inset: 50% 1rem auto auto;
-            transform: translateY(-50%);
-            background-color: $clr_main-green;
-            padding: .2em .5em;
-        }
-    }
-
-    table {
-        width: 100%;
-        text-align: center;
-        font-size: $fontSize_table-title;
-        border-collapse: collapse;
-        font-family: microsoftBlack;
-
-        thead {
-            tr {
-                background-color: $clr_decorate-gray;
-
-                &:first-child {
-                    background-color: $clr_dark-black;
-                    color: $clr_dark-white;
-                }
-            }
-        }
-
-        .table-data {
-            font-size: $fontSize_table-data;
-            font-family: roboto;
-        }
-
-        & :is(th, td) {
-            padding: 8px;
-        }
-
-        .color-number {
-            &.bad {
-                color: $clr_bad-value;
-            }
-        }
-
-        .color-percent {
-            &.bad {
-                color: $clr_bad-value;
-            }
-
-            &.good {
-                color: $clr_good-value;
-            }
-        }
-    }
+section>h2 {
+    font-size: $fontSize_h2;
+    color: $clr_dark-white;
+    text-align: center;
+    background-color: $clr_section-header;
+    padding-block: .5em;
+    position: relative;
 
     button {
-        background-color: $clr_main-decorate-blue;
-        color: $clr_dark-white;
-        border: 0;
         font-size: 1rem;
-        padding: .2em 2em;
-        border-radius: .5rem;
+        position: absolute;
+        inset: 50% 1rem auto auto;
+        transform: translateY(-50%);
+        background-color: $clr_main-green;
+        padding: $btn_normal_padding;
     }
 }
+
+table {
+    width: 100%;
+    text-align: center;
+    font-size: $fontSize_table-title;
+    border-collapse: collapse;
+    font-family: microsoftBlack;
+
+    thead {
+        tr {
+            background-color: $clr_decorate-gray;
+
+            &:first-child {
+                background-color: $clr_dark-black;
+                color: $clr_dark-white;
+            }
+        }
+    }
+
+    .table-data {
+        font-size: $fontSize_table-data;
+        font-family: roboto;
+    }
+
+    & :is(th, td) {
+        padding: 8px;
+    }
+
+    .color-number {
+        &.bad {
+            color: $clr_bad-value;
+        }
+    }
+
+    .color-percent {
+        &.bad {
+            color: $clr_bad-value;
+        }
+
+        &.good {
+            color: $clr_good-value;
+        }
+    }
+}
+
+button {
+    background-color: $clr_main-decorate-blue;
+    color: $clr_dark-white;
+    border: 0;
+    font-size: 1rem;
+    padding: $btn_long_padding;
+    border-radius: .5rem;
+}
+
+
 
 section.showing-tab {
     display: flex;
@@ -267,7 +274,8 @@ section.showing-tab {
     }
 }
 
-input,textarea{
+input,
+textarea {
     font-family: microsoftBlack;
     font-size: $fontSize_input;
     padding: $input-padding;

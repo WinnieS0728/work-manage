@@ -7,8 +7,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.2/d3.min.js" integrity="sha512-oKI0pS1ut+mxQZdqnD3w9fqArLyILRsT3Dx0B+8RVEXzEk3aNK3J3pWlaGJ8MtTs1oiwyXDAH6hG6jy1sY0YqA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.0.5/swiper-bundle.min.js" integrity="sha512-cEcJcdNCHLm3YSMAwsI/NeHFqfgNQvO0C27zkPuYZbYjhKlS9+kqO5hZ9YltQ4GaTDpePDQ2SrEk8gHUVaqxig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js" integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="template.prod.js" defer></script>
-    <link rel="stylesheet" href="mission-list.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.6.1/Sortable.min.js"></script>
+    <script src="js/template.prod.js" defer></script>
+    <link rel="stylesheet" href="css/mission-list.min.css">
     <script type="module" src="../src/js/d3.js" defer></script>
     <title>業務系統-任務案件總覽</title>
     <link rel="icon" type="image/x-icon" href="../../../assests/imgs/favicon.ico">
@@ -18,7 +19,7 @@
       <div class="header-top"> <img src="../../../assests/imgs/eformLogo.png" alt="e-home_image">
         <div id="user"><img src="../../../assests/imgs/icon_Avatar.png" alt="user_avatar">
           <p class="user-info"><span class="department">業務部</span> /
-            <span class="name">David</span>
+            <span class="name"></span>
           </p>
         </div>
       </div>
@@ -83,7 +84,9 @@
           <button type="button">返回列表</button>
         </section>
         <section class="mission-list">
-          <h2>《任務案件總覽》</h2>
+          <h2>《任務案件總覽》<a href="mission-list.html"> 
+              <button type="button">
+                <i class="fa-solid fa-pen"></i>編輯</button></a></h2>
           <table class="list-by-index" border="1">
             <thead> 
               <th colspan="8">任務列表(新到舊排序)</th>

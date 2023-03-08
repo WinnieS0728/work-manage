@@ -10,7 +10,7 @@
             font-size: 1.5rem;
             text-decoration: none;
             color: $clr_dark-white;
-            padding: .3em 1.5em;
+            padding: $btn_long_padding;
             border-radius: .5rem;
             font-weight: 600;
 
@@ -27,7 +27,7 @@
             }
         }
     }
-    
+
     section.filter {
         h3 {
             font-size: 1.75rem;
@@ -39,7 +39,6 @@
         }
 
         form {
-            $input-padding: .2rem;
             $input-border-radius: .5rem;
 
             display: flex;
@@ -58,23 +57,14 @@
                     flex-flow: column;
                     gap: 1rem;
 
-                    input {
-                        font-size: 1.25rem;
-                        padding: $input-padding;
-                        border-radius: $input-border-radius;
-                        margin-inline: .5em;
-
-                        &::placeholder {
-                            padding-left: .5em;
-                        }
-                    }
-
+                    input,
                     select {
                         font-size: 1.25rem;
                         padding: $input-padding;
                         border-radius: $input-border-radius;
+                        margin-inline: .25em;
 
-                        option {
+                        &::placeholder {
                             padding-left: .5em;
                         }
                     }
@@ -85,7 +75,7 @@
                         }
 
                         select {
-                            width: 120px;
+                            width: 6.5em;
                         }
                     }
 
@@ -113,7 +103,7 @@
                 button {
                     font-size: 1.5rem;
                     background-color: $clr_section-header;
-                    padding: .6em 1em;
+                    padding: $btn_big_padding;
                 }
             }
         }
@@ -124,12 +114,11 @@
         gap: 1.5rem;
         padding: 1em;
 
-
         .block {
             flex: 1;
             display: flex;
             flex-flow: column;
-            box-shadow: 0 0 8px $clr_dark-black;
+            box-shadow: 0 0 8px transparentize($clr_dark-black, .5);
             border-radius: .5rem;
             padding: .5em 1em;
             gap: .5em;
@@ -188,16 +177,8 @@
 
     section.place-achievement {
         table {
-            $fontSize_table-title: 1.5rem;
-            $fontSize_table-data: 1.25rem;
-            font-size: $fontSize_table-title;
-
             tbody tr td:first-child {
                 text-align: start;
-            }
-
-            .table-data {
-                font-size: $fontSize_table-data;
             }
         }
     }
@@ -209,6 +190,17 @@
             gap: 1rem;
             padding: $padding;
 
+            @mixin missionDashboard($i, $clr) {
+                &:nth-child(#{$i}) {
+                    background-color: $clr;
+                    position: relative;
+
+                    p:first-child {
+                        color: $clr;
+                    }
+                }
+            }
+
             .block {
                 flex: 1;
                 text-align: center;
@@ -218,13 +210,14 @@
 
                 p {
                     &:first-child {
+                        font-size: 1rem;
                         padding: .5em;
                         background-color: rgb(255, 255, 255, 0.5);
                         font-weight: 900;
                     }
 
                     &:last-child {
-                        font-size: 5.625rem;
+                        font-size: 4rem;
                         color: $clr_dark-white;
 
                         &::after {
@@ -238,121 +231,31 @@
                     }
                 }
 
-                &:nth-child(1) {
-                    background-color: $clr_decorate-gray;
-                    position: relative;
+                @include missionDashboard(1, $clr_decorate-gray);
+                @include missionDashboard(2, $clr_main-green);
+                @include missionDashboard(3, $clr_light-green);
+                @include missionDashboard(4, $clr_decorate-brown);
+                @include missionDashboard(5, $clr_main-decorate-blue);
+                @include missionDashboard(6, $clr-decorate-pink);
+                @include missionDashboard(7, $clr_decorate-orange);
 
-                    p:first-child {
-                        color: $clr_decorate-gray;
-                    }
-                }
-
-                &:nth-child(2) {
-                    background-color: $clr_main-green;
-                    position: relative;
-
-                    p:first-child {
-                        color: $clr_main-green;
-                    }
-
-                }
-
-                &:nth-child(3) {
-                    background-color: $clr_light-green;
-                    position: relative;
-
-                    p:first-child {
-                        color: $clr_light-green;
-                    }
-                }
-
-                &:nth-child(4) {
-                    background-color: $clr_decorate-brown;
-                    position: relative;
-
-                    p:first-child {
-                        color: $clr_decorate-brown;
-                    }
-                }
 
                 &:nth-child(5) {
-                    background-color: $clr_main-decorate-blue;
-                    position: relative;
-
-                    p:first-child {
-                        color: $clr_main-decorate-blue;
-                    }
-
                     p:last-child::after {
                         content: '%';
                     }
-                }
-
-                &:nth-child(6) {
-                    background-color: $clr-decorate-pink;
-                    position: relative;
-
-                    p:first-child {
-                        color: $clr-decorate-pink;
-                    }
-                }
-
-                &:nth-child(7) {
-                    background-color: $clr_decorate-orange;
-                    position: relative;
-
-                    p:first-child {
-                        color: $clr_decorate-orange;
-                    }
-
                 }
             }
         }
     }
 
     section.mission-list {
-        table.list-by-index {
-            $fontSize_table-title: 1.625rem;
-            $fontSize_table-data: 1.5rem;
-            font-size: $fontSize_table-title;
-
-            .table-data {
-                font-size: $fontSize_table-data;
-
-                &:last-child a{
-                    color: $clr_dark-black;
-                }
-            }
-        }
-
-        table.list-by-member {
-            $fontSize_table-title: 1.5rem;
-            $fontSize_table-data: 1.625rem;
-            font-size: $fontSize_table-title;
-
-            .table-data {
-                font-size: $fontSize_table-data;
-            }
-        }
-
-
-        .controller {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            padding: 1rem;
-        }
+        @include missionList;
     }
 
     section.daily-routine {
         table {
-            $fontSize_table-title: 1.625rem;
-            $fontSize_table-data: 1.5rem;
-            font-size: $fontSize_table-title;
-
             .table-data {
-                font-size: $fontSize_table-data;
-
                 .no-show {
                     display: none;
                 }
@@ -367,14 +270,6 @@
 
     section.weekly-data {
         table {
-            $fontSize_table-title: 1.625rem;
-            $fontSize_table-data: 1.5rem;
-            font-size: $fontSize_table-title;
-
-            .table-data {
-                font-size: $fontSize_table-data;
-            }
-
             tr[class^='weeklyData_'] {
                 line-height: 1.5em;
             }
@@ -384,9 +279,10 @@
                 text-decoration: none;
                 color: $clr_dark-black;
                 background-color: $clr_main-decorate-blue;
-                padding: .2em .5em;
+                padding: $btn_normal_padding;
                 border-radius: .5rem;
                 margin-block: .2em;
+                color: $clr_dark-white;
             }
         }
 
