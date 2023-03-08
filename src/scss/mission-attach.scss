@@ -1,0 +1,79 @@
+@import '../templates/scss/template';
+
+#main-page {
+    section.attach-update>article {
+        @include section_border;
+
+        &>p {
+            text-align: center;
+            margin-block: 1em;
+        }
+
+        article.main-content {
+            display: flex;
+            flex-flow: column;
+            padding: $article-padding;
+
+            &>span {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                column-gap: 2rem;
+                font-size: 1.5rem;
+                padding-block: 5rem;
+
+                &:not(:last-child) {
+                    border-bottom: 1px solid #000;
+                }
+
+                &:first-child {
+                    padding-top: 0;
+                }
+
+
+                .file {
+                    display: flex;
+                    flex-flow: column;
+                    align-items: center;
+                    gap: 1rem;
+
+                    .preview {
+                        @include section_border;
+                        width: 80%;
+                        aspect-ratio: 4/3;
+                        display: grid;
+                        place-items: center;
+                        position: relative;
+
+                        $size: 1.5em;
+
+                        @mixin controlBtn {
+                            position: absolute;
+                            width: $size;
+                            aspect-ratio: 1;
+                            border-radius: 50%;
+                            display: grid;
+                            place-items: center;
+                            color: $clr_dark-white;
+                        }
+
+                        .cancel {
+                            @include controlBtn;
+                            background-color: $clr_bad-value;
+                            top: calc(-#{$size / 2});
+                            right: calc(-#{$size / 2});
+                        }
+                        .upload{
+                            @include controlBtn;
+                            background-color: $clr_light-green;
+                            bottom: calc(-#{$size / 2});
+                            left: calc(-#{$size / 2});
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
+    @include btns_confirm;
+}

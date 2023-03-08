@@ -1,0 +1,84 @@
+@import '../templates/scss/template';
+
+#main-page {
+    article.selectWeek {
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding: 2em;
+        margin-bottom: 2rem;
+        @include section_border;
+
+        button {
+            font-size: 1.5rem;
+            padding: .5em 1em;
+            background-color: $clr_light-green;
+
+            i {
+                margin-right: 1rem;
+            }
+        }
+    }
+
+    article.main-content {
+        font-size: 1.5rem;
+        display: flex;
+        gap: 5rem;
+        padding: $article-padding;
+        min-height: 50rem;
+        @include section_border;
+
+        &>* {
+            width: 100%;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            gap: 1rem;
+
+            label,
+            .file-info {
+                width: 100%;
+                aspect-ratio: 4/2;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                @include section_border;
+                gap: 2rem;
+                margin-bottom: 3rem;
+                cursor: pointer;
+
+                button {
+                    font-size: 1.5rem;
+                    padding: .5em 1em;
+                    background-color: $clr_main-green;
+                }
+            }
+
+            .file-history {
+                width: 100%;
+                display: flex;
+                flex-flow: column;
+                gap: 1rem;
+                li {
+                    list-style: none;
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 2rem;
+
+                    a {
+                        text-decoration: none;
+                        color: $clr_dark-white;
+                        background-color: $clr_light-green;
+                        border-radius: .5rem;
+                        padding: .3em .5em
+                    }
+                }
+            }
+        }
+    }
+
+
+    @include btns_confirm;
+}

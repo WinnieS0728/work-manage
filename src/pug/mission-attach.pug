@@ -1,0 +1,42 @@
+extends ../templates/pug/_template.pug
+
+block localLinks 
+    link(rel="stylesheet" href="mission-attach.min.css")
+    //- script(type="module" src="../src/js/mission-update.js" defer) 
+
+
+block title
+    title 業務系統-修改附件檔案
+
+block mainContent 
+    section.attach-update
+        h2 修改《附件檔案》
+        article
+            p 上傳檔案類型：JPG, PDF, PPT, EXCEL
+            article.main-content
+                span
+                    +attachItem(1)
+                    +attachItem(2)
+                    +attachItem(3)
+                    +attachItem(4)
+                    +attachItem(5)
+                span
+                    +attachItem(6)
+                    +attachItem(7)
+                    +attachItem(8)
+                    +attachItem(9)
+                    +attachItem(10)
+                span
+                    +attachItem(11)
+                    +attachItem(12)
+                    +attachItem(13)
+                    +attachItem(14)
+                    +attachItem(15)
+                span
+                    +attachItem(16)
+                    +attachItem(17)
+                    +attachItem(18)
+                    +attachItem(19)
+                    +attachItem(20)
+
+        +cancel-confirm_btns

@@ -72,7 +72,7 @@ main {
     }
 
     aside {
-        min-width: 15rem;
+        min-width: 13em;
         background-color: $clr_main-green;
 
         nav {
@@ -157,6 +157,16 @@ section {
         text-align: center;
         background-color: $clr_section-header;
         padding-block: .5em;
+        position: relative;
+
+        button {
+            font-size: 1.5rem;
+            position: absolute;
+            inset: 50% 1rem auto auto;
+            transform: translateY(-50%);
+            background-color: $clr_main-green;
+            padding: .2em .5em;
+        }
     }
 
     table {
@@ -255,4 +265,10 @@ section.showing-tab {
     .exports {
         align-self: flex-end;
     }
+}
+
+input,textarea{
+    font-family: microsoftBlack;
+    font-size: $fontSize_input;
+    padding: $input-padding;
 }

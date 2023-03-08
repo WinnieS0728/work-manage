@@ -1,0 +1,38 @@
+extends ../templates/pug/_template.pug
+
+block localLinks 
+    link(rel="stylesheet" href="css/week-data-create.min.css")
+    //- script(type="module" src="../src/js/mission-create.js" defer) 
+
+
+block title
+    title 業務系統-每週檔案
+
+block mainContent 
+    section
+        h2 修改《每週專案PPT & 每週會議記錄》
+        article.selectWeek
+            input#week(type="week" name="week")
+            button(type="button")
+                <i class="fa-regular fa-clock"></i>
+                |選擇其他日期
+        article.main-content 
+            #PPT 
+                p 專案PPT
+                p.file-info 目前檔案版本：
+                    span 2022.10.18 AM 12:30
+                input#PPT-file(type="file" name="PPT-file" style="display:none;") 
+                ul.file-history
+                    +fileHistory
+                    +fileHistory
+                    +fileHistory
+            #meeting-report
+                p 週會會議記錄
+                p.file-info 目前檔案版本：
+                    span 2022.10.18 AM 12:30
+                input#meeting-file(type="file" name="meeting-file" style="display:none;")
+                ul.file-history
+                    +fileHistory
+                    +fileHistory
+                    +fileHistory
+        +cancel-confirm_btns
