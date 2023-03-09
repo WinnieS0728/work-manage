@@ -10,20 +10,20 @@
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.6.1/Sortable.min.js"></script>
     <script src="js/template.prod.js" defer></script>
     <link rel="stylesheet" href="css/working-report.min.css">
-    <script type="module" src="js/working-report.prod.js" defer> </script>
-    <title>業務系統-修改任務</title>
-    <link rel="icon" type="image/x-icon" href="../../../assests/imgs/favicon.ico">
+    <script type="module" src="../src/js/working-report.js" defer> </script>
+    <title>業務系統-建立工作重點</title>
+    <link rel="icon" type="image/x-icon" href="../assests/imgs/favicon.ico">
   </head>
   <body>
     <header>
-      <div class="header-top"> <img src="../../../assests/imgs/eformLogo.png" alt="e-home_image">
-        <div id="user"><img src="../../../assests/imgs/icon_Avatar.png" alt="user_avatar">
+      <div class="header-top"> <img src="../assests/imgs/eformLogo.png" alt="e-home_image">
+        <div id="user"><img src="../assests/imgs/icon_Avatar.png" alt="user_avatar">
           <p class="user-info"><span class="department">業務部</span> /
             <span class="name"></span>
           </p>
         </div>
       </div>
-      <div class="header-bottom"><img src="../../../assests/imgs/btn_home.png" alt="btn_home">
+      <div class="header-bottom"><img src="../assests/imgs/btn_home.png" alt="btn_home">
         <p class="marquee">系統跑馬燈 : [ <span>⚠您有兩筆新任務</span> ]</p>
       </div>
     </header>
@@ -89,9 +89,9 @@
               <i class="fa-solid fa-pen"></i>修改其他日期</button>
           </form>
         </section>
-        <section class="show-area">
+        <article class="main-content">
           <form>
-            <div class="row"><span> </span>
+            <div class="row title"><span> </span>
               <p>工作重點</p>
               <p>工作重點進度回報</p>
             </div>
@@ -135,12 +135,12 @@
               <input id="daily-point" type="text" name="daily-point" placeholder="..."/>
               <input id="report" type="text" name="report" placeholder="..."/>
             </div>
-            <div class="confirm_btns">
-              <button class="cancel" type="button">放棄修改</button>
-              <button class="confirm" type="button">立即儲存</button>
-            </div>
           </form>
-        </section>
+        </article>
+        <div class="confirm_btns">
+          <button class="cancel" type="button">放棄修改</button>
+          <button class="confirm" type="button">立即儲存</button>
+        </div>
       </article>
     </main>
     <footer></footer>

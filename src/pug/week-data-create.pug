@@ -10,8 +10,9 @@ block title
 
 block mainContent 
     section
-        h2 建立《每週專案PPT & 每週會議記錄》
-        article.selectWeek
+        block form title
+            h2 建立《每週專案PPT & 每週會議記錄》
+        section.selectWeek
             input#week(type="week" name="week")
             button(type="button")
                 <i class="fa-regular fa-clock"></i>
@@ -19,14 +20,16 @@ block mainContent
         article.main-content 
             #PPT 
                 p 專案PPT
-                label(for="PPT-file")
-                    p 瀏覽檔案位置...
-                    button(type="button") 上傳
-                input#PPT-file(type="file", name="PPT-file" style="display:none;") 
+                block PPT
+                    label(for="PPT-file")
+                        p 瀏覽檔案位置...
+                        button(type="button") 上傳
+                    input#PPT-file(type="file", name="PPT-file" style="display:none;") 
             #meeting-report
                 p 週會會議記錄
-                label(for="meeting-file")
-                    p 瀏覽檔案位置...
-                    button(type="button") 上傳
-                input#meeting-file(type="file", name="meeting-file" style="display:none;")
+                block meeting
+                    label(for="meeting-file")
+                        p 瀏覽檔案位置...
+                        button(type="button") 上傳
+                    input#meeting-file(type="file", name="meeting-file" style="display:none;")
         +cancel-confirm_btns

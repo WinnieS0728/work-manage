@@ -2,7 +2,7 @@ const date_input = document.querySelector('#chose-day')
 
 date_input.valueAsDate = new Date()
 
-let testAry = ['義大利優惠方案Flyer - 英文版翻譯', '錄製OG操作教學', 'OSOM測試']
+let testAry = ['義大利優惠方案Flyer-英文版翻譯', '錄製OG操作教學', 'OSOM測試']
 
 d3.select('.show-area form')
     .selectAll('.row #daily-point')
@@ -20,7 +20,7 @@ const body = {
     "Sales": "",
     "DayPoint": "",
     "Report": "",
-    "id": ""
+    "id": "",
 }
 
 function upload() {
@@ -32,17 +32,19 @@ function upload() {
     const reportAry = [...reports]
     // e.map(i => i.value).filter(i => i !== '');
 
-    body.Sales = user;
-    body.DayPoint = dayPointAry.map(i => i.value).filter(i => i !== '');
-    body.Report = reportAry.map(i => i.value).filter(i => i !== '');
-    body.id = 1;
+    // body.Sales = user;
+    body.DayPoint = dayPointAry.map(i => i.value).filter(i => i !== '').join(',');
+    // console.log(dayPointAry.map(i => i.value).filter(i => i !== '').join(','));
+    body.Report = reportAry.map(i => i.value).filter(i => i !== '').join(',');
 
     async function gg(body) {
-        const res = await axios.post('http://orangeapi.orange-electronic.com/api/SalesDayWorkAdd', {
-            method: 'POST',
-            body: body
-        })
-        console.log(res);
+        const res = await axios(
+            {
+                method: 'POST',
+                url: 'http://orangeapi.orange-electronic.com/api/SalesDayWorkAdd',
+                data: body
+            });
+        alert(res.data);
     }
     gg(body)
 }

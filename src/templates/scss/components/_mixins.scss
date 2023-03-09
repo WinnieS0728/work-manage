@@ -1,22 +1,23 @@
-@mixin btn_confirm_style{
-    button:is(.cancel, .confirm){
+@mixin btn_confirm_style {
+    button:is(.cancel, .confirm) {
         font-family: microsoftBlack;
         font-size: 1.75rem;
         padding: $btn_big_padding;
         border-radius: 1rem;
         color: $clr_dark-white;
 
-        &.cancel{
+        &.cancel {
             background-color: $clr_cancel-btn;
         }
-        &.confirm{
+
+        &.confirm {
             background-color: $clr_confirm-btn;
         }
     }
 }
 
-@mixin btns_confirm{
-    .confirm_btns{
+@mixin btns_confirm {
+    .confirm_btns {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -26,12 +27,12 @@
     }
 }
 
-@mixin section_border{
+@mixin section_border {
     border: 1px solid transparentize($clr_dark-black, .5);
     border-radius: .3rem;
 }
 
-@mixin backBtn{
+@mixin backBtn {
     section.back_btn {
         margin-bottom: 1rem;
         display: flex;
@@ -45,7 +46,7 @@
     }
 }
 
-@mixin missionList{
+@mixin missionList {
     table.list-by-index {
         .table-data:last-child a {
             color: $clr_dark-black;
@@ -57,5 +58,27 @@
         justify-content: center;
         gap: 1rem;
         padding: 1rem;
+    }
+}
+
+
+@mixin form-title {
+    @include section-border;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    font-size: $fontSize_input;
+    padding: $form_title-padding;
+
+    button {
+        background-color: $clr_light-green;
+        color: $clr_dark-white;
+        font-size: 1.5rem;
+        padding: $btn_normal_padding;
+
+        i {
+            margin-right: .5em;
+        }
     }
 }

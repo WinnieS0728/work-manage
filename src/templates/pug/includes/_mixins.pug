@@ -58,20 +58,6 @@ mixin backToListBtn
         button(type="button") 返回列表
 
 
-mixin fileUpload
-    .upload-list
-        label#mission_upload-attach(for="") 請選取檔案路徑...
-        input#mission_attach(type="file" name="mission_attach" style="display:none;")
-        .done 
-            <i class="fa-solid fa-check"></i>
-        .btns
-            button#file-confirm(type="button")
-                <i class="fa-solid fa-cloud-arrow-up"></i>
-                |上傳
-            button#file-preview(type="button")
-                <i class="fa-solid fa-eye"></i>
-                |查看
-
 
 mixin missionUpdate(id)
     tr.mission-list

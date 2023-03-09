@@ -2,38 +2,19 @@
 
 #main-page {
     section.daily-report-day {
-
         form {
-            border: .2rem solid transparentize($clr_dark-black, .9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 3rem;
-            font-size: $fontSize_input;
-            padding-block: 2em;
+            @include form-title;
 
             #chose-day {
-                font-size: 1.75rem;
-                padding: $input-padding;
-            }
-
-            button {
-                background-color: $clr_light-green;
-                color: $clr_dark-white;
                 font-size: 1.5rem;
-                padding: .5em 1em;
-                border-radius: .5rem;
-
-                i {
-                    margin-right: .5em;
-                    text-decoration: underline;
-                }
+                padding: $input-padding;
             }
         }
     }
 
-    section.show-area {
-        padding: 3em;
+    article.main-content {
+        padding: $article-padding;
+        @include section-border;
 
         form {
             display: flex;
@@ -60,7 +41,8 @@
                     padding: $input-padding;
                 }
             }
-            @include btns_confirm;
         }
     }
+
+    @include btns_confirm;
 }

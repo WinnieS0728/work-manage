@@ -1,25 +1,8 @@
 @import '../templates/scss/template';
 
 #main-page {
-    article.selectWeek {
-        font-size: 1.5rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-        padding: 2em;
-        margin-bottom: 2rem;
-        @include section_border;
-
-        button {
-            font-size: 1.5rem;
-            padding: .5em 1em;
-            background-color: $clr_light-green;
-
-            i {
-                margin-right: 1rem;
-            }
-        }
+    section.selectWeek {
+        @include form-title;
     }
 
     article.main-content {

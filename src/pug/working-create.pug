@@ -5,18 +5,19 @@ block localLinks
     script(type="module" src="../src/js/working-report.js" defer) 
 
 block title
-    title 業務系統-建立任務
+    title 業務系統-建立工作重點
 
 block mainContent 
     section.daily-report-day
-        h2 建立《每日工作重點》
+        block form title
+            h2 建立《每日工作重點》
         form
             p 工作重點日期：
             input#chose-day(type="date" name="chose-day")
             button(type="button")
                 <i class="fa-solid fa-pen"></i>
                 |修改其他日期
-    section.show-area
+    article.main-content
         form
             .row.title
                 span 
@@ -31,7 +32,6 @@ block mainContent
             +report_inputRow(7)
             +report_inputRow(8)
             +report_inputRow(9)
-            +report_inputRow(10)
-            
-            +cancel-confirm_btns
+            +report_inputRow(10)    
+    +cancel-confirm_btns
             

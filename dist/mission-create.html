@@ -12,18 +12,18 @@
     <link rel="stylesheet" href="css/mission-create.min.css">
     <script type="module" src="../src/js/mission-create.js" defer> </script>
     <title>業務系統-建立任務</title>
-    <link rel="icon" type="image/x-icon" href="../../../assests/imgs/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../assests/imgs/favicon.ico">
   </head>
   <body>
     <header>
-      <div class="header-top"> <img src="../../../assests/imgs/eformLogo.png" alt="e-home_image">
-        <div id="user"><img src="../../../assests/imgs/icon_Avatar.png" alt="user_avatar">
+      <div class="header-top"> <img src="../assests/imgs/eformLogo.png" alt="e-home_image">
+        <div id="user"><img src="../assests/imgs/icon_Avatar.png" alt="user_avatar">
           <p class="user-info"><span class="department">業務部</span> /
             <span class="name"></span>
           </p>
         </div>
       </div>
-      <div class="header-bottom"><img src="../../../assests/imgs/btn_home.png" alt="btn_home">
+      <div class="header-bottom"><img src="../assests/imgs/btn_home.png" alt="btn_home">
         <p class="marquee">系統跑馬燈 : [ <span>⚠您有兩筆新任務</span> ]</p>
       </div>
     </header>
@@ -126,11 +126,10 @@
             <div class="mission_attach">
               <label>上傳附件</label>
               <div class="upload-area">
-                <div class="upload-list">
-                  <label id="mission_upload-attach" for="">請選取檔案路徑...</label>
-                  <input id="mission_attach" type="file" name="mission_attach" style="display:none;"/>
-                  <div class="done">
-                     <i class="fa-solid fa-check"></i></div>
+                <div class="upload-control">
+                  <label id="mission_upload-attach" for="mission_attach">請選取檔案路徑...</label>
+                  <input id="mission_attach" type="file" name="mission_attach" style="display:none;" multiple>
+                  <div class="done"><i class="fa-solid fa-check"></i></div>
                   <div class="btns">
                     <button id="file-confirm" type="button">
                       <i class="fa-solid fa-cloud-arrow-up"></i>上傳</button>
@@ -138,18 +137,13 @@
                       <i class="fa-solid fa-eye"></i>查看</button>
                   </div>
                 </div>
-                <div class="upload-list">
-                  <label id="mission_upload-attach" for="">請選取檔案路徑...</label>
-                  <input id="mission_attach" type="file" name="mission_attach" style="display:none;"/>
-                  <div class="done">
-                     <i class="fa-solid fa-check"></i></div>
-                  <div class="btns">
-                    <button id="file-confirm" type="button">
-                      <i class="fa-solid fa-cloud-arrow-up"></i>上傳</button>
-                    <button id="file-preview" type="button">
-                      <i class="fa-solid fa-eye"></i>查看</button>
-                  </div>
-                </div>
+                <table class="upload-list">
+                  <tr class="fileInfo title">
+                    <td class="id">順序</td>
+                    <td class="name">檔名</td>
+                    <td class="delete">刪除</td>
+                  </tr>
+                </table>
               </div>
             </div>
           </form>
