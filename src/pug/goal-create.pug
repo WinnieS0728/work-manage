@@ -1,0 +1,18 @@
+extends ../templates/pug/_template.pug
+
+block localLinks 
+    link(rel="stylesheet" href="css/goal.min.css")
+    //- script(type="module" src="../src/js/mission-create.js" defer) 
+
+
+block title
+    title 業務系統-每週檔案
+
+block mainContent 
+    section
+        h2 建立《預算目標》
+        article.selectWeek
+            p 預算年度：
+            input#year(type="number" name="year")
+        article.main-content 
+            

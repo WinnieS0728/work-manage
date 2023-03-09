@@ -53,6 +53,7 @@
                     .upload-list {
                         display: flex;
                         align-items: center;
+
                         .done {
                             flex: 0;
                             height: 80%;
@@ -62,9 +63,10 @@
                             border-radius: 50%;
                             background-color: $clr_light-green;
                             position: relative;
-                            i{
+
+                            i {
                                 position: absolute;
-                                transform: translate(-50% , -50%);
+                                transform: translate(-50%, -50%);
                                 color: $clr_dark-white;
                             }
                         }

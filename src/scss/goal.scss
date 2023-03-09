@@ -1,0 +1,22 @@
+@import '../templates/scss/template';
+
+#main-page {
+    input[type="number"] {
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+            display: none;
+            margin: 0;
+        }
+    }
+
+    article.selectWeek {
+        font-size: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding: 2em;
+        margin-bottom: 2rem;
+        @include section_border;
+    }
+}
