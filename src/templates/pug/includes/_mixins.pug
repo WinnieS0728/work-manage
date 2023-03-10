@@ -63,13 +63,13 @@ mixin missionUpdate(id)
     tr.mission-list
         td.id= id
         td.title 
-            input#a(type="text" name="a" placeholder='...')
+            input#mission_title(type="text" name="mission_title" placeholder='...')
         td.content
-            input#s(type="text" name="s" placeholder='...')
+            input#mission_content(type="text" name="content" placeholder='...')
         td.PS
-            textarea#d(name="d" cols="30" rows="1" placeholder='...')
+            textarea#mission_PS(name="PS" cols="30" rows="1" placeholder='...')
         td.date 
-            input#f(type="text" name="f" onfocus="(this.type='date')" onblur="(this.type='text')")
+            input#mission_date(type="text" name="date" onfocus="(this.type='date')" onblur="(this.type='text')")
         td.state
             span 未完成
             .stateIcon
@@ -96,3 +96,33 @@ mixin fileHistory
             |版本
             span 2022.10.17 AM 10:00
         a(href="#" download='cat.png') 下載
+
+
+mixin goal_year(year , chn)
+    .year
+        label(for=`goal_${year}`) #{chn}預算：
+        input(id=`goal_${year}` type="text", name=`${year}` placeholder='請填入目標金額...' value='2,210,962')
+
+mixin goal_place(chn,en)
+    .place 
+        p.name #{chn}：
+        input(id=`goal_${en}` type="text", name=`goal_${en}` placeholder='請填入目標金額...')
+        input(id=`work-on_${en}` type="text" name=`work_on_${en}` placeholder='請填入目標金額...')
+
+
+
+
+mixin select_month 
+    select#month(name="month")
+        option(value="Jan" selected) 一月  
+        option(value="Feb") 二月  
+        option(value="Mar") 三月  
+        option(value="Apr") 四月  
+        option(value="May") 五月  
+        option(value="Jun") 六月  
+        option(value="Jul") 七月  
+        option(value="Aug") 八月  
+        option(value="Sep") 九月  
+        option(value="Oct") 十月  
+        option(value="Nov") 十一月  
+        option(value="Dec") 十二月  

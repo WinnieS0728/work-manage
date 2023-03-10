@@ -1,0 +1,31 @@
+extends ../templates/pug/_template.pug
+
+block localLinks 
+    link(rel="stylesheet" href="css/place.min.css")
+    //- script(type="module" src="../src/js/mission-create.js" defer) 
+
+
+block title
+    title 業務系統-地區業績
+
+block mainContent 
+    section
+        block form title
+            h2 建立《各地區業績面板》
+        article.selectYear
+            label(for="year")  業績年度：
+            input#year(type="number" name="year" placeholder='請填入預算年度...')
+            label(for="month") 業績月份：
+            +select_month
+        article.main-content
+            +goal_place('業一 歐洲A(義大利)','EUA')
+            +goal_place('業一 北美','USA')
+            +goal_place('業一 北美','USA')
+            +goal_place('業一 歐洲B(德國)','EUB')
+            +goal_place('業一 台灣','Taiwan')
+            +goal_place('業一 其他','other')
+            +goal_place('業二 日本','Japan')
+            +goal_place('業二 重點客戶','VIP')
+            +goal_place('業三 大陸','China')
+            +goal_place('業四 台灣OEM','Taiwan_OEM')
+        +cancel-confirm_btns

@@ -1,4 +1,10 @@
 extends ./working-create.pug
 
+
+block localLinks 
+    link(rel="stylesheet" href="css/working-report.min.css")
+    script(type="module" src="../src/js/working-update.js" defer) 
+
+
 block form title 
     h2 修改《每日工作重點》

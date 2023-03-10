@@ -9,8 +9,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js" integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.6.1/Sortable.min.js"></script>
     <script src="js/template.prod.js" defer></script>
-    <link rel="stylesheet" href="css/goal.min.css">
-    <title>業務系統-預算目標</title>
+    <link rel="stylesheet" href="css/place.min.css">
+    <title>業務系統-地區業績</title>
     <link rel="icon" type="image/x-icon" href="../assests/imgs/favicon.ico">
   </head>
   <body>
@@ -80,63 +80,76 @@
           </article>
         </section>
         <section>
-          <h2>建立《預算目標》</h2>
-          <article class="selectWeek">
-            <p>預算年度：</p>
+          <h2>建立《各地區業績面板》</h2>
+          <article class="selectYear">
+            <label for="year"> 業績年度：</label>
             <input id="year" type="number" name="year" placeholder="請填入預算年度...">
+            <label for="month">業績月份：</label>
+            <select id="month" name="month">
+              <option value="Jan" selected="selected">一月  </option>
+              <option value="Feb">二月  </option>
+              <option value="Mar">三月  </option>
+              <option value="Apr">四月  </option>
+              <option value="May">五月  </option>
+              <option value="Jun">六月  </option>
+              <option value="Jul">七月  </option>
+              <option value="Aug">八月  </option>
+              <option value="Sep">九月  </option>
+              <option value="Oct">十月  </option>
+              <option value="Nov">十一月  </option>
+              <option value="Dec">十二月  </option>
+            </select>
           </article>
           <article class="main-content">
-            <div class="first-year">
-              <div class="year">
-                <label for="goal_Jan">1月預算：</label>
-                <input id="goal_Jan" type="number" name="Jan" placeholder="請填入目標金額..." value="2,210,962"/>
-              </div>
-              <div class="year">
-                <label for="goal_Feb">2月預算：</label>
-                <input id="goal_Feb" type="number" name="Feb" placeholder="請填入目標金額..." value="2,210,962"/>
-              </div>
-              <div class="year">
-                <label for="goal_Mar">3月預算：</label>
-                <input id="goal_Mar" type="number" name="Mar" placeholder="請填入目標金額..." value="2,210,962"/>
-              </div>
-              <div class="year">
-                <label for="goal_Apr">4月預算：</label>
-                <input id="goal_Apr" type="number" name="Apr" placeholder="請填入目標金額..." value="2,210,962"/>
-              </div>
-              <div class="year">
-                <label for="goal_May">5月預算：</label>
-                <input id="goal_May" type="number" name="May" placeholder="請填入目標金額..." value="2,210,962"/>
-              </div>
-              <div class="year">
-                <label for="goal_Jun">6月預算：</label>
-                <input id="goal_Jun" type="number" name="Jun" placeholder="請填入目標金額..." value="2,210,962"/>
-              </div>
+            <div class="place"> 
+              <p class="name">業一 歐洲A(義大利)：</p>
+              <input id="goal_EUA" type="text" name="goal_EUA" placeholder="請填入目標金額..."/>
+              <input id="work-on_EUA" type="text" name="work_on_EUA" placeholder="請填入目標金額..."/>
             </div>
-            <div class="last-year">
-              <div class="year">
-                <label for="goal_Jul">7月預算：</label>
-                <input id="goal_Jul" type="number" name="Jul" placeholder="請填入目標金額..." value="2,210,962"/>
-              </div>
-              <div class="year">
-                <label for="goal_Aug">8月預算：</label>
-                <input id="goal_Aug" type="number" name="Aug" placeholder="請填入目標金額..." value="2,210,962"/>
-              </div>
-              <div class="year">
-                <label for="goal_Sep">9月預算：</label>
-                <input id="goal_Sep" type="number" name="Sep" placeholder="請填入目標金額..." value="2,210,962"/>
-              </div>
-              <div class="year">
-                <label for="goal_Oct">10月預算：</label>
-                <input id="goal_Oct" type="number" name="Oct" placeholder="請填入目標金額..." value="2,210,962"/>
-              </div>
-              <div class="year">
-                <label for="goal_Nov">11月預算：</label>
-                <input id="goal_Nov" type="number" name="Nov" placeholder="請填入目標金額..." value="2,210,962"/>
-              </div>
-              <div class="year">
-                <label for="goal_Dec">12月預算：</label>
-                <input id="goal_Dec" type="number" name="Dec" placeholder="請填入目標金額..." value="2,210,962"/>
-              </div>
+            <div class="place"> 
+              <p class="name">業一 北美：</p>
+              <input id="goal_USA" type="text" name="goal_USA" placeholder="請填入目標金額..."/>
+              <input id="work-on_USA" type="text" name="work_on_USA" placeholder="請填入目標金額..."/>
+            </div>
+            <div class="place"> 
+              <p class="name">業一 北美：</p>
+              <input id="goal_USA" type="text" name="goal_USA" placeholder="請填入目標金額..."/>
+              <input id="work-on_USA" type="text" name="work_on_USA" placeholder="請填入目標金額..."/>
+            </div>
+            <div class="place"> 
+              <p class="name">業一 歐洲B(德國)：</p>
+              <input id="goal_EUB" type="text" name="goal_EUB" placeholder="請填入目標金額..."/>
+              <input id="work-on_EUB" type="text" name="work_on_EUB" placeholder="請填入目標金額..."/>
+            </div>
+            <div class="place"> 
+              <p class="name">業一 台灣：</p>
+              <input id="goal_Taiwan" type="text" name="goal_Taiwan" placeholder="請填入目標金額..."/>
+              <input id="work-on_Taiwan" type="text" name="work_on_Taiwan" placeholder="請填入目標金額..."/>
+            </div>
+            <div class="place"> 
+              <p class="name">業一 其他：</p>
+              <input id="goal_other" type="text" name="goal_other" placeholder="請填入目標金額..."/>
+              <input id="work-on_other" type="text" name="work_on_other" placeholder="請填入目標金額..."/>
+            </div>
+            <div class="place"> 
+              <p class="name">業二 日本：</p>
+              <input id="goal_Japan" type="text" name="goal_Japan" placeholder="請填入目標金額..."/>
+              <input id="work-on_Japan" type="text" name="work_on_Japan" placeholder="請填入目標金額..."/>
+            </div>
+            <div class="place"> 
+              <p class="name">業二 重點客戶：</p>
+              <input id="goal_VIP" type="text" name="goal_VIP" placeholder="請填入目標金額..."/>
+              <input id="work-on_VIP" type="text" name="work_on_VIP" placeholder="請填入目標金額..."/>
+            </div>
+            <div class="place"> 
+              <p class="name">業三 大陸：</p>
+              <input id="goal_China" type="text" name="goal_China" placeholder="請填入目標金額..."/>
+              <input id="work-on_China" type="text" name="work_on_China" placeholder="請填入目標金額..."/>
+            </div>
+            <div class="place"> 
+              <p class="name">業四 台灣OEM：</p>
+              <input id="goal_Taiwan_OEM" type="text" name="goal_Taiwan_OEM" placeholder="請填入目標金額..."/>
+              <input id="work-on_Taiwan_OEM" type="text" name="work_on_Taiwan_OEM" placeholder="請填入目標金額..."/>
             </div>
           </article>
           <div class="confirm_btns">

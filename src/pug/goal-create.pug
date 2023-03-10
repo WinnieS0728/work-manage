@@ -6,13 +6,28 @@ block localLinks
 
 
 block title
-    title 業務系統-每週檔案
+    title 業務系統-預算目標
 
 block mainContent 
     section
-        h2 建立《預算目標》
+        block form title
+            h2 建立《預算目標》
         article.selectWeek
             p 預算年度：
-            input#year(type="number" name="year")
-        article.main-content 
-            
+            input#year(type="number" name="year" placeholder='請填入預算年度...')
+        article.main-content
+            .first-year
+                +goal_year('Jan','1月')
+                +goal_year('Feb','2月')
+                +goal_year('Mar','3月')
+                +goal_year('Apr','4月')
+                +goal_year('May','5月')
+                +goal_year('Jun','6月')
+            .last-year
+                +goal_year('Jul','7月')
+                +goal_year('Aug','8月')
+                +goal_year('Sep','9月')
+                +goal_year('Oct','10月')
+                +goal_year('Nov','11月')
+                +goal_year('Dec','12月')
+        +cancel-confirm_btns

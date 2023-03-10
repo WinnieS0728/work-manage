@@ -10,7 +10,7 @@
         }
     }
 
-    article.selectWeek {
+    article.selectYear {
         font-size: 1.5rem;
         display: flex;
         justify-content: center;
@@ -19,25 +19,29 @@
         padding: 2em;
         margin-bottom: 2rem;
         @include section_border;
+
+        #month {
+            font-size: 1.5rem;
+            padding: $input-padding;
+            width: 5em;
+        }
     }
 
     article.main-content {
         @include section_border;
         padding: $article_padding;
         font-size: 1.5rem;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        place-items: center;
+        display: flex;
+        flex-flow: column;
+        gap: 2rem;
 
-        [class$="-year"] {
-            display: flex;
-            flex-flow: column;
+        .place {
+            display: grid;
+            grid-template-columns: 10em repeat(2, 1fr);
             gap: 3rem;
 
-            .year {
-                display: grid;
-                grid-template-columns: 6em 1fr;
-                place-items: center;
+            .name{
+                text-align: end;
             }
         }
     }
