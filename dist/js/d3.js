@@ -328,6 +328,8 @@ async function setTable_mission() {
 async function setTable_dailyReport() {
     let startTime = d3.timeFormat('%Y/%m/%d')(new Date());
     // console.log(startTime);
+    d3.select('.daily-routine>h2 span')
+        .text(startTime)
 
     let endTime = d3.timeFormat('%Y/%m/%d')(d3.timeParse('%Y/%m/%d')(startTime).setDate(d3.timeParse('%Y/%m/%d')(startTime).getDate() + 1))
 
