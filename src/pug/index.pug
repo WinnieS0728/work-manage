@@ -8,289 +8,289 @@ block title
     title 業務系統
 
 block mainContent
-        section.mission-control
-            a(href="mission-create.html") <i class="fa-solid fa-pen"></i>建立任務
-            a(href="mission-update.html") <i class="fa-solid fa-pen"></i>修改任務
-        section.filter
-            form
-                h3 選擇查詢條件: #[span (單選或複選)]
-                .formContent
-                    .formBody
-                        span
-                            label(for="") 任務日期
-                            input#day-start(type="text" name="day-start" placeholder="任務週期 (起)" onfocus="(this.type='date')" onblur="(this.type='text')")
-                            span ~
-                            input#day-end(type="text" name="day-start" placeholder="任務週期 (迄)" onfocus="(this.type='date')" onblur="(this.type='text')")
-                            label(for="missionFilter_Year") 任務年度
-                            select#missionFilter_Year(name="mission year")
-                                option(value="" selected disabled) 選擇年度 
-                                option(value="2022") 2022  
-                                option(value="2023") 2023
-                            label(for="missionFilter_month") 任務月份
-                            select#missionFilter_month(name="missionFilter_month") 
-                                option(value="" selected disabled) 選擇月份
-                                option(value="1") 1月
-                                option(value="2") 2月
-                                option(value="3") 3月
-                                option(value="4") 4月
-                                option(value="5") 5月
-                                option(value="6") 6月
-                                option(value="7") 7月
-                                option(value="8") 8月
-                                option(value="9") 9月
-                                option(value="10") 10月
-                                option(value="11") 11月
-                                option(value="12") 12月
-                        span
-                            label(for="") 任務篩選
-                            select#missionFilter_state(name="missionFilter_state") 
-                                option(value="" selected disabled) 任務地區
-                                option(value="all") 不拘
-                                option(value="new") 新案件
-                                option(value="progress") 進行中
-                                option(value="done") 已完成
-                            select#missionFilter_place(name="missionFilter_place") 
-                                option(value="" selected disabled) 任務地區
-                                option(value="all") 不拘
-                                option(value="taiwan") 台灣
-                                option(value="germany") 德國
-                                option(value="italy") 義大利
-                                option(value="USA") 美國
-                            select#missionFilter_executor(name="missionFilter_place") 
-                                option(value="" selected disabled) 任務擔當
-                                option(value="all") 不拘
-                                option(value="David") David 李洪瑋
-                                option(value="Darie") Darie 李德宜
-                                option(value="Denise") Denise 黃慧卿
-                                option(value="Lorna") Lorna 白翠蓮
-                                option(value="Rich") Rich 黃偉鳴
-                                option(value="Imma. Molinini") Imma. Molinini
-                                option(value="Michele. Dellaventrua") Michele. Dellaventrua
-                                option(value="Marcus Rosenzweig") Marcus Rosenzweig
-                                option(value="Ismail.Kemcen") Ismail.Kemcen
-                                option(value="Stefan Ebert") Stefan Ebert
-                                option(value="Mohamed Akabbal") Mohamed Akabbal
-                                option(value="Cemal Altunkaya") Cemal Altunkaya
-                                option(value="Michael Boe") Michael Boe
-                                option(value="Stefan Becko") Stefan Becko
-                            select#missionFilter_missionFrom(name="missionFilter_place") 
-                                option(value="" selected disabled) 任務交辦
-                                option(value="all") 不拘
-                                option(value="others") 其他單位
-                                option(value="Morris") Morris
-                                option(value="Aliber") Aliber
-                        span
-                            label(for="missionFilter_title") 任務標題
-                            input#missionFilter_title(type="text" name="#missionFilter_title" placeholder="請輸入任務主題關鍵字").
-                            label(for="missionFilter_content") 任務內容
-                            input#missionFilter_content(type="text" name="#missionFilter_content" placeholder="請輸入任務內容關鍵字")
-                    .formSubmit
-                        button(type="submit").
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                            送出查詢
-        section.year-achievement
-            h2 《年度成果統計》
-            article.container
-                .block.yearEnd-countdown
-                    p 2023倒數
-                    p #[span]天
-                .block.total-sales 
-                    p 本年度累積銷售
-                    p #[span 268,000,500]元
-                .block.unachieved-sales
-                    p 本年度未達銷售
-                    p #[span -14,555,200]元
-                .block.success-rate
-                    p 年度達成率
-                    p #[span 85.3]%
-        section.budget-target
-            h2 《預算目標面板》
-            table(border="1")
-                thead 
-                    th(colspan="13") 2022
-                    tr
-                        th 單位
-                        th 1月
-                        th 2月
-                        th 3月
-                        th 4月
-                        th 5月
-                        th 6月
-                        th 7月
-                        th 8月
-                        th 9月
-                        th 10月
-                        th 11月
-                        th 12月
-                tbody
-                    tr.table_goal
-                        td 預算目標
-                    tr.table_achieve
-                        td 實績達成
-                tfoot
-                    tr.table_gap
-                        td 落差
-        section.place-achievement
-            h2 《各地區業績面板》
-            table(border="1")
-                thead 
-                    th(colspan="7") 12月業績表
-                    tr
-                        th 單位
-                        th 目標
-                        th 已出貨
-                        th 可努力
-                        th 本月預估業績(扣除折讓)
-                        th 目標與實際差額
-                        th 月達成率
-                tbody
-                    tr.table_Europe_A
-                        td 業一歐洲A(義大利)
-                    tr.table_USA
-                        td 業一北美
-                    tr.table_Europe_B
-                        td 業一歐洲B(德國)
-                    tr.table_Taiwan
-                        td 業一台灣
-                    tr.table_Other
-                        td 業一其他
-                    tr.table_Japan
-                        td 業二日本
-                    tr.table_VIP
-                        td 業二重點客戶
-                    tr.table_China
-                        td 業三大陸
-                    tr.table_TaiwanOEM
-                        td 業四台灣OEM
-                tfoot
-                    tr.table_Total
-                        td 合計
-        section.mission-dashboard 
-            h2 《任務案件統計》
-            article.container 
-                .block.new-mission
-                    p 本日新增
-                    p 
-                .block.mission-on-duty
-                    p 進行中
-                    p 
-                .block.mission-complete
-                    p 已完成
-                    p 
-                .block.total-mission
-                    p 總件數
-                    p 
-                .block.success-rate
-                    p 任務達成率
-                    p 
-                .block.mission-from-morris
-                    p Morris 交辦
-                    p 
-                .block.mission-from-aliber
-                    p Aliber 交辦
-                    p 
-        section.mission-list
-            +missionList 
+    section.mission-control
+        a(href="mission-create.html") <i class="fa-solid fa-pen"></i>建立任務
+        a(href="mission-update.html") <i class="fa-solid fa-pen"></i>修改任務
+    section.filter
+        form
+            h3 選擇查詢條件: #[span (單選或複選)]
+            .formContent
+                .formBody
+                    span
+                        label(for="") 任務日期
+                        input#day-start(type="text" name="day-start" placeholder="任務週期 (起)" onfocus="(this.type='date')" onblur="(this.type='text')")
+                        span ~
+                        input#day-end(type="text" name="day-start" placeholder="任務週期 (迄)" onfocus="(this.type='date')" onblur="(this.type='text')")
+                        label(for="missionFilter_Year") 任務年度
+                        select#missionFilter_Year(name="mission year")
+                            option(value="" selected disabled) 選擇年度 
+                            option(value="2022") 2022  
+                            option(value="2023") 2023
+                        label(for="missionFilter_month") 任務月份
+                        select#missionFilter_month(name="missionFilter_month") 
+                            option(value="" selected disabled) 選擇月份
+                            option(value="1") 1月
+                            option(value="2") 2月
+                            option(value="3") 3月
+                            option(value="4") 4月
+                            option(value="5") 5月
+                            option(value="6") 6月
+                            option(value="7") 7月
+                            option(value="8") 8月
+                            option(value="9") 9月
+                            option(value="10") 10月
+                            option(value="11") 11月
+                            option(value="12") 12月
+                    span
+                        label(for="") 任務篩選
+                        select#missionFilter_state(name="missionFilter_state") 
+                            option(value="" selected disabled) 任務地區
+                            option(value="all") 不拘
+                            option(value="new") 新案件
+                            option(value="progress") 進行中
+                            option(value="done") 已完成
+                        select#missionFilter_place(name="missionFilter_place") 
+                            option(value="" selected disabled) 任務地區
+                            option(value="all") 不拘
+                            option(value="taiwan") 台灣
+                            option(value="germany") 德國
+                            option(value="italy") 義大利
+                            option(value="USA") 美國
+                        select#missionFilter_executor(name="missionFilter_place") 
+                            option(value="" selected disabled) 任務擔當
+                            option(value="all") 不拘
+                            option(value="David") David 李洪瑋
+                            option(value="Darie") Darie 李德宜
+                            option(value="Denise") Denise 黃慧卿
+                            option(value="Lorna") Lorna 白翠蓮
+                            option(value="Rich") Rich 黃偉鳴
+                            option(value="Imma. Molinini") Imma. Molinini
+                            option(value="Michele. Dellaventrua") Michele. Dellaventrua
+                            option(value="Marcus Rosenzweig") Marcus Rosenzweig
+                            option(value="Ismail.Kemcen") Ismail.Kemcen
+                            option(value="Stefan Ebert") Stefan Ebert
+                            option(value="Mohamed Akabbal") Mohamed Akabbal
+                            option(value="Cemal Altunkaya") Cemal Altunkaya
+                            option(value="Michael Boe") Michael Boe
+                            option(value="Stefan Becko") Stefan Becko
+                        select#missionFilter_missionFrom(name="missionFilter_place") 
+                            option(value="" selected disabled) 任務交辦
+                            option(value="all") 不拘
+                            option(value="others") 其他單位
+                            option(value="Morris") Morris
+                            option(value="Aliber") Aliber
+                    span
+                        label(for="missionFilter_title") 任務標題
+                        input#missionFilter_title(type="text" name="#missionFilter_title" placeholder="請輸入任務主題關鍵字").
+                        label(for="missionFilter_content") 任務內容
+                        input#missionFilter_content(type="text" name="#missionFilter_content" placeholder="請輸入任務內容關鍵字")
+                .formSubmit
+                    button(type="submit").
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        送出查詢
+    section.year-achievement
+        h2 《年度成果統計》
+        article.container
+            .block.yearEnd-countdown
+                p 2023倒數
+                p #[span]天
+            .block.total-sales 
+                p 本年度累積銷售
+                p #[span 268,000,500]元
+            .block.unachieved-sales
+                p 本年度未達銷售
+                p #[span -14,555,200]元
+            .block.success-rate
+                p 年度達成率
+                p #[span 85.3]%
+    section.budget-target
+        h2 《預算目標面板》
+        table(border="1")
+            thead 
+                th(colspan="13") 2022
+                tr
+                    th 單位
+                    th 1月
+                    th 2月
+                    th 3月
+                    th 4月
+                    th 5月
+                    th 6月
+                    th 7月
+                    th 8月
+                    th 9月
+                    th 10月
+                    th 11月
+                    th 12月
+            tbody
+                tr.table_goal
+                    td 預算目標
+                tr.table_achieve
+                    td 實績達成
+            tfoot
+                tr.table_gap
+                    td 落差
+    section.place-achievement
+        h2 《各地區業績面板》
+        table(border="1")
+            thead 
+                th(colspan="7") 12月業績表
+                tr
+                    th 單位
+                    th 目標
+                    th 已出貨
+                    th 可努力
+                    th 本月預估業績(扣除折讓)
+                    th 目標與實際差額
+                    th 月達成率
+            tbody
+                tr.table_Europe_A
+                    td 業一歐洲A(義大利)
+                tr.table_USA
+                    td 業一北美
+                tr.table_Europe_B
+                    td 業一歐洲B(德國)
+                tr.table_Taiwan
+                    td 業一台灣
+                tr.table_Other
+                    td 業一其他
+                tr.table_Japan
+                    td 業二日本
+                tr.table_VIP
+                    td 業二重點客戶
+                tr.table_China
+                    td 業三大陸
+                tr.table_TaiwanOEM
+                    td 業四台灣OEM
+            tfoot
+                tr.table_Total
+                    td 合計
+    section.mission-dashboard 
+        h2 《任務案件統計》
+        article.container 
+            .block.new-mission
+                p 本日新增
+                p 
+            .block.mission-on-duty
+                p 進行中
+                p 
+            .block.mission-complete
+                p 已完成
+                p 
+            .block.total-mission
+                p 總件數
+                p 
+            .block.success-rate
+                p 任務達成率
+                p 
+            .block.mission-from-morris
+                p Morris 交辦
+                p 
+            .block.mission-from-aliber
+                p Aliber 交辦
+                p 
+    section.mission-list
+        +missionList 
 
-            table.list-by-member(border="1")
-                thead 
-                    th(colspan="8") 任務統計(當月)
-                    tr
-                        th 擔當
-                        th 本日新增
-                        th 進行中
-                        th 已完成
-                        th 總件數
-                        th 任務進度
-                        th Morris交辦
-                        th Aliber交辦
-                tbody
-                    tr.mission_to_David
-                        td David
-                    tr.mission_to_Danise
-                        td Denise
-                    tr.mission_to_Darie
-                        td Darie                        
-                    tr.mission_to_Lorna
-                        td Lorna                    
-                    tr.mission_to_Rich
-                        td Rich                        
-        section.daily-routine
-            h2 《每日工作重點:#[span 2022/10/14]》
-                a(href="working-create.html") 
-                    button(type="button")
-                        <i class="fa-solid fa-pen"></i>
-                        |編輯
-            table(border="1")
-                thead 
+        table.list-by-member(border="1")
+            thead 
+                th(colspan="8") 任務統計(當月)
+                tr
                     th 擔當
-                    th 工作重點
-                    th 工作進度回報
-                tbody
-                    tr.report_David
-                        td David
-                        td.table-data.daily-point
-                        td.table-data.daily-report
-                    tr.report_Danise
-                        td Denise
-                        td.table-data.daily-point
-                        td.table-data.daily-report
-                    tr.report_Darie
-                        td Darie
-                        td.table-data.daily-point
-                        td.table-data.daily-report
-                    tr.report_Lorna
-                        td Lorna
-                        td.table-data.daily-point
-                        td.table-data.daily-report
-                    tr.report_Rich
-                        td Rich
-                        td.table-data.daily-point
-                        td.table-data.daily-report
-            p 備註: 每日LINE給MO哥的內容        
-        section.weekly-data
-            h2 《每週專案PPT & 每週會議紀錄》
-                a(href="week-data-create.html") 
-                    button(type="button")
-                        <i class="fa-solid fa-pen"></i>
-                        |編輯
-            table(border="1")
-                thead 
-                    th 擔當
-                    th PTT檔 上傳狀態
-                    th 會議記錄 上傳狀態
-                tbody
-                    tr.weeklyData_David
-                        td David
-                        td.table-data.PPT
-                            +fileFormat
-                        td.table-data.MeetingRecord
-                            +fileFormat
-                    tr.weeklyData_Danise
-                        td Denise
-                        td.table-data.PPT
-                            +fileFormat
-                        td.table-data.MeetingRecord
-                            +fileFormat
-                    tr.weeklyData_Darie
-                        td Darie
-                        td.table-data.PPT
-                            +fileFormat
-                        td.table-data.MeetingRecord
-                            +fileFormat
-                    tr.weeklyData_Lorna
-                        td Lorna
-                        td.table-data.PPT
-                            +fileFormat
-                        td.table-data.MeetingRecord
-                            +fileFormat
-                    tr.weeklyData_Rich
-                        td Rich
-                        td.table-data.PPT
-                            +fileFormat
-                        td.table-data.MeetingRecord
-                            +fileFormat
-            ul    
-                li 點選「下載檔案」可查看案件詳細內容。
-                li 重複上傳僅記錄最後一筆PTT的時間。
-                li 「業務主管面板」的資訊來源為「業務人員面板」的自動帶入，所以兩邊資料會連動。      
+                    th 本日新增
+                    th 進行中
+                    th 已完成
+                    th 總件數
+                    th 任務進度
+                    th Morris交辦
+                    th Aliber交辦
+            tbody
+                tr.mission_to_David
+                    td David
+                tr.mission_to_Danise
+                    td Denise
+                tr.mission_to_Darie
+                    td Darie                        
+                tr.mission_to_Lorna
+                    td Lorna                    
+                tr.mission_to_Rich
+                    td Rich                        
+    section.daily-routine
+        h2 《每日工作重點:#[span 2022/10/14]》
+            a(href="working-create.html") 
+                button(type="button")
+                    <i class="fa-solid fa-pen"></i>
+                    |編輯
+        table(border="1")
+            thead 
+                th 擔當
+                th 工作重點
+                th 工作進度回報
+            tbody
+                tr.report_David
+                    td David
+                    td.table-data.daily-point
+                    td.table-data.daily-report
+                tr.report_Danise
+                    td Denise
+                    td.table-data.daily-point
+                    td.table-data.daily-report
+                tr.report_Darie
+                    td Darie
+                    td.table-data.daily-point
+                    td.table-data.daily-report
+                tr.report_Lorna
+                    td Lorna
+                    td.table-data.daily-point
+                    td.table-data.daily-report
+                tr.report_Rich
+                    td Rich
+                    td.table-data.daily-point
+                    td.table-data.daily-report
+        p 備註: 每日LINE給MO哥的內容        
+    section.weekly-data
+        h2 《每週專案PPT & 每週會議紀錄》
+            a(href="week-data-create.html") 
+                button(type="button")
+                    <i class="fa-solid fa-pen"></i>
+                    |編輯
+        table(border="1")
+            thead 
+                th 擔當
+                th PTT檔 上傳狀態
+                th 會議記錄 上傳狀態
+            tbody
+                tr.weeklyData_David
+                    td David
+                    td.table-data.PPT
+                        +fileFormat
+                    td.table-data.MeetingRecord
+                        +fileFormat
+                tr.weeklyData_Danise
+                    td Denise
+                    td.table-data.PPT
+                        +fileFormat
+                    td.table-data.MeetingRecord
+                        +fileFormat
+                tr.weeklyData_Darie
+                    td Darie
+                    td.table-data.PPT
+                        +fileFormat
+                    td.table-data.MeetingRecord
+                        +fileFormat
+                tr.weeklyData_Lorna
+                    td Lorna
+                    td.table-data.PPT
+                        +fileFormat
+                    td.table-data.MeetingRecord
+                        +fileFormat
+                tr.weeklyData_Rich
+                    td Rich
+                    td.table-data.PPT
+                        +fileFormat
+                    td.table-data.MeetingRecord
+                        +fileFormat
+        ul    
+            li 點選「下載檔案」可查看案件詳細內容。
+            li 重複上傳僅記錄最後一筆PTT的時間。
+            li 「業務主管面板」的資訊來源為「業務人員面板」的自動帶入，所以兩邊資料會連動。      

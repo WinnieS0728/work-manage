@@ -1,7 +1,9 @@
 @font-face {
     font-family: microsoftBlack;
     font-weight: 400;
-    src: url('/assests/fonts/微軟正黑體-1.ttf') format("TrueType");
+    src:
+        url('/assests/fonts/微軟正黑體-1.woff2') format("woff2"),
+        url('/assests/fonts/微軟正黑體-1.woff') format("woff");
 }
 
 @font-face {
