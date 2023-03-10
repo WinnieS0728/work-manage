@@ -8,22 +8,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.0.5/swiper-bundle.min.js" integrity="sha512-cEcJcdNCHLm3YSMAwsI/NeHFqfgNQvO0C27zkPuYZbYjhKlS9+kqO5hZ9YltQ4GaTDpePDQ2SrEk8gHUVaqxig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js" integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.6.1/Sortable.min.js"></script>
-    <script src="js/template.prod.js" defer></script>
+    <script src="js/template.js" defer></script>
     <link rel="stylesheet" href="css/mission-list.min.css">
-    <script type="module" src="../src/js/d3.js" defer></script>
+    <script type="module" src="js/_api.js"></script>
+    <script type="module" src="js/d3.js"></script>
     <title>業務系統-任務案件總覽</title>
-    <link rel="icon" type="image/x-icon" href="../../../assests/imgs/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../assests/imgs/favicon.ico">
   </head>
   <body>
     <header>
-      <div class="header-top"> <img src="../../../assests/imgs/eformLogo.png" alt="e-home_image">
-        <div id="user"><img src="../../../assests/imgs/icon_Avatar.png" alt="user_avatar">
+      <div class="header-top"> <img src="../assests/imgs/eformLogo.png" alt="e-home_image">
+        <div id="user"><img src="../assests/imgs/icon_Avatar.png" alt="user_avatar">
           <p class="user-info"><span class="department">業務部</span> /
             <span class="name"></span>
           </p>
         </div>
       </div>
-      <div class="header-bottom"><img src="../../../assests/imgs/btn_home.png" alt="btn_home">
+      <div class="header-bottom"><img src="../assests/imgs/btn_home.png" alt="btn_home">
         <p class="marquee">系統跑馬燈 : [ <span>⚠您有兩筆新任務</span> ]</p>
       </div>
     </header>
