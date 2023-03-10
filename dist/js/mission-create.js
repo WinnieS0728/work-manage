@@ -1,11 +1,11 @@
-import { getMissionsAPI } from '../templates/js/_api.js'
+// import { getMissionsAPI } from '../templates/js/_api.js'
 
 async function missionCreate() {
-    const datas = await getMissionsAPI();
+    // const datas = await getMissionsAPI();
     // console.log(datas);
 
-    d3.select('.formTitle .info .mission_id span')
-        .text(datas.length + 1)
+    // d3.select('.formTitle .info .mission_id span')
+    //     .text(datas.length + 1)
     d3.select('.formTitle .info .mission_creator span')
         .text(user)
 
@@ -28,6 +28,7 @@ async function missionCreate() {
         const fileItem = Object.values(file.files);
         // files.push(fileItem)
         console.log(fileItem);
+        done.classList.add('show')
     }
 
     function showList() {
@@ -71,7 +72,6 @@ async function missionCreate() {
             .data(filesIDAry)
             .text(d => Number(d) + 1)
 
-        done.classList.add('show')
     }
 }
 missionCreate()
