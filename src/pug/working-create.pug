@@ -13,10 +13,11 @@ block mainContent
             h2 建立《每日工作重點》
         form
             p 工作重點日期：
-            input#chose-day(type="date" name="chose-day")
-            button(type="button")
-                <i class="fa-solid fa-pen"></i>
-                |修改其他日期
+            input#chose-day(type="date" name="chose-day" disabled)
+            a(href="working-update.html") 
+                button(type="button")
+                    <i class="fa-solid fa-pen"></i>
+                    |修改其他日期
     article.main-content
         form
             .row.title

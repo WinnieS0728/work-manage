@@ -1,4 +1,4 @@
-import { getSalesAPI, getSalesByPlaceAPI, getMissionsAPI, getDailyReportAPI, getPPTAPI, getMeetingRecordAPI } from '../templates/js/_api.js'
+// import { getSalesAPI, getSalesByPlaceAPI, getMissionsAPI, getDailyReportAPI, getPPTAPI, getMeetingRecordAPI } from '../templates/js/_api.js'
 
 
 async function setTable_total() {
@@ -25,7 +25,7 @@ async function setTable_total() {
 
 
 }
-setTable_total()
+// setTable_total()
 
 
 async function setTable_sales() {
@@ -69,10 +69,10 @@ async function setTable_sales() {
             }
             return (d.achievement - d.goal).toLocaleString()
         })
-    
-    function changeColor(){
+
+    function changeColor() {
         const colorNumber = document.querySelectorAll('.budget-target .table_gap .color-number')
-        colorNumber.forEach(i=>{
+        colorNumber.forEach(i => {
             // console.dir(i);
             if ((i.__data__.achievement - i.__data__.goal) <= 0) {
                 i.classList.add('bad')
@@ -81,7 +81,7 @@ async function setTable_sales() {
     }
     changeColor()
 }
-setTable_sales()
+// setTable_sales()
 
 
 async function setTable_salesByPlace() {
@@ -137,7 +137,7 @@ async function setTable_salesByPlace() {
     totalData.push(Object.values(data).map(i => i.goal).reduce((a, b) => a + b, 0))
     totalData.push(Object.values(data).map(i => i.done).reduce((a, b) => a + b, 0))
     totalData.push(Object.values(data).map(i => i.work_on).reduce((a, b) => a + b, 0))
-    totalData.push(totalData[1]+totalData[2])
+    totalData.push(totalData[1] + totalData[2])
     totalData.push(totalData[0] - totalData[3])
     totalData.push((totalData[3] / totalData[0] * 100).toFixed(1) + '%')
 
@@ -177,7 +177,7 @@ async function setTable_salesByPlace() {
     }
     changeColor()
 }
-setTable_salesByPlace()
+// setTable_salesByPlace()
 
 
 async function setTable_mission() {
@@ -253,11 +253,11 @@ async function setTable_mission() {
                     enter => enter.append("td")
                         .attr("class", 'table-data')
                         .text(d => d),
-                    update => update.attr("colspan",'0')
-                    .text(d => d)
+                    update => update.attr("colspan", '0')
+                        .text(d => d)
                 )
         });
-        function showAttachedIcon(){
+        function showAttachedIcon() {
             const attached = document.querySelectorAll('.mission-list .list-by-index tbody tr .table-data:last-child')
             attached.forEach(i => {
                 if (i.textContent !== '') {
@@ -322,67 +322,77 @@ async function setTable_mission() {
     setMemberTable(mission_for_Lorna, 'Lorna')
     setMemberTable(mission_for_Rich, 'Rich')
 }
-setTable_mission()
+// setTable_mission()
 
 
 async function setTable_dailyReport() {
-    const datas = await getDailyReportAPI()
-    // console.log(datas);
+    let startTime = d3.timeFormat('%Y/%m/%d')(new Date());
+    // console.log(startTime);
 
-    function setReportTable(ary, member) {
-        if (ary.day_point.length == 0) {
+    let endTime = d3.timeFormat('%Y/%m/%d')(d3.timeParse('%Y/%m/%d')(startTime).setDate(d3.timeParse('%Y/%m/%d')(startTime).getDate() + 1))
+
+    const body = {
+        "Sales": ""
+        , "Startdt": startTime
+        , "Enddt": endTime
+    }
+
+    async function getWorkingAPI() {
+        const res = await axios({
+            method: 'POST',
+            url: 'http://orangeapi.orange-electronic.com/api/GetSalesDayWork',
+            data: body
+        })
+
+        // console.log(res.data[res.data.length - 1]);
+        return res.data
+    }
+
+    const datas = await getWorkingAPI()
+
+    function setReportTable(data, member) {
+        // console.log(data);
+
+        if (!data) {
             d3.select(`.daily-routine .report_${member} .daily-point`)
                 .append("p")
                 .text('資料未上傳')
+            d3.select(`.daily-routine .report_${member} .daily-report`)
+                .append("p")
+                .text('資料未上傳')
+            return
         }
+
+        let dayPointAry = data.DayPoint?.split(',')
 
         d3.select(`.daily-routine .report_${member} .daily-point`)
             .append('ol')
             .selectAll('li')
-            .data(ary.day_point)
+            .data(dayPointAry)
             .enter()
             .append("li")
             .text(d => d)
 
-        console.log();
-
-        const report_title = ary.report.map(i => i.title)
-        const report_state = ary.report.map(i => {
-            if (i.state == 0) {
-                return '(待續)'
-            }
-            return '(完成)'
-        })
-
-        for (let i = 0; i < report_title.length; i++) {
-            report_title[i] = report_title[i] + report_state[i]
-        }
-
-        // console.log(report_title);
-        if (ary.report.length == 0) {
-            d3.select(`.daily-routine .report_${member} .daily-report`)
-                .append("p")
-                .text('資料未上傳')
-        }
+        let reportAry = data.Report.split(',')
 
         d3.select(`.daily-routine .report_${member} .daily-report`)
             .append("ol")
             .selectAll('li')
-            .data(report_title)
+            .data(reportAry)
             .enter()
             .append("li")
             .text(d => d)
     }
-    const report_David = datas.David
-    setReportTable(report_David, 'David')
-    const report_Danise = datas.Danise
-    setReportTable(report_Danise, 'Danise')
-    const report_Darie = datas.Darie
-    setReportTable(report_Darie, 'Darie')
-    const report_Lorna = datas.Lorna
-    setReportTable(report_Lorna, 'Lorna')
-    const report_Rich = datas.Rich
-    setReportTable(report_Rich, 'Rich')
+    const David_data = datas.filter(i => i.Sales == 'David')
+    setReportTable(David_data[David_data.length - 1], 'David')
+    const Danise_data = datas.filter(i => i.Sales == 'Danise')
+    setReportTable(Danise_data[Danise_data.length - 1], 'Danise')
+    const Darie_data = datas.filter(i => i.Sales == 'Darie')
+    setReportTable(Darie_data[Darie_data.length - 1], 'Darie')
+    const Lorna_data = datas.filter(i => i.Sales == 'Lorna')
+    setReportTable(Lorna_data[Lorna_data.length - 1], 'Lorna')
+    const Rich_data = datas.filter(i => i.Sales == 'Rich')
+    setReportTable(Rich_data[Rich_data.length - 1], 'Rich')
 
 }
 setTable_dailyReport()
@@ -444,6 +454,6 @@ async function setTable_PPTandReport() {
     const meetingData_Rich = meetingRecordData.Rich
     fill(PPTData_Rich, meetingData_Rich, 'Rich')
 }
-setTable_PPTandReport()
+// setTable_PPTandReport()
 
 
