@@ -1,0 +1,87 @@
+@import '../templates/scss/template';
+
+#main-page {
+    @include backBtn;
+
+    section.mission-update {
+        .main-content {
+            padding: $article-padding;
+
+            .mission-list {
+                border: 1px solid $clr_dark-black;
+
+                &.title {
+                    border: 0;
+                    th{
+                        padding-bottom: 1em;
+                    }
+                }
+
+                td {
+                    text-align: center;
+
+                    &>* {
+                        vertical-align: middle;
+                    }
+                }
+
+                :is(.title, .content) input {
+                    max-width: 10em;
+                }
+
+                .PS textarea {
+                    max-width: 3em;
+                    resize: none;
+                }
+
+                .date input {
+                    max-width: 8em;
+                }
+
+                .state {
+                    .stateIcon {
+                        display: inline-block;
+                        $padding: 10%;
+                        width: 4rem;
+                        height: 2rem;
+                        background-color: $clr_decorate-gray;
+                        padding: $padding;
+                        border-radius: 10rem;
+                        position: relative;
+                        cursor: pointer;
+
+                        .dot {
+                            height: calc(100% - #{$padding} * 2);
+                            aspect-ratio: 1;
+                            border-radius: 50%;
+                            background-color: $clr_dark-white;
+                            position: absolute;
+                            top: $padding;
+                            left: calc(#{$padding} / 2);
+                            right: auto;
+                        }
+
+                        &.active {
+                            background-color: $clr_light-green;
+
+                            .dot {
+                                right: calc(#{$padding} / 2);
+                                left: auto;
+                            }
+                        }
+                    }
+                }
+
+                .attach {
+                    button {
+                        font-size: 1.75rem;
+                        background-color: $clr_light-green;
+                        padding: .3em .5em;
+                    }
+                }
+            }
+        }
+    }
+
+    @include btns_confirm
+}
