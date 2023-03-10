@@ -12,12 +12,13 @@ block mainContent
         block form title
             h2 建立《每日工作重點》
         form
-            p 工作重點日期：
-            input#chose-day(type="date" name="chose-day" disabled)
-            a(href="working-update.html") 
-                button(type="button")
-                    <i class="fa-solid fa-pen"></i>
-                    |修改其他日期
+            block goto
+                p 工作重點日期：
+                input#chose-day(type="date" name="chose-day" disabled)
+                a(href="working-update.html") 
+                    button(type="button")
+                        <i class="fa-solid fa-pen"></i>
+                        |修改工作重點
     article.main-content
         form
             .row.title
@@ -35,4 +36,4 @@ block mainContent
             +report_inputRow(9)
             +report_inputRow(10)    
     +cancel-confirm_btns
-            
+
