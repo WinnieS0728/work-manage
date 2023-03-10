@@ -1,6 +1,3 @@
-// import { getSalesAPI, getSalesByPlaceAPI, getMissionsAPI, getDailyReportAPI, getPPTAPI, getMeetingRecordAPI } from '../templates/js/_api.js'
-
-
 async function setTable_total() {
     const today = new Date()
     let EndOfYear = new Date(`${today.getFullYear()},12,31`)
@@ -345,8 +342,6 @@ async function setTable_dailyReport() {
             url: 'http://orangeapi.orange-electronic.com/api/GetSalesDayWork',
             data: body
         })
-
-        // console.log(res.data[res.data.length - 1]);
         return res.data
     }
 
@@ -365,7 +360,13 @@ async function setTable_dailyReport() {
             return
         }
 
-        let dayPointAry = data.DayPoint?.split(',')
+        let dayPointAry = data.DayPoint.split(',').filter(i => i !== '')
+
+        if (dayPointAry.length == 0) {
+            d3.select(`.daily-routine .report_${member} .daily-point`)
+                .append("p")
+                .text('資料未上傳')
+        }
 
         d3.select(`.daily-routine .report_${member} .daily-point`)
             .append('ol')
@@ -375,7 +376,13 @@ async function setTable_dailyReport() {
             .append("li")
             .text(d => d)
 
-        let reportAry = data.Report.split(',')
+        let reportAry = data.Report.split(',').filter(i => i !== '')
+
+        if (reportAry.length == 0) {
+            d3.select(`.daily-routine .report_${member} .daily-report`)
+                .append("p")
+                .text('資料未上傳')
+        }
 
         d3.select(`.daily-routine .report_${member} .daily-report`)
             .append("ol")
@@ -384,6 +391,7 @@ async function setTable_dailyReport() {
             .enter()
             .append("li")
             .text(d => d)
+
     }
     const David_data = datas.filter(i => i.Sales == 'David')
     setReportTable(David_data[David_data.length - 1], 'David')
