@@ -409,61 +409,50 @@ setTable_dailyReport()
 
 
 async function setTable_PPTandReport() {
-    const PPTdatas = await getPPTAPI()
-    // console.log(PPTdatas);
-
-    const meetingRecordData = await getMeetingRecordAPI()
-    // console.log(meetingRecordData);
-
-
-    function fill(PPTary, meetingAry, member) {
-
-        d3.select(`.weekly-data .weeklyData_${member} .PPT .fileName`)
-            .text(PPTary.file_name)
-        d3.select(`.weekly-data .weeklyData_${member} .PPT .updateTime`)
-            .text(PPTary.uploadTime)
-
-        if (PPTary.file_name == '``') {
-            d3.select(`.weekly-data .weeklyData_${member} .PPT`)
-                .html("<p>資料未上傳</p>")
-        }
-        d3.select(`.weekly-data .weeklyData_${member} .PPT a`)
-            .attr("href", `${PPTary.file_path}`)
-        d3.select(`.weekly-data .weeklyData_${member} .PPT a`)
-            .attr("download", `${PPTary.file_name}`)
-
-
-        d3.select(`.weekly-data .weeklyData_${member} .MeetingRecord .fileName`)
-            .text(meetingAry.file_name)
-        d3.select(`.weekly-data .weeklyData_${member} .MeetingRecord .updateTime`)
-            .text(meetingAry.uploadTime)
-        if (meetingAry.file_name == '``') {
-            d3.select(`.weekly-data .weeklyData_${member} .MeetingRecord`)
-                .html("<p>資料未上傳</p>")
-        }
-        d3.select(`.weekly-data .weeklyData_${member} .MeetingRecord a`)
-            .attr("href", `${meetingAry.file_path}`)
-        d3.select(`.weekly-data .weeklyData_${member} .MeetingRecord a`)
-            .attr("download", `${meetingAry.file_name}`)
-
+    const today = new Date();
+    const startDay = d3.timeFormat('%Y/%m/%d')(today.setDate(today.getDate() - today.getDay() + 1))
+    const endDay = d3.timeFormat('%Y/%m/%d')(today.setDate(today.getDate() - today.getDay() + 7))
+    // console.log(startDay, endDay);
+    const body = {
+        "Sales": ""
+        , "Startdt": startDay
+        , "Enddt": endDay
     }
+    const res = await axios({
+        method: 'POST',
+        url: 'http://orangeapi.orange-electronic.com/api/GetSalesWeekWork',
+        data: body
+    })
 
-    const PPTData_David = PPTdatas.David
-    const meetingData_David = meetingRecordData.David
-    fill(PPTData_David, meetingData_David, 'David')
-    const PPTData_Danise = PPTdatas.Danise
-    const meetingData_Danise = meetingRecordData.Danise
-    fill(PPTData_Danise, meetingData_Danise, 'Danise')
-    const PPTData_Darie = PPTdatas.Darie
-    const meetingData_Darie = meetingRecordData.Darie
-    fill(PPTData_Darie, meetingData_Darie, 'Darie')
-    const PPTData_Lorna = PPTdatas.Lorna
-    const meetingData_Lorna = meetingRecordData.Lorna
-    fill(PPTData_Lorna, meetingData_Lorna, 'Lorna')
-    const PPTData_Rich = PPTdatas.Rich
-    const meetingData_Rich = meetingRecordData.Rich
-    fill(PPTData_Rich, meetingData_Rich, 'Rich')
+    const datas = res.data;
+    function showData(member) {
+        if (datas.filter(i => i.Sales == member).length == 0) {
+            return
+        }
+        const PPtName = datas.filter(i => i.Sales == member).slice(-1)[0].PPtName
+        const lastTime = datas.filter(i => i.Sales == member).slice(-1)[0].CreateDate.replace('上午', 'AM').replace('下午', 'PM').slice(0, -3)
+        const PPtLink = datas.filter(i => i.Sales == member).slice(-1)[0].PPtpatch
+        const meetingName = datas.filter(i => i.Sales == member).slice(-1)[0].MeetName
+        const meetingLink = datas.filter(i => i.Sales == member).slice(-1)[0].MeetPatch
+
+        d3.select(`.weeklyData_${member} .PPT`)
+            .html(`
+                <span class="fileName">${PPtName}</span><br>
+                最後更新 <span class="updateTime">${lastTime}</span><br>
+                <a href="${PPtLink}" download="${PPtName}">下載檔案</a>
+            `)
+        d3.select(`.weeklyData_${member} .MeetingRecord`)
+            .html(`
+                <span class="fileName">${meetingName}</span><br>
+                最後更新 <span class="updateTime">${lastTime}</span><br>
+                <a href="${meetingLink}" download="${meetingName}">下載檔案</a>
+            `)
+    }
+    showData('David')
+    showData('Danise')
+    showData('Darie')
+    showData('Lorna')
+    showData('Rich')
 }
-// setTable_PPTandReport()
-
+setTable_PPTandReport()
 

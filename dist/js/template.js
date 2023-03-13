@@ -1,6 +1,6 @@
 const EmpID = '221016'
 const deptName = '業務部';
-const userName = 'david';
+const userName = 'David';
 d3.select('header #user .user-info .department')
     .text(deptName);
 d3.select('header #user .user-info .name')

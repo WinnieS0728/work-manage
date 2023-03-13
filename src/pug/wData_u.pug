@@ -1,5 +1,8 @@
 extends ./wData_c.pug
 
+block localLinks 
+    link(rel="stylesheet" href="css/week-data.min.css")
+    script(type="module" src="js/week-data-update.js") 
 
 block form title
     h2 修改《每週專案PPT & 每週會議記錄》
@@ -7,14 +10,16 @@ block form title
 block select
     section.selectWeek
         input#week(type="week" name="week")
-        button(type="button")
-            <i class="fa-regular fa-clock"></i>
-            |選擇其他日期
+        a(href="wData_c.html") 
+            button(type="button")
+                <i class="fa-regular fa-clock"></i>
+                |回到上傳檔案
 
 block PPT
-    p.file-info 目前檔案版本：
-        span 2022.10.18 AM 12:30
-    input#PPT-file(type="file" name="PPT-file" style="display:none;")
+    label(for="PPT-file")
+        p 重新選擇檔案...
+        button(type="button") 上傳
+    input#PPT-file(type="file" name="PPT-file" style="display:none;" accept="application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword") 
     ul.file-history
         +fileHistory
         +fileHistory
@@ -22,9 +27,10 @@ block PPT
 
 
 block meeting
-    p.file-info 目前檔案版本：
-        span 2022.10.18 AM 12:30
-    input#meeting-file(type="file" name="meeting-file" style="display:none;")
+    label(for="meeting-file")
+        p 重新選擇檔案...
+        button(type="button") 上傳
+    input#meeting-file(type="file" name="meeting-file" style="display:none;" accept="application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword") 
     ul.file-history
         +fileHistory
         +fileHistory

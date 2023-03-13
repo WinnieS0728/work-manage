@@ -38,10 +38,6 @@ header {
         #user {
             display: flex;
             align-items: center;
-
-            .name {
-                text-transform: capitalize;
-            }
         }
 
         img[alt="user_avatar"] {

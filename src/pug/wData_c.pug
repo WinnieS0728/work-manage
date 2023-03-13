@@ -15,9 +15,10 @@ block mainContent
         block select
             section.selectWeek
                 input#week(type="week" name="week" disabled)
-                button(type="button")
-                    <i class="fa-regular fa-clock"></i>
-                    |選擇其他日期
+                a(href="wData_u.html") 
+                    button(type="button")
+                        <i class="fa-regular fa-clock"></i>
+                        |修改其他日期
         article.main-content 
             #PPT 
                 p 專案PPT

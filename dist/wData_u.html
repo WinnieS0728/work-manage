@@ -10,7 +10,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.6.1/Sortable.min.js"></script>
     <script src="js/template.js" defer></script>
     <link rel="stylesheet" href="css/week-data.min.css">
-    <script type="module" src="js/week-data-create.js"> </script>
+    <script type="module" src="js/week-data-update.js"> </script>
     <title>業務系統-每週檔案</title>
     <link rel="icon" type="image/x-icon" href="../assests/imgs/favicon.ico">
   </head>
@@ -18,7 +18,7 @@
     <header>
       <div class="header-top"> <img src="../assests/imgs/eformLogo.png" alt="e-home_image">
         <div id="user"><img src="../assests/imgs/icon_Avatar.png" alt="user_avatar">
-          <p class="user-info"><span class="department">業務部</span> /
+          <p class="user-info"><span class="department"></span> /
             <span class="name"></span>
           </p>
         </div>
@@ -83,15 +83,18 @@
         <section>
           <h2>修改《每週專案PPT & 每週會議記錄》</h2>
           <section class="selectWeek">
-            <input id="week" type="week" name="week">
-            <button type="button">
-              <i class="fa-regular fa-clock"></i>選擇其他日期</button>
+            <input id="week" type="week" name="week"><a href="wData_c.html"> 
+              <button type="button">
+                <i class="fa-regular fa-clock"></i>回到上傳檔案</button></a>
           </section>
           <article class="main-content"> 
             <div id="PPT"> 
               <p>專案PPT</p>
-              <p class="file-info">目前檔案版本：<span>2022.10.18 AM 12:30</span></p>
-              <input id="PPT-file" type="file" name="PPT-file" style="display:none;">
+              <label for="PPT-file">
+                <p>重新選擇檔案...</p>
+                <button type="button">上傳</button>
+              </label>
+              <input id="PPT-file" type="file" name="PPT-file" style="display:none;" accept="application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword">
               <ul class="file-history">
                 <li> 
                   <p>版本<span>2022.10.17 AM 10:00</span></p><a href="#" download="cat.png">下載</a>
@@ -106,8 +109,11 @@
             </div>
             <div id="meeting-report">
               <p>週會會議記錄</p>
-              <p class="file-info">目前檔案版本：<span>2022.10.18 AM 12:30</span></p>
-              <input id="meeting-file" type="file" name="meeting-file" style="display:none;">
+              <label for="meeting-file">
+                <p>重新選擇檔案...</p>
+                <button type="button">上傳</button>
+              </label>
+              <input id="meeting-file" type="file" name="meeting-file" style="display:none;" accept="application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/msword">
               <ul class="file-history">
                 <li> 
                   <p>版本<span>2022.10.17 AM 10:00</span></p><a href="#" download="cat.png">下載</a>

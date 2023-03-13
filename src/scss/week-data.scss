@@ -56,6 +56,9 @@
                         flex: 1;
                         @include section_border;
                         padding: .5em 1em;
+                        span{
+                            margin-left: 1em;
+                        }
                     }
 
                     a {
