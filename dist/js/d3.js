@@ -339,7 +339,7 @@ async function setTable_dailyReport() {
     async function getWorkingAPI() {
         const res = await axios({
             method: 'POST',
-            url: 'http://orangeapi.orange-electronic.com/api/GetSalesDayWork',
+            url: 'https://orangeapi.orange-electronic.com/api/GetSalesDayWork',
             data: body
         })
         return res.data
