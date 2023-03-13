@@ -31,6 +31,13 @@ block mainContent
                 select#mission_for(name="mission_for")
                     option(value="" disabled selected) 請選擇交辦人員
                     option David
+            .mission_client 
+                label(for="client") 任務客戶
+                select#client(name="client") 
+                    option(value="" selected disabled) 請選擇客戶名稱...
+                    option(value="") SMP先達汽車 
+                    option(value="") CMC中華汽車 
+                    option(value="") 宇通汽車 
             .mission_title
                 label(for="mission_title") 任務標題
                 input#mission_title(type="text" name="mission_title" placeholder="請填入標題...") 

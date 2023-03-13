@@ -1,12 +1,6 @@
 async function missionCreate() {
-    // const datas = await axios.post({
-
-    // })
-
-    // d3.select('.formTitle .info .mission_id span')
-    //     .text(datas.length + 1)
     d3.select('.formTitle .info .mission_creator span')
-        .text(user)
+        .text(userName)
 
     const today = d3.timeFormat('%Y-%m-%d')(new Date())
     d3.select('.formTitle .info .mission_createDate span')
@@ -89,6 +83,5 @@ async function missionCreate() {
             showList()
         }
     }
-
 }
 missionCreate()
