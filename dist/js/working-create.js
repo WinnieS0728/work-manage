@@ -30,7 +30,7 @@ function upload() {
         const res = await axios(
             {
                 method: 'POST',
-                url: 'http://orangeapi.orange-electronic.com/api/SalesDayWorkAdd',
+                url: 'https://orangeapi.orange-electronic.com/api/SalesDayWorkAdd',
                 data: body
             });
         alert(res.data);

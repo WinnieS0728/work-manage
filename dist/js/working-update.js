@@ -14,7 +14,7 @@ const getWorking_body = {
 async function getWorking() {
     const res = await axios({
         method: 'POST',
-        url: 'http://orangeapi.orange-electronic.com/api/GetSalesDayWork',
+        url: 'https://orangeapi.orange-electronic.com/api/GetSalesDayWork',
         data: getWorking_body
     })
 
@@ -96,7 +96,7 @@ async function upload() {
         const res = await axios(
             {
                 method: 'POST',
-                url: 'http://orangeapi.orange-electronic.com/api/SalesDayWorkUpdate',
+                url: 'https://orangeapi.orange-electronic.com/api/SalesDayWorkUpdate',
                 data: upload_body
             });
         alert(res.data);

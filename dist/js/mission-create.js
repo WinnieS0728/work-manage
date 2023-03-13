@@ -1,8 +1,7 @@
-// import { getMissionsAPI } from '../templates/js/_api.js'
-
 async function missionCreate() {
-    // const datas = await getMissionsAPI();
-    // console.log(datas);
+    // const datas = await axios.post({
+
+    // })
 
     // d3.select('.formTitle .info .mission_id span')
     //     .text(datas.length + 1)
@@ -19,26 +18,32 @@ async function missionCreate() {
     const done = document.querySelector('.upload-control .done')
     const listTitle = document.querySelector('.upload-list .fileInfo.title')
 
-
     upload.addEventListener('click', pushList)
     preview.addEventListener('click', showList)
 
-    const files = []
+    // const filePackage = new FormData()
+    const fileAry = []
     function pushList() {
-        const fileItem = Object.values(file.files);
-        // files.push(fileItem)
-        console.log(fileItem);
-        done.classList.add('show')
+        let files = Object.values(file.files);
+        files.forEach(i => {
+            fileAry.push(i);
+        })
+        console.log(fileAry);
+        done.classList.remove('show');
+        setTimeout(() => {
+            done.classList.add('show');
+        }, 1000);
     }
 
     function showList() {
-        const filesNameAry = Object.values(file.files).map(i => i.name);
-        const filesIDAry = Object.keys(file.files);
-
-        if (filesNameAry == 0) {
-            return
+        const filesNameAry = fileAry.map(i => i.name);
+        // console.log(filesNameAry);
+        if (filesNameAry.length == 0) {
+            listTitle.classList.remove('show');
+            done.classList.remove('show');
+        } else {
+            listTitle.classList.add('show');
         }
-        listTitle.classList.add('show');
 
         d3.select('.upload-list')
             .selectAll('.fileInfo:not(:first-child)')
@@ -67,11 +72,23 @@ async function missionCreate() {
             .selectAll('.fileInfo:not(:first-child) .name')
             .data(filesNameAry)
             .text(d => d)
-        d3.select('.upload-list')
-            .selectAll('.fileInfo:not(:first-child) .id')
-            .data(filesIDAry)
-            .text(d => Number(d) + 1)
 
+        const idBox = document.querySelectorAll('.fileInfo:not(:first-child) .id')
+        for (let i = 0; i < fileAry.length; i++) {
+            idBox[i].textContent = i + 1
+        }
+
+        const cancels = document.querySelectorAll('.fileInfo:not(:first-child) .delete button')
+        cancels.forEach(i => {
+            i.addEventListener('click', deleteFile)
+        })
+        function deleteFile() {
+            let cancel_Btn = [...cancels]
+            console.log(cancel_Btn.indexOf(this));
+            fileAry.splice(cancel_Btn.indexOf(this), 1)
+            showList()
+        }
     }
+
 }
 missionCreate()

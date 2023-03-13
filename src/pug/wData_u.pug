@@ -4,6 +4,12 @@ extends ./week-data-create.pug
 block form title
     h2 修改《每週專案PPT & 每週會議記錄》
 
+block select
+    section.selectWeek
+        input#week(type="week" name="week")
+        button(type="button")
+            <i class="fa-regular fa-clock"></i>
+            |選擇其他日期
 
 block PPT
     p.file-info 目前檔案版本：

@@ -12,11 +12,12 @@ block mainContent
     section
         block form title
             h2 建立《每週專案PPT & 每週會議記錄》
-        section.selectWeek
-            input#week(type="week" name="week")
-            button(type="button")
-                <i class="fa-regular fa-clock"></i>
-                |選擇其他日期
+        block select
+            section.selectWeek
+                input#week(type="week" name="week" disabled)
+                button(type="button")
+                    <i class="fa-regular fa-clock"></i>
+                    |選擇其他日期
         article.main-content 
             #PPT 
                 p 專案PPT
@@ -24,12 +25,12 @@ block mainContent
                     label(for="PPT-file")
                         p 瀏覽檔案位置...
                         button(type="button") 上傳
-                    input#PPT-file(type="file", name="PPT-file" style="display:none;" accept=".pdf,.ppt,.pptx") 
+                    input#PPT-file(type="file" name="PPT-file" style="display:none;" accept="application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation") 
             #meeting-report
                 p 週會會議記錄
                 block meeting
                     label(for="meeting-file")
                         p 瀏覽檔案位置...
                         button(type="button") 上傳
-                    input#meeting-file(type="file", name="meeting-file" style="display:none;" accept=".pdf,.doc,.docx")
+                    input#meeting-file(type="file" name="meeting-file" style="display:none;" accept=".pdf,.doc,.docx")
         +cancel-confirm_btns

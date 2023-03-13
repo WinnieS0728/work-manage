@@ -9,9 +9,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js" integrity="sha512-LUKzDoJKOLqnxGWWIBM4lzRBlxcva2ZTztO8bTcWPmDSpkErWx0bSP4pdsjNH8kiHAUPaT06UXcb+vOEZH+HpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.6.1/Sortable.min.js"></script>
     <script src="js/template.js" defer></script>
-    <link rel="stylesheet" href="css/week-data.min.css">
-    <script type="module" src="js/week-data-create.js"> </script>
-    <title>業務系統-每週檔案</title>
+    <link rel="stylesheet" href="css/goal.min.css">
+    <title>業務系統-預算目標</title>
     <link rel="icon" type="image/x-icon" href="../assests/imgs/favicon.ico">
   </head>
   <body>
@@ -81,28 +80,63 @@
           </article>
         </section>
         <section>
-          <h2>建立《每週專案PPT & 每週會議記錄》</h2>
-          <section class="selectWeek">
-            <input id="week" type="week" name="week">
-            <button type="button">
-              <i class="fa-regular fa-clock"></i>選擇其他日期</button>
-          </section>
-          <article class="main-content"> 
-            <div id="PPT"> 
-              <p>專案PPT</p>
-              <label for="PPT-file">
-                <p>瀏覽檔案位置...</p>
-                <button type="button">上傳</button>
-              </label>
-              <input id="PPT-file" type="file" name="PPT-file" style="display:none;" accept=".pdf,.ppt,.pptx">
+          <h2>建立《預算目標》</h2>
+          <article class="selectWeek">
+            <p>預算年度：</p>
+            <input id="year" type="number" name="year" placeholder="請填入預算年度...">
+          </article>
+          <article class="main-content">
+            <div class="first-year">
+              <div class="year">
+                <label for="goal_Jan">1月預算：</label>
+                <input id="goal_Jan" type="text" name="Jan" placeholder="請填入目標金額..." value="2,210,962"/>
+              </div>
+              <div class="year">
+                <label for="goal_Feb">2月預算：</label>
+                <input id="goal_Feb" type="text" name="Feb" placeholder="請填入目標金額..." value="2,210,962"/>
+              </div>
+              <div class="year">
+                <label for="goal_Mar">3月預算：</label>
+                <input id="goal_Mar" type="text" name="Mar" placeholder="請填入目標金額..." value="2,210,962"/>
+              </div>
+              <div class="year">
+                <label for="goal_Apr">4月預算：</label>
+                <input id="goal_Apr" type="text" name="Apr" placeholder="請填入目標金額..." value="2,210,962"/>
+              </div>
+              <div class="year">
+                <label for="goal_May">5月預算：</label>
+                <input id="goal_May" type="text" name="May" placeholder="請填入目標金額..." value="2,210,962"/>
+              </div>
+              <div class="year">
+                <label for="goal_Jun">6月預算：</label>
+                <input id="goal_Jun" type="text" name="Jun" placeholder="請填入目標金額..." value="2,210,962"/>
+              </div>
             </div>
-            <div id="meeting-report">
-              <p>週會會議記錄</p>
-              <label for="meeting-file">
-                <p>瀏覽檔案位置...</p>
-                <button type="button">上傳</button>
-              </label>
-              <input id="meeting-file" type="file" name="meeting-file" style="display:none;" accept=".pdf,.doc,.docx">
+            <div class="last-year">
+              <div class="year">
+                <label for="goal_Jul">7月預算：</label>
+                <input id="goal_Jul" type="text" name="Jul" placeholder="請填入目標金額..." value="2,210,962"/>
+              </div>
+              <div class="year">
+                <label for="goal_Aug">8月預算：</label>
+                <input id="goal_Aug" type="text" name="Aug" placeholder="請填入目標金額..." value="2,210,962"/>
+              </div>
+              <div class="year">
+                <label for="goal_Sep">9月預算：</label>
+                <input id="goal_Sep" type="text" name="Sep" placeholder="請填入目標金額..." value="2,210,962"/>
+              </div>
+              <div class="year">
+                <label for="goal_Oct">10月預算：</label>
+                <input id="goal_Oct" type="text" name="Oct" placeholder="請填入目標金額..." value="2,210,962"/>
+              </div>
+              <div class="year">
+                <label for="goal_Nov">11月預算：</label>
+                <input id="goal_Nov" type="text" name="Nov" placeholder="請填入目標金額..." value="2,210,962"/>
+              </div>
+              <div class="year">
+                <label for="goal_Dec">12月預算：</label>
+                <input id="goal_Dec" type="text" name="Dec" placeholder="請填入目標金額..." value="2,210,962"/>
+              </div>
             </div>
           </article>
           <div class="confirm_btns">
