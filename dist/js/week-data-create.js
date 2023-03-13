@@ -16,4 +16,3 @@ uploadMeeting.addEventListener('change', () => {
     d3.select('label[for="meeting-file"] p')
         .text(uploadMeeting.files[0].name)
 })
-

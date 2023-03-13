@@ -1,6 +1,10 @@
-const user = 'David'
-d3.select('#user .user-info .name')
-    .text(user)
+const EmpID = '221016'
+const deptName = '業務部';
+const userName = 'david';
+d3.select('header #user .user-info .department')
+    .text(deptName);
+d3.select('header #user .user-info .name')
+    .text(userName);
 
 const navTitle = document.querySelectorAll('.nav-title')
 

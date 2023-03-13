@@ -6,7 +6,7 @@ const qq = new Date()
 date_input.addEventListener('change', showWorking)
 
 const getWorking_body = {
-    "Sales": ""
+    "Sales": userName
     , "Startdt": ""
     , "Enddt": ""
 }
@@ -29,7 +29,6 @@ async function showWorking() {
     let endTime = d3.timeFormat('%Y/%m/%d')(d3.timeParse('%Y/%m/%d')(startTime).setDate(d3.timeParse('%Y/%m/%d')(startTime).getDate() + 1))
 
     // console.log(endTime);
-    getWorking_body.Sales = user;
     getWorking_body.Startdt = startTime;
     getWorking_body.Enddt = endTime;
 
@@ -56,8 +55,6 @@ async function showWorking() {
             update => update.attr("value", d => d),
             exit => exit.attr("value", d => d)
         )
-
-
 }
 showWorking()
 
@@ -68,7 +65,7 @@ const confirmBtn = document.querySelector('button.confirm')
 confirmBtn.addEventListener('click', upload)
 
 const upload_body = {
-    "Sales": "",
+    "Sales": userName,
     "DayPoint": "",
     "Report": "",
     "id": "",
@@ -87,7 +84,6 @@ async function upload() {
     const data = await getWorking()
 
     upload_body.id = data.id;
-    upload_body.Sales = user;
     upload_body.DayPoint = dayPointAry.map(i => i.value).filter(i => i !== '').join(',');
     // console.log(dayPointAry.map(i => i.value).filter(i => i !== '').join(','));
     upload_body.Report = reportAry.map(i => i.value).filter(i => i !== '').join(',');

@@ -6,7 +6,7 @@ const confirmBtn = document.querySelector('button.confirm')
 confirmBtn.addEventListener('click', upload)
 
 const body = {
-    "Sales": "",
+    "Sales": userName,
     "DayPoint": "",
     "Report": "",
     "id": "",
@@ -21,7 +21,6 @@ function upload() {
     const reportAry = [...reports]
     // e.map(i => i.value).filter(i => i !== '');
 
-    body.Sales = user;
     body.DayPoint = dayPointAry.map(i => i.value).filter(i => i !== '').join(',');
     // console.log(dayPointAry.map(i => i.value).filter(i => i !== '').join(','));
     body.Report = reportAry.map(i => i.value).filter(i => i !== '').join(',');
