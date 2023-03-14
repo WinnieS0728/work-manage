@@ -102,7 +102,7 @@ mixin fileHistory
 mixin goal_year(year , chn)
     .year
         label(for=`goal_${year}`) #{chn}預算：
-        input(id=`goal_${year}` type="text", name=`${year}` placeholder='請填入目標金額...' value='2,210,962')
+        input(id=`goal_${year}` type="text" onfocus="(this.type='number')" name=`${year}` placeholder='請填入目標金額...')
 
 mixin goal_place(chn,en)
     .place 

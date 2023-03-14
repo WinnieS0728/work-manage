@@ -336,72 +336,71 @@ async function setTable_dailyReport() {
         , "Enddt": endTime
     }
 
-    async function getWorkingAPI() {
+    try {
         const res = await axios({
             method: 'POST',
             url: 'https://orangeapi.orange-electronic.com/api/GetSalesDayWork',
             data: body
         })
-        return res.data
-    }
 
-    const datas = await getWorkingAPI()
+        const datas = res.data
 
-    function setReportTable(data, member) {
-        if (!data) {
+        function setReportTable(data, member) {
+            if (!data) {
+                d3.select(`.daily-routine .report_${member} .daily-point`)
+                    .append("p")
+                    .text('資料未上傳')
+                d3.select(`.daily-routine .report_${member} .daily-report`)
+                    .append("p")
+                    .text('資料未上傳')
+                return
+            }
+
+            let dayPointAry = data.DayPoint.split(',').filter(i => i !== '')
+
+            if (dayPointAry.length == 0) {
+                d3.select(`.daily-routine .report_${member} .daily-point`)
+                    .append("p")
+                    .text('資料未上傳')
+            }
+
             d3.select(`.daily-routine .report_${member} .daily-point`)
-                .append("p")
-                .text('資料未上傳')
+                .append('ol')
+                .selectAll('li')
+                .data(dayPointAry)
+                .enter()
+                .append("li")
+                .text(d => d)
+
+            let reportAry = data.Report.split(',').filter(i => i !== '')
+
+            if (reportAry.length == 0) {
+                d3.select(`.daily-routine .report_${member} .daily-report`)
+                    .append("p")
+                    .text('資料未上傳')
+            }
+
             d3.select(`.daily-routine .report_${member} .daily-report`)
-                .append("p")
-                .text('資料未上傳')
-            return
+                .append("ol")
+                .selectAll('li')
+                .data(reportAry)
+                .enter()
+                .append("li")
+                .text(d => d)
         }
-
-        let dayPointAry = data.DayPoint.split(',').filter(i => i !== '')
-
-        if (dayPointAry.length == 0) {
-            d3.select(`.daily-routine .report_${member} .daily-point`)
-                .append("p")
-                .text('資料未上傳')
-        }
-
-        d3.select(`.daily-routine .report_${member} .daily-point`)
-            .append('ol')
-            .selectAll('li')
-            .data(dayPointAry)
-            .enter()
-            .append("li")
-            .text(d => d)
-
-        let reportAry = data.Report.split(',').filter(i => i !== '')
-
-        if (reportAry.length == 0) {
-            d3.select(`.daily-routine .report_${member} .daily-report`)
-                .append("p")
-                .text('資料未上傳')
-        }
-
-        d3.select(`.daily-routine .report_${member} .daily-report`)
-            .append("ol")
-            .selectAll('li')
-            .data(reportAry)
-            .enter()
-            .append("li")
-            .text(d => d)
-
+        const David_data = datas.filter(i => i.Sales == 'David')
+        setReportTable(David_data[David_data.length - 1], 'David')
+        const Danise_data = datas.filter(i => i.Sales == 'Danise')
+        setReportTable(Danise_data[Danise_data.length - 1], 'Danise')
+        const Darie_data = datas.filter(i => i.Sales == 'Darie')
+        setReportTable(Darie_data[Darie_data.length - 1], 'Darie')
+        const Lorna_data = datas.filter(i => i.Sales == 'Lorna')
+        setReportTable(Lorna_data[Lorna_data.length - 1], 'Lorna')
+        const Rich_data = datas.filter(i => i.Sales == 'Rich')
+        setReportTable(Rich_data[Rich_data.length - 1], 'Rich')
+    } catch {
+        console.log('每日任務無資料');
     }
-    const David_data = datas.filter(i => i.Sales == 'David')
-    setReportTable(David_data[David_data.length - 1], 'David')
-    const Danise_data = datas.filter(i => i.Sales == 'Danise')
-    setReportTable(Danise_data[Danise_data.length - 1], 'Danise')
-    const Darie_data = datas.filter(i => i.Sales == 'Darie')
-    setReportTable(Darie_data[Darie_data.length - 1], 'Darie')
-    const Lorna_data = datas.filter(i => i.Sales == 'Lorna')
-    setReportTable(Lorna_data[Lorna_data.length - 1], 'Lorna')
-    const Rich_data = datas.filter(i => i.Sales == 'Rich')
-    setReportTable(Rich_data[Rich_data.length - 1], 'Rich')
-
 }
 setTable_dailyReport()
 
@@ -423,6 +422,7 @@ async function setTable_PPTandReport() {
     })
 
     const datas = res.data;
+    // console.log(datas);
     function showData(member) {
         if (datas.filter(i => i.Sales == member).length == 0) {
             d3.select(`.weeklyData_${member} .PPT`)
@@ -431,11 +431,15 @@ async function setTable_PPTandReport() {
                 .text('資料未上傳')
             return
         }
-        const PPtName = datas.filter(i => i.Sales == member).slice(-1)[0].PPtName
-        const lastTime = datas.filter(i => i.Sales == member).slice(-1)[0].CreateDate.replace('上午', 'AM').replace('下午', 'PM').slice(0, -3)
-        const PPtLink = datas.filter(i => i.Sales == member).slice(-1)[0].PPtpatch
+        const PPtName = datas.filter(i => i.Sales == member).map(i => i.PPtName).filter(i => i != '').slice(-1)
+        const PPTlastTime = datas.filter(i => i.Sales == member).filter(i => i.PPtName !=
+            '').slice(-1)[0].CreateDate.replace('上午', 'AM').replace('下午', 'PM').slice(0, -3)
+        const PPtLink = datas.filter(i => i.Sales == member).map(i => i.PPtpatch).filter(i => i != '').slice(-1).map(i => `https://orangeapi.orange-electronic.com/api/Download?file=${i}`)
+
         const meetingName = datas.filter(i => i.Sales == member).slice(-1)[0].MeetName
-        const meetingLink = datas.filter(i => i.Sales == member).slice(-1)[0].MeetPatch
+        const MeetLastTime = datas.filter(i => i.Sales == member).filter(i => i.MeetName !=
+            '').slice(-1)[0].CreateDate.replace('上午', 'AM').replace('下午', 'PM').slice(0, -3)
+        const meetingLink = datas.filter(i => i.Sales == member).map(i => i.MeetPatch).filter(i => i != '').slice(-1).map(i => `https://orangeapi.orange-electronic.com/api/Download?file=${i}`)
 
         if (!PPtName) {
             d3.select(`.weeklyData_${member} .PPT`)
@@ -444,7 +448,7 @@ async function setTable_PPTandReport() {
             d3.select(`.weeklyData_${member} .PPT`)
                 .html(`
             <span class="fileName">${PPtName}</span><br>
-            最後更新 <span class="updateTime">${lastTime}</span><br>
+            最後更新 <span class="updateTime">${PPTlastTime}</span><br>
             <a href="${PPtLink}" download="${PPtName}">下載檔案</a>
             `)
         }
@@ -455,7 +459,7 @@ async function setTable_PPTandReport() {
             d3.select(`.weeklyData_${member} .MeetingRecord`)
                 .html(`
             <span class="fileName">${meetingName}</span><br>
-            最後更新 <span class="updateTime">${lastTime}</span><br>
+            最後更新 <span class="updateTime">${MeetLastTime}</span><br>
             <a href="${meetingLink}" download="${meetingName}">下載檔案</a>
             `)
         }
