@@ -36,6 +36,7 @@ uploadPPT.addEventListener('click', async () => {
     filesBody.PPtpatch = path
 
     console.log(filesBody);
+    alert('上傳成功')
 })
 
 const uploadMeet = document.querySelector('#meeting-report label button')
@@ -50,6 +51,7 @@ uploadMeet.addEventListener('click', async () => {
     filesBody.MeetPatch = path
 
     console.log(filesBody);
+    alert('上傳成功')
 })
 
 async function getPath(file) {

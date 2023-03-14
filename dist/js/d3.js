@@ -330,6 +330,13 @@ async function setTable_dailyReport() {
 
     let endTime = d3.timeFormat('%Y/%m/%d')(d3.timeParse('%Y/%m/%d')(startTime).setDate(d3.timeParse('%Y/%m/%d')(startTime).getDate() + 1))
 
+    d3.select('section.daily-routine table tbody')
+        .selectAll('[class^=report_] .daily-point')
+        .html('<p>資料未上傳</p>')
+    d3.select('section.daily-routine table tbody')
+        .selectAll('[class^=report_] .daily-report')
+        .html('<p>資料未上傳</p>')
+
     const body = {
         "Sales": ""
         , "Startdt": startTime
@@ -345,14 +352,18 @@ async function setTable_dailyReport() {
 
         const datas = res.data
 
-        function setReportTable(data, member) {
+        function setReportTable(member) {
+            const data = datas.filter(i => i.Sales == member).slice(-1)[0]
+            // console.log(data);
+
+            d3.select(`section.daily-routine table tbody .report_${member} .daily-point p`).remove()
+            d3.select(`section.daily-routine table tbody .report_${member} .daily-report p`).remove()
+
             if (!data) {
                 d3.select(`.daily-routine .report_${member} .daily-point`)
-                    .append("p")
-                    .text('資料未上傳')
+                    .html('<p>資料未上傳</p>')
                 d3.select(`.daily-routine .report_${member} .daily-report`)
-                    .append("p")
-                    .text('資料未上傳')
+                    .html('<p>資料未上傳</p>')
                 return
             }
 
@@ -365,12 +376,16 @@ async function setTable_dailyReport() {
             }
 
             d3.select(`.daily-routine .report_${member} .daily-point`)
-                .append('ol')
+                .append("ol")
                 .selectAll('li')
                 .data(dayPointAry)
-                .enter()
-                .append("li")
-                .text(d => d)
+                .join(
+                    enter => enter.append("li")
+                        .text(d => d),
+                    update => update.text(d => d),
+                    exit => exit.remove()
+                )
+
 
             let reportAry = data.Report.split(',').filter(i => i !== '')
 
@@ -384,22 +399,21 @@ async function setTable_dailyReport() {
                 .append("ol")
                 .selectAll('li')
                 .data(reportAry)
-                .enter()
-                .append("li")
-                .text(d => d)
+                .join(
+                    enter => enter.append("li")
+                        .text(d => d),
+                    update => update.text(d => d),
+                    exit => exit.remove()
+                )
         }
-        const David_data = datas.filter(i => i.Sales == 'David')
-        setReportTable(David_data[David_data.length - 1], 'David')
-        const Danise_data = datas.filter(i => i.Sales == 'Danise')
-        setReportTable(Danise_data[Danise_data.length - 1], 'Danise')
-        const Darie_data = datas.filter(i => i.Sales == 'Darie')
-        setReportTable(Darie_data[Darie_data.length - 1], 'Darie')
-        const Lorna_data = datas.filter(i => i.Sales == 'Lorna')
-        setReportTable(Lorna_data[Lorna_data.length - 1], 'Lorna')
-        const Rich_data = datas.filter(i => i.Sales == 'Rich')
-        setReportTable(Rich_data[Rich_data.length - 1], 'Rich')
+
+        setReportTable('David')
+        // setReportTable('Danise')
+        // setReportTable('Darie')
+        // setReportTable('Lorna')
+        // setReportTable('Rich')
     } catch {
-        console.log('每日任務無資料');
+        err => console.log(err);
     }
 }
 setTable_dailyReport()

@@ -43,11 +43,11 @@ async function getWeekData(date) {
     console.log(data);
 
 
-    const fileHistory = data.slice(-3).reverse()
-    console.log(fileHistory);
+    const PPTfileHistory = data.filter(i => i.PPtName != '').slice(-3).reverse()
+    // console.log(PPTfileHistory);
     d3.select('#PPT .file-history')
         .selectAll('li p.fileName')
-        .data(fileHistory.map(i => i.PPtName))
+        .data(PPTfileHistory.map(i => i.PPtName))
         .join(
             enter => enter.text(d => {
                 if (d == '') {
@@ -64,7 +64,7 @@ async function getWeekData(date) {
         )
     d3.select('#PPT .file-history')
         .selectAll('li p.lastUpdate')
-        .data(fileHistory.map(i => i.CreateDate))
+        .data(PPTfileHistory.map(i => i.CreateDate))
         .join(
             enter => enter.text(d => {
                 return d.replace('上午', 'AM').replace('下午', 'PM')
@@ -74,9 +74,11 @@ async function getWeekData(date) {
             })
         )
 
+    const MeetFileHistory = data.filter(i => i.MeetName != '').slice(-3).reverse()
+    console.log(MeetFileHistory);
     d3.select('#meeting-report .file-history')
         .selectAll('li p.fileName')
-        .data(fileHistory.map(i => i.MeetName))
+        .data(MeetFileHistory.map(i => i.MeetName))
         .join(
             enter => enter.text(d => {
                 if (d == '') {
@@ -93,7 +95,7 @@ async function getWeekData(date) {
         )
     d3.select('#meeting-report .file-history')
         .selectAll('li p.lastUpdate')
-        .data(fileHistory.map(i => i.CreateDate))
+        .data(MeetFileHistory.map(i => i.CreateDate))
         .join(
             enter => enter.text(d => {
                 return d.replace('上午', 'AM').replace('下午', 'PM')
@@ -105,29 +107,19 @@ async function getWeekData(date) {
 
 
 
-    let PPThistoryPath = fileHistory.map(i => i.PPtpatch).map(i => {
-        if (!i) {
-            return `https://orangeapi.orange-electronic.com/api/Download?file=wData\\wData2023031412179100.jfif`
-        }
-        return `https://orangeapi.orange-electronic.com/api/Download?file=${i}`
-    });
-    console.log(PPThistoryPath);
+    let PPThistoryPath = PPTfileHistory.map(i => i.PPtpatch).map(i => `https://orangeapi.orange-electronic.com/api/Download?file=${i}`);
+    // console.log(PPThistoryPath);
     d3.select('#PPT .file-history')
         .selectAll('a')
         .data(PPThistoryPath)
         .attr("href", d => d)
 
-    // d3.select('#PPT .file-history')
-    //     .selectAll('a')
-    //     .data(fileHistory)
-    //     .attr("download", d => d.PPtName)
+    d3.select('#PPT .file-history')
+        .selectAll('a')
+        .data(PPTfileHistory)
+        .attr("download", d => d.PPtName)
 
-    let meetHistoryPath = fileHistory.map(i => i.MeetPatch).map(i => {
-        if (!i) {
-            return `https://orangeapi.orange-electronic.com/api/Download?file=wData\\wData2023031412179100.jfif`
-        }
-        return `https://orangeapi.orange-electronic.com/api/Download?file=${i}`
-    });
+    let meetHistoryPath = MeetFileHistory.map(i => i.MeetPatch).map(i => `https://orangeapi.orange-electronic.com/api/Download?file=${i}`);
 
     d3.select('#meeting-report .file-history')
         .selectAll('a')
@@ -136,7 +128,7 @@ async function getWeekData(date) {
 
     d3.select('#meeting-report .file-history')
         .selectAll('a')
-        .data(fileHistory)
+        .data(MeetFileHistory)
         .attr("download", d => d.MeetName)
 }
 getWeekData(today)
