@@ -52,12 +52,17 @@
                     align-items: center;
                     gap: 1rem;
 
-                    p {
+                    .info {
                         flex: 1;
                         @include section_border;
                         padding: .5em 1em;
+                        display: grid;
+                        grid-template-columns: 2em 1fr;
+                        place-items: center;
                         span{
-                            margin-left: 1em;
+                            display: flex;
+                            flex-flow: column;
+                            gap: .5em;
                         }
                     }
 

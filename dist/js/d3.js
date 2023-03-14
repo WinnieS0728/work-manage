@@ -348,8 +348,6 @@ async function setTable_dailyReport() {
     const datas = await getWorkingAPI()
 
     function setReportTable(data, member) {
-        // console.log(data);
-
         if (!data) {
             d3.select(`.daily-routine .report_${member} .daily-point`)
                 .append("p")
@@ -427,6 +425,10 @@ async function setTable_PPTandReport() {
     const datas = res.data;
     function showData(member) {
         if (datas.filter(i => i.Sales == member).length == 0) {
+            d3.select(`.weeklyData_${member} .PPT`)
+                .text('資料未上傳')
+            d3.select(`.weeklyData_${member} .MeetingRecord`)
+                .text('資料未上傳')
             return
         }
         const PPtName = datas.filter(i => i.Sales == member).slice(-1)[0].PPtName
@@ -435,18 +437,28 @@ async function setTable_PPTandReport() {
         const meetingName = datas.filter(i => i.Sales == member).slice(-1)[0].MeetName
         const meetingLink = datas.filter(i => i.Sales == member).slice(-1)[0].MeetPatch
 
-        d3.select(`.weeklyData_${member} .PPT`)
-            .html(`
-                <span class="fileName">${PPtName}</span><br>
-                最後更新 <span class="updateTime">${lastTime}</span><br>
-                <a href="${PPtLink}" download="${PPtName}">下載檔案</a>
+        if (!PPtName) {
+            d3.select(`.weeklyData_${member} .PPT`)
+                .text('資料未上傳')
+        } else {
+            d3.select(`.weeklyData_${member} .PPT`)
+                .html(`
+            <span class="fileName">${PPtName}</span><br>
+            最後更新 <span class="updateTime">${lastTime}</span><br>
+            <a href="${PPtLink}" download="${PPtName}">下載檔案</a>
             `)
-        d3.select(`.weeklyData_${member} .MeetingRecord`)
-            .html(`
-                <span class="fileName">${meetingName}</span><br>
-                最後更新 <span class="updateTime">${lastTime}</span><br>
-                <a href="${meetingLink}" download="${meetingName}">下載檔案</a>
+        }
+        if (!meetingName) {
+            d3.select(`.weeklyData_${member} .MeetingRecord`)
+                .text('資料未上傳')
+        } else {
+            d3.select(`.weeklyData_${member} .MeetingRecord`)
+                .html(`
+            <span class="fileName">${meetingName}</span><br>
+            最後更新 <span class="updateTime">${lastTime}</span><br>
+            <a href="${meetingLink}" download="${meetingName}">下載檔案</a>
             `)
+        }
     }
     showData('David')
     showData('Danise')

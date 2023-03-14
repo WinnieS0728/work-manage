@@ -16,25 +16,43 @@ MeetingFile.addEventListener('change', () => {
     d3.select('label[for="meeting-file"] p')
         .text(MeetingFile.files[0].name)
 })
-
+const filesBody = {
+    "Sales": userName//業務
+    , "PPtName": ""//會議ppt檔名
+    , "PPtpatch": "" //會議ppt路徑
+    , "MeetName": ""//會議記錄檔名
+    , "MeetPatch": ""//會議記錄路徑
+    , "id": ""//主keyid
+}
 const uploadPPT = document.querySelector('#PPT label button')
-uploadPPT.addEventListener('click', () => {
+uploadPPT.addEventListener('click', async () => {
     const file = PPTfile.files[0];
     if (!file) {
         return
     }
-    upload(file)
+    const path = await getPath(file)
+
+    filesBody.PPtName = file.name
+    filesBody.PPtpatch = path
+
+    console.log(filesBody);
 })
+
 const uploadMeet = document.querySelector('#meeting-report label button')
-uploadMeet.addEventListener('click', () => {
+uploadMeet.addEventListener('click', async () => {
     const file = MeetingFile.files[0];
     if (!file) {
         return
     }
-    upload(file)
+    const path = await getPath(file)
+
+    filesBody.MeetName = file.name
+    filesBody.MeetPatch = path
+
+    console.log(filesBody);
 })
 
-async function upload(file) {
+async function getPath(file) {
     const filePackage = new FormData()
     filePackage.append('FormId', 'wData' + Date.now())
     filePackage.append('EmpId', EmpID)
@@ -63,24 +81,18 @@ async function upload(file) {
         data: body
     });
     const path = res.data[0].FilePath
-
-    async function go() {
-        const body = {
-            "Sales": userName//業務
-            , "PPtName": file.name//會議ppt檔名
-            , "PPtpatch": path//會議ppt路徑
-            , "MeetName": ""//會議記錄檔名
-            , "MeetPatch": ""//會議記錄路徑
-            , "id": ""//主keyid
-        }
-        console.log(body);
-        const res = await axios({
-            method: 'POST',
-            url: 'http://orangeapi.orange-electronic.com/api/SalesWeekWorkAdd',
-            data: body
-        })
-        console.log(res);
-    }
-    go()
-
+    return path
 }
+
+
+const confirmBtn = document.querySelector('.confirm_btns .confirm')
+
+confirmBtn.addEventListener('click', async () => {
+    console.log(filesBody);
+    const res = await axios({
+        method: 'POST',
+        url: 'http://orangeapi.orange-electronic.com/api/SalesWeekWorkAdd',
+        data: filesBody
+    })
+    alert(res.data)
+})

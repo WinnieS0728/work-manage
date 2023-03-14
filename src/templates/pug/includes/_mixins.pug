@@ -92,10 +92,11 @@ mixin attachItem(id)
 
 mixin fileHistory 
     li 
-        p
-            |版本 
-            span 2022.10.17 AM 10:00
-        a(href="#" download='cat.png') 下載
+        article.info 版本 
+            span
+                p.fileName 2022.10.17 AM 10:00
+                p.lastUpdate 2022.10.17 AM 10:00
+        a(href="#" download="cat.jpeg") 下載
 
 
 mixin goal_year(year , chn)
