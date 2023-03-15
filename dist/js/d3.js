@@ -431,7 +431,7 @@ async function setTable_PPTandReport() {
     }
     const res = await axios({
         method: 'POST',
-        url: 'http://orangeapi.orange-electronic.com/api/GetSalesWeekWork',
+        url: 'https://orangeapi.orange-electronic.com/api/GetSalesWeekWork',
         data: body
     })
 
